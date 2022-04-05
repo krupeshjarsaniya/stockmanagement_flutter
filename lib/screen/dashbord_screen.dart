@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:stoke_management/utills/color_constant.dart';
 import 'package:stoke_management/utills/appbar_title_text.dart';
+import 'package:stoke_management/utills/utils_routes.dart';
 
 class DashBordScreen extends StatefulWidget {
   const DashBordScreen({Key? key}) : super(key: key);
@@ -163,13 +164,19 @@ class _DashBordScreenState extends State<DashBordScreen> {
           ),
         ),
         SizedBox(height: 10,),
-        Container(
-          height: 30,
-          width: 120,
-          child: const Center(child: Text("View Detail",style: TextStyle(color: Colors.white),)),
-          decoration: BoxDecoration(
-            color: Colors.amber,
-            borderRadius: BorderRadius.circular(5)
+        InkWell(
+          onTap: (){
+            Navigator.pushNamed(context, UtilRoutes.ViewMoreScreen);
+
+          },
+          child: Container(
+            height: 30,
+            width: 120,
+            child: const Center(child: Text("View Detail",style: TextStyle(color: Colors.white),)),
+            decoration: BoxDecoration(
+              color: Colors.amber,
+              borderRadius: BorderRadius.circular(5)
+            ),
           ),
         ),
       ],

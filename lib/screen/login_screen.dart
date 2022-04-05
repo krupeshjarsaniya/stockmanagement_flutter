@@ -17,7 +17,7 @@ class LoginScreenState extends State<LoginScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Login",style: AppBarTitle.myAppbarStyle,),
-        centerTitle: true,
+        // centerTitle: true,
         backgroundColor: ColorConstant.themColor,
         systemOverlayStyle: SystemUiOverlayStyle.dark.copyWith(
           statusBarColor: ColorConstant.themColor,
@@ -28,24 +28,24 @@ class LoginScreenState extends State<LoginScreen> {
         height: MediaQuery.of(context).size.height,
         child: SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.all(10.0),
+            padding:  EdgeInsets.all(5.0),
             child: Container(
-              margin: EdgeInsets.all(25),
+              margin: EdgeInsets.all(15),
               child: Column(
                 children: [
-                  const SizedBox(
+                   SizedBox(
                     height: 20,
                   ),
                   wTextField(),
-                  const SizedBox(
+                   SizedBox(
                     height: 40,
                   ),
                   wLoginButton(),
-                  const SizedBox(
+                   SizedBox(
                     height: 40,
                   ),
                   wForgetPassword(),
-                  const SizedBox(
+                   SizedBox(
                     height: 50,
                   ),
                   wTextRegister()
@@ -66,10 +66,12 @@ class LoginScreenState extends State<LoginScreen> {
               decoration: InputDecoration(
                   labelText: "Mobile/Email Adresss",
                   fillColor: Colors.black,
-                  border: OutlineInputBorder(
-                    borderRadius: new BorderRadius.circular(10),
-                    borderSide: BorderSide(color: Colors.amber),
-                  ))),
+                  // border: OutlineInputBorder(
+                  //   borderRadius: new BorderRadius.circular(10),
+                  //   borderSide: BorderSide(color: Colors.amber),
+                  // )
+
+              )),
           const SizedBox(
             height: 30,
           ),
@@ -77,9 +79,11 @@ class LoginScreenState extends State<LoginScreen> {
             decoration: InputDecoration(
                 labelText: "Password",
                 fillColor: Colors.black,
-                border: OutlineInputBorder(
-                    borderRadius: new BorderRadius.circular(10),
-                    borderSide: const BorderSide(color: Colors.red))),
+                // border: OutlineInputBorder(
+                //     borderRadius: new BorderRadius.circular(10),
+                //     borderSide: const BorderSide(color: Colors.red))
+
+            ),
           ),
         ],
       ),
@@ -96,7 +100,7 @@ class LoginScreenState extends State<LoginScreen> {
         height: 45,
         decoration: BoxDecoration(
           color: ColorConstant.primarycolor,
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(6),
         ),
         child: const Center(
           child: Text(
@@ -115,7 +119,7 @@ class LoginScreenState extends State<LoginScreen> {
       child: const Text(
         "Forget Password ? ",
         style: TextStyle(
-            color: ColorConstant.primarycolor, fontWeight: FontWeight.bold),
+            color: ColorConstant.primarycolor, fontWeight: FontWeight.bold,fontSize: 15),
       ),
     );
   }
@@ -126,7 +130,7 @@ class LoginScreenState extends State<LoginScreen> {
       children: [
         const Text(
           "Not Register Yet ?   ",
-          style: TextStyle(color: Colors.black, fontWeight: FontWeight.w400),
+          style: TextStyle(color: Colors.black, fontWeight: FontWeight.w400,fontSize: 15),
         ),
         InkWell(
           onTap: () {
@@ -137,6 +141,7 @@ class LoginScreenState extends State<LoginScreen> {
             style: TextStyle(
               fontWeight: FontWeight.bold,
               color: ColorConstant.primarycolor,
+                fontSize: 15
             ),
           ),
         )
