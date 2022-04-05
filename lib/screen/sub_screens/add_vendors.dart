@@ -8,7 +8,6 @@ import 'package:stoke_management/utills/utils_routes.dart';
 
 class AddVendors extends StatefulWidget {
 
-   VenderModel? vendermodel;
 
   // AddVendors(this.venderModel, {Key? key}) : super(key: key);
 
@@ -19,12 +18,6 @@ class AddVendors extends StatefulWidget {
 
 class _AddVendorsState extends State<AddVendors> {
 
-  TextEditingController firstNameController = new TextEditingController();
-  TextEditingController lastNameController = new TextEditingController();
-  TextEditingController mobileNumberController = new TextEditingController();
-  TextEditingController companyController = new TextEditingController();
-  TextEditingController addressController = new TextEditingController();
-  TextEditingController emailController = new TextEditingController();
 
   // Future<List<VenderModel>>? vendors;
   String? firstname, lastname, mobile, company, address, email;
@@ -48,12 +41,7 @@ class _AddVendorsState extends State<AddVendors> {
   @override
   Widget build(BuildContext context) {
 
-      firstNameController.text = widget.vendermodel!.Firstname.toString();
-      lastNameController.text = widget.vendermodel!.Lastname.toString();
-      mobileNumberController.text = widget.vendermodel!.MobileNumber.toString();
-      companyController.text = widget.vendermodel!.CompanyName.toString();
-      addressController.text = widget.vendermodel!.Address.toString();
-      emailController.text = widget.vendermodel!.Email.toString();
+
 
 
     return Scaffold(
@@ -92,7 +80,6 @@ class _AddVendorsState extends State<AddVendors> {
       child: Column(
         children: [
           TextFormField(
-            controller: firstNameController,
             keyboardType: TextInputType.text,
               decoration: const InputDecoration(
                   labelText: "First Name",
@@ -106,7 +93,6 @@ class _AddVendorsState extends State<AddVendors> {
           ),
 
           TextFormField(
-            controller: lastNameController,
             keyboardType: TextInputType.text,
               decoration: const InputDecoration(
                 labelText: "Last Name",
@@ -122,7 +108,6 @@ class _AddVendorsState extends State<AddVendors> {
           ),
 
           TextFormField(
-            controller: mobileNumberController,
             keyboardType: TextInputType.number,
               decoration: const InputDecoration(
                 labelText: "Mobile Number",
@@ -137,7 +122,6 @@ class _AddVendorsState extends State<AddVendors> {
           ),
 
           TextFormField(
-            controller: companyController,
             keyboardType: TextInputType.text,
               decoration: const InputDecoration(
                 labelText: "Company Name",
@@ -151,7 +135,6 @@ class _AddVendorsState extends State<AddVendors> {
           ),
 
           TextFormField(
-            controller: addressController,
             keyboardType: TextInputType.text,
               decoration: const InputDecoration(
                 labelText: "Address",
@@ -167,7 +150,6 @@ class _AddVendorsState extends State<AddVendors> {
           ),
 
           TextFormField(
-            controller: emailController,
             keyboardType: TextInputType.emailAddress,
               decoration: const InputDecoration(
                 labelText: "Email",
@@ -194,24 +176,8 @@ class _AddVendorsState extends State<AddVendors> {
   Widget w_Save(){
     return InkWell(
       onTap: () {
-        var getFirstName = firstNameController.text;
-        var getLastName = lastNameController.text;
-        var getMobile = mobileNumberController.text;
-        var getCompany= companyController.text;
-        var getAddress = addressController.text;
-        var getEmail = emailController.text;
 
 
-          VenderModel addVendor = VenderModel(
-              vendorId : widget.vendermodel!.vendorId,
-              Firstname: getFirstName,
-              Lastname: getLastName,
-              MobileNumber: getMobile,
-              CompanyName: getCompany,
-              Address: getAddress,
-              Email: getEmail);
-
-          DatabaseHelper.instance.insert(addVendor.toMapWithoutId());
 
 
         Navigator.pushAndRemoveUntil(

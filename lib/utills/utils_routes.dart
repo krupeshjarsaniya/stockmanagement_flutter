@@ -7,4 +7,5 @@ class UtilRoutes{
   static var ProfileScreen = "/ProfileScreen";
   static var ChangePassword = "/ChangePassword";
   static var DetailsVendors = "/DetailsVendors";
+  static var ViewMoreScreen = "/ViewMoreScreen";
 }

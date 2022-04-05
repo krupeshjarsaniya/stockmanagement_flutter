@@ -1,4 +1,4 @@
-#Tue Apr 05 12:40:00 IST 2022
-base.0=/Users/mymac/Downloads/stoke_management/build/app/intermediates/dex/debug/mergeDexDebug/classes.dex
+#Tue Apr 05 16:02:32 IST 2022
+base.0=/Users/mymac/Documents/GitHub/stockmanagement_flutter/build/app/intermediates/dex/debug/mergeDexDebug/classes.dex
 path.0=classes.dex
 renamed.0=classes.dex
