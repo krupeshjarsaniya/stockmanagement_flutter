@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:stoke_management/model/vender_model.dart';
+import 'package:stoke_management/model/api_response/vender_model.dart';
 import 'package:stoke_management/screen/profile_screen.dart';
 import 'package:stoke_management/screen/sub_screens/add_vendors.dart';
 import 'package:stoke_management/screen/home_screen.dart';
@@ -27,6 +27,9 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return  MaterialApp(
+      theme: ThemeData(
+        primarySwatch: Colors.yellow
+      ),
       title: "Stoke Management",
       home: LoginScreen(),
       debugShowCheckedModeBanner: false,

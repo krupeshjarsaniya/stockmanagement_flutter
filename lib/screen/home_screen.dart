@@ -49,7 +49,7 @@ class _HomeScreenState extends State<HomeScreen> {
               backgroundColor: Colors.black),
           BottomNavigationBarItem(
               icon: Icon(Icons.calculate_rounded),
-              label: "Mettings",
+              label: "Meltings",
               backgroundColor: Colors.black),
           BottomNavigationBarItem(
               icon: Icon(Icons.person),

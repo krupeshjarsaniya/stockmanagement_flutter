@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:stoke_management/database/database_helper.dart';
-import 'package:stoke_management/model/vender_model.dart';
+import 'package:stoke_management/model/api_response/vender_model.dart';
 import 'package:stoke_management/screen/sub_screens/add_vendors.dart';
 import 'package:stoke_management/utills/color_constant.dart';
 import 'package:stoke_management/utills/appbar_title_text.dart';

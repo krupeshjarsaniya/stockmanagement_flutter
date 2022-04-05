@@ -58,10 +58,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
     return Container(
         height: 100.0,
         width: 100.0,
-        color: Colors.grey,
-        // child: Image(
-        //     image: AssetImage('assets/images/profile.svg')
-        // )
+        decoration: BoxDecoration(
+          color: Colors.grey,
+          borderRadius: BorderRadius.circular(4)
+        )
     );
   }
 
@@ -69,9 +69,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
     return Container(
       child: Column(
         children: [
-
           SizedBox(height: 20,),
-
           TextFormField(
             decoration: InputDecoration(
                 labelText: "FirstName",
@@ -80,9 +78,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 )
             ),
           ),
-
           SizedBox(height: 30,),
-
           TextFormField(
             decoration: InputDecoration(
                 labelText: "LastName",
@@ -91,9 +87,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 )
             ),
           ),
-
           SizedBox(height: 30,),
-
           TextFormField(
             decoration: InputDecoration(
                 labelText: "Mobile Number",
@@ -102,9 +96,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 )
             ),
           ),
-
           SizedBox(height: 30,),
-
           TextFormField(
             decoration: InputDecoration(
                 labelText: "Email",
@@ -113,9 +105,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 )
             ),
           ),
-
           SizedBox(height: 30,),
-
           TextFormField(
             decoration: InputDecoration(
                 labelText: "Password",
@@ -124,9 +114,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 )
             ),
           ),
-
           SizedBox(height: 30,),
-
           TextFormField(
             decoration: InputDecoration(
                 labelText: "Confirm Password",
@@ -147,7 +135,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
       },
       child: Container(
         width: MediaQuery.of(context).size.width,
-        height: 40,
+        height: 60,
         decoration: BoxDecoration(
           color: ColorConstant.primarycolor,
           borderRadius: BorderRadius.circular(10),
