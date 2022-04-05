@@ -15,8 +15,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Register"),
-        centerTitle: true,
+        iconTheme: IconThemeData(
+          color: Colors.white, //change your color here
+        ),
+        title: Text("Register",style: TextStyle(color: Colors.white),),
+        // centerTitle: true,
         backgroundColor: ColorConstant.themColor,
         systemOverlayStyle: SystemUiOverlayStyle.dark.copyWith(
           statusBarColor: ColorConstant.themColor,
