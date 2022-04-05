@@ -1,16 +1,41 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:stoke_management/model/api_request/register_request.dart';
 import 'package:stoke_management/utills/color_constant.dart';
 import 'package:stoke_management/utills/utils_routes.dart';
+import 'package:stoke_management/view_model/register_view_model.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({Key? key}) : super(key: key);
 
   @override
-  _RegisterScreenState createState() => _RegisterScreenState();
+  RegisterScreenState createState() => RegisterScreenState();
 }
 
-class _RegisterScreenState extends State<RegisterScreen> {
+class RegisterScreenState extends State<RegisterScreen> {
+
+
+
+  late RegisterViewModel viewModel;
+
+  @override
+  void initState() {
+    super.initState();
+
+    // scrollController.addListener(pagination);
+
+    Future.delayed(Duration.zero, () {
+      /*model ??*/ (viewModel = RegisterViewModel(this));
+    });
+  }
+
+  TextEditingController firstNameController =  TextEditingController();
+  TextEditingController lastNameController =  TextEditingController();
+  TextEditingController mobileController =  TextEditingController();
+  TextEditingController emailController =  TextEditingController();
+  TextEditingController passwordController =  TextEditingController();
+  TextEditingController conformPasswordController =  TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -74,6 +99,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
         children: [
           SizedBox(height: 20,),
           TextFormField(
+
+
+      controller: firstNameController,
             decoration: InputDecoration(
                 labelText: "FirstName",
                 border: OutlineInputBorder(
@@ -83,6 +111,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
           ),
           SizedBox(height: 30,),
           TextFormField(
+    controller: lastNameController,
             decoration: InputDecoration(
                 labelText: "LastName",
                 border: OutlineInputBorder(
@@ -92,6 +121,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
           ),
           SizedBox(height: 30,),
           TextFormField(
+    controller: mobileController,
             decoration: InputDecoration(
                 labelText: "Mobile Number",
                 border: OutlineInputBorder(
@@ -101,6 +131,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
           ),
           SizedBox(height: 30,),
           TextFormField(
+    controller: emailController,
             decoration: InputDecoration(
                 labelText: "Email",
                 border: OutlineInputBorder(
@@ -110,6 +141,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
           ),
           SizedBox(height: 30,),
           TextFormField(
+    controller: passwordController,
             decoration: InputDecoration(
                 labelText: "Password",
                 border: OutlineInputBorder(
@@ -119,6 +151,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
           ),
           SizedBox(height: 30,),
           TextFormField(
+    controller: conformPasswordController,
             decoration: InputDecoration(
                 labelText: "Confirm Password",
                 border: OutlineInputBorder(
@@ -134,7 +167,40 @@ class _RegisterScreenState extends State<RegisterScreen> {
   Widget wR_RegisrationButton() {
     return InkWell(
       onTap: () {
-        Navigator.pushNamed(context, UtilRoutes.LoginScreen);
+
+
+        TextEditingController firstNameController =  TextEditingController();
+        TextEditingController lastNameController =  TextEditingController();
+        TextEditingController mobileController =  TextEditingController();
+        TextEditingController emailController =  TextEditingController();
+        TextEditingController passwordController =  TextEditingController();
+        TextEditingController conformPasswordController =  TextEditingController();
+
+        if(firstNameController.text.isEmpty){
+
+        }else if(lastNameController.text.isEmpty){
+
+        }else if(mobileController.text.isEmpty){
+
+        }else if(emailController.text.isEmpty){
+
+        }else if(passwordController.text.isEmpty){
+
+        }else if(conformPasswordController.text.isEmpty){
+
+        }else{
+          viewModel.userRegisterRequest = UserRegisterRequest(firstNameController.text.toString(),
+              lastNameController.text.toString(),
+              mobileController.text.toString(),
+              emailController.text.toString(),
+              passwordController.text.toString(),
+              "Android",
+              "deviceuid",
+              "token");
+        }
+        viewModel.callUserRegister(viewModel.userRegisterRequest!);
+
+        // Navigator.pushNamed(context, UtilRoutes.LoginScreen);
       },
       child: Container(
         width: MediaQuery.of(context).size.width,

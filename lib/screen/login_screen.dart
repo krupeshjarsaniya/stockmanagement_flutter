@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:stoke_management/model/api_request/login_request.dart';
 import 'package:stoke_management/utills/appbar_title_text.dart';
 import 'package:stoke_management/utills/color_constant.dart';
 import 'package:stoke_management/utills/utils_routes.dart';
+import 'package:stoke_management/view_model/login_view_model.dart';
+// import 'package:stoke_management/widgets/common_toast.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -12,6 +15,25 @@ class LoginScreen extends StatefulWidget {
 }
 
 class LoginScreenState extends State<LoginScreen> {
+
+  late LoginViewModel loginViewModel;
+
+  TextEditingController phoneNumberController =  TextEditingController();
+  TextEditingController passwordController =  TextEditingController();
+
+
+  @override
+  void initState() {
+    super.initState();
+
+    // scrollController.addListener(pagination);
+
+    Future.delayed(Duration.zero, () {
+      /*model ??*/ (loginViewModel = LoginViewModel(this));
+    });
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -63,6 +85,7 @@ class LoginScreenState extends State<LoginScreen> {
       child: Column(
         children: [
           TextFormField(
+            controller: phoneNumberController,
               decoration: InputDecoration(
                   labelText: "Mobile/Email Adresss",
                   fillColor: Colors.black,
@@ -76,6 +99,7 @@ class LoginScreenState extends State<LoginScreen> {
             height: 30,
           ),
           TextFormField(
+            controller: passwordController,
             decoration: InputDecoration(
                 labelText: "Password",
                 fillColor: Colors.black,
@@ -93,7 +117,30 @@ class LoginScreenState extends State<LoginScreen> {
   Widget wLoginButton() {
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, UtilRoutes.HomeScreen);
+
+
+        if(phoneNumberController.text.isEmpty){
+
+          print("--phone_number_is_empty"
+          );
+
+          // commonToast("Please Enter Mobile or Email Number");
+        }else if(passwordController.text.isEmpty){
+
+          print("--Password_number_is_empty"
+          );
+          // commonToast("Please Enter Password");
+        }else {
+          loginViewModel.logInRequest =
+              UserLogInRequest(phoneNumberController.text.toString(),
+                  passwordController.text.toString(),
+                  "sdfag",
+                  "fwef",
+                  "fraew");
+
+          loginViewModel.callUserLogIn(loginViewModel.logInRequest!);
+        }
+        // Navigator.pushNamed(context, UtilRoutes.HomeScreen);
       },
       child: Container(
         width: MediaQuery.of(context).size.width,

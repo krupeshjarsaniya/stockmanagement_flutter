@@ -1,4 +1,4 @@
 io/flutter/plugins/GeneratedPluginRegistrant.java
  io.flutter.plugins.GeneratedPluginRegistrant
-com/example/stoke_management/BuildConfig.java
- com.example.stoke_management.BuildConfig
+com/app/stockmanagement/BuildConfig.java
+ com.app.stockmanagement.BuildConfig

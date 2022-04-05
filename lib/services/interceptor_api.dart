@@ -2,7 +2,9 @@ import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
 import 'package:stoke_management/model/api_request/login_request.dart';
+import 'package:stoke_management/model/api_request/register_request.dart';
 import 'package:stoke_management/model/api_response/login_model.dart';
+import 'package:stoke_management/model/api_response/register_model.dart';
 import 'package:stoke_management/services/rest_api.dart';
 
 class InterceptorApi {
@@ -30,6 +32,35 @@ class InterceptorApi {
         String msg = data['message'];
       } else {}
     }
+
+
+  Future<RegisterModel?> callUserRegister(UserRegisterRequest userRegisterRequest) async {
+    var response = await restApi.callUserRegister(userRegisterRequest);
+    print("==========responce===========" + response!.body.toString());
+    if (response == null) {}
+    else if (response.statusCode == 200 || response.statusCode == 201) {
+      var data = jsonDecode(response.body);
+      if (response.statusCode == 200) {
+        var response = RegisterModel.fromJson(data);
+
+        return response;
+      }
+    } else if (response.statusCode == 500) {
+      var data = jsonDecode(response.body);
+      String msg = data['message'];
+    } else {}
   }
+
+
+
+
+
+
+}
+
+
+
+
+
 
 

@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "838493549639",
+    "firebase_url": "https://stock-management-21e1e.firebaseio.com",
+    "project_id": "stock-management-21e1e",
+    "storage_bucket": "stock-management-21e1e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:838493549639:android:efd1ff609926c7d9",
+        "android_client_info": {
+          "package_name": "com.app.stockmanagement"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "838493549639-q4rtf0mis58jo2p5tfnmjheim3s3c73h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAABACeHg3j0KlnspC1wh4uQztIqukZzK8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

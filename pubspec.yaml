@@ -33,6 +33,12 @@ dependencies:
   sqflite: "^1.2.0"
   path_provider: "^1.5.1"
   intl:
+  firebase_core: ^1.12.0
+  firebase_messaging: ^11.2.6
+  firebase_auth: ^3.3.6
+  shared_preferences: "0.5.7+3"
+
+#  fluttertoast: "8.0.9"
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -49,6 +55,7 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^1.0.0
+  http:
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:stoke_management/model/api_response/vender_model.dart';
 import 'package:stoke_management/screen/profile_screen.dart';
@@ -9,13 +12,52 @@ import 'package:stoke_management/screen/sub_screens/change_password.dart';
 import 'package:stoke_management/screen/sub_screens/details_vendors.dart';
 import 'package:stoke_management/screen/vendor_screen.dart';
 import 'package:stoke_management/screen/viewmore_screen.dart';
+import 'package:stoke_management/utills/shared_preferences.dart';
 import 'package:stoke_management/utills/utils_routes.dart';
+import 'dart:convert';
 
-void main()
-{
+import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+
+
+import 'app.dart';
+
+import 'dart:async';
+import 'dart:io';
+import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:http/http.dart' as http;
+
+import 'app.dart';
+import 'package:flutter/cupertino.dart';
+
+
+// void main()
+// {
+//   WidgetsFlutterBinding.ensureInitialized();
+//   runApp(MyApp());
+// }
+
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(MyApp());
+  await Firebase.initializeApp();
+
+
+
+  // await FirebaseMessaging.instance.getToken().then((t) async {
+  //   await Shared_Preferences.prefSetString(App.KEY_APP_TOKEN, t!);
+  //
+  //   print("dsgdasfvdas----------");
+  //   print("-----DeviceToken----> :" + t);
+  // });
+
+  runApp(new MyApp());
+
+
 }
+
+
 
 class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -25,6 +67,15 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+
+  @override
+  void initState() {
+    super.initState();
+    registerNotification();
+    print("===main init2===");
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return  MaterialApp(
@@ -32,13 +83,11 @@ class _MyAppState extends State<MyApp> {
         primarySwatch: Colors.yellow
       ),
       title: "Stoke Management",
-      theme: ThemeData(
-        // primarySwatch:  Colors.amber,
-        //   primaryColor : Colors.white
-          primarySwatch: Colors.amber, splashColor: Colors.green
-      ),
-
-
+      // theme: ThemeData(
+      //   // primarySwatch:  Colors.amber,
+      //   //   primaryColor : Colors.white
+      //     primarySwatch: Colors.amber, splashColor: Colors.green
+      // ),
 
       home: LoginScreen(),
       debugShowCheckedModeBanner: false,
@@ -56,4 +105,25 @@ class _MyAppState extends State<MyApp> {
       },
     );
   }
+
+
+
+  Future<void> registerNotification() async {
+    print("registernotification");
+    FirebaseMessaging.instance.getToken().then((t) async {
+
+      await Shared_Preferences.prefSetString(App.KEY_DEVICE_TOKEN, t!);
+
+      print("--deviceToken---");
+      print("-----DeviceToken----> :" + t);
+
+
+    });
+
+    await Firebase.initializeApp();
+
+  }
+
+
+
 }

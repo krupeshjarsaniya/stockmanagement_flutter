@@ -1,4 +1,4 @@
-package com.example.stoke_management
+package com.app.stockmanagement
 
 import io.flutter.embedding.android.FlutterActivity
 

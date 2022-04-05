@@ -21,7 +21,7 @@ class LoginViewModel {
     if(loginModel != null){
 
     }else{
-      print("-----user--first-login---");
+      print("-----else---");
     }
     print("==========LogInPageView Api Responce=========="+loginModel.toString());
   }
