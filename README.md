@@ -1,0 +1,1 @@
+# stockmanagement_flutter
