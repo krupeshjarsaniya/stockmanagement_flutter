@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:stoke_management/screen/sub_screens/forgot_password_screen.dart';
 import 'package:stoke_management/utills/appbar_title_text.dart';
 import 'package:stoke_management/utills/color_constant.dart';
 import 'package:stoke_management/utills/utils_routes.dart';
+import 'package:stoke_management/view_model/login_view_model.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -12,6 +14,17 @@ class LoginScreen extends StatefulWidget {
 }
 
 class LoginScreenState extends State<LoginScreen> {
+
+  LoginViewModel? model;
+
+  @override
+  void initState() {
+    super.initState();
+    Future.delayed(Duration.zero, () {
+       (model = LoginViewModel(this));
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -64,7 +77,7 @@ class LoginScreenState extends State<LoginScreen> {
         children: [
           TextFormField(
               decoration: InputDecoration(
-                  labelText: "Mobile/Email Adresss",
+                  labelText: "Mobile",
                   fillColor: Colors.black,
                   // border: OutlineInputBorder(
                   //   borderRadius: new BorderRadius.circular(10),
@@ -72,9 +85,7 @@ class LoginScreenState extends State<LoginScreen> {
                   // )
 
               )),
-          const SizedBox(
-            height: 30,
-          ),
+          const SizedBox(height: 20),
           TextFormField(
             decoration: InputDecoration(
                 labelText: "Password",
@@ -115,7 +126,9 @@ class LoginScreenState extends State<LoginScreen> {
 
   Widget wForgetPassword() {
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        Navigator.push(context, MaterialPageRoute(builder: (context) => ForgotPasswordScreen()));
+      },
       child: const Text(
         "Forget Password ? ",
         style: TextStyle(

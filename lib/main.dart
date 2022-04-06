@@ -9,6 +9,7 @@ import 'package:stoke_management/screen/sub_screens/change_password.dart';
 import 'package:stoke_management/screen/sub_screens/details_vendors.dart';
 import 'package:stoke_management/screen/vendor_screen.dart';
 import 'package:stoke_management/screen/viewmore_screen.dart';
+import 'package:stoke_management/utills/color_constant.dart';
 import 'package:stoke_management/utills/utils_routes.dart';
 
 void main()
@@ -29,20 +30,14 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return  MaterialApp(
       theme: ThemeData(
-        primarySwatch: Colors.yellow
+        primarySwatch: ColorConstant.primarycolor
       ),
       title: "Stoke Management",
-      theme: ThemeData(
-        // primarySwatch:  Colors.amber,
-        //   primaryColor : Colors.white
-          primarySwatch: Colors.amber, splashColor: Colors.green
-      ),
 
 
 
       home: LoginScreen(),
       debugShowCheckedModeBanner: false,
-
       routes: {
         UtilRoutes.RegisterScreen:(context) => RegisterScreen(),
         UtilRoutes.LoginScreen:(context) => LoginScreen(),
