@@ -44,20 +44,74 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "device_info",
+      "rootUri": "file:///Users/mymac/Documents/MyFlutter/flutter/.pub-cache/hosted/pub.dartlang.org/device_info-2.0.3",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "device_info_platform_interface",
+      "rootUri": "file:///Users/mymac/Documents/MyFlutter/flutter/.pub-cache/hosted/pub.dartlang.org/device_info_platform_interface-2.0.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "fake_async",
       "rootUri": "file:///Users/mymac/Documents/MyFlutter/flutter/.pub-cache/hosted/pub.dartlang.org/fake_async-1.2.0",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
     {
-      "name": "ffi",
-      "rootUri": "file:///Users/mymac/Documents/MyFlutter/flutter/.pub-cache/hosted/pub.dartlang.org/ffi-1.1.2",
+      "name": "firebase_auth",
+      "rootUri": "file:///Users/mymac/Documents/MyFlutter/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_auth-3.3.8",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
     {
-      "name": "file",
-      "rootUri": "file:///Users/mymac/Documents/MyFlutter/flutter/.pub-cache/hosted/pub.dartlang.org/file-6.1.2",
+      "name": "firebase_auth_platform_interface",
+      "rootUri": "file:///Users/mymac/Documents/MyFlutter/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_auth_platform_interface-6.2.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "firebase_auth_web",
+      "rootUri": "file:///Users/mymac/Documents/MyFlutter/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_auth_web-3.3.8",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "firebase_core",
+      "rootUri": "file:///Users/mymac/Documents/MyFlutter/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_core-1.12.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "firebase_core_platform_interface",
+      "rootUri": "file:///Users/mymac/Documents/MyFlutter/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_core_platform_interface-4.2.4",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "firebase_core_web",
+      "rootUri": "file:///Users/mymac/Documents/MyFlutter/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_core_web-1.6.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "firebase_messaging",
+      "rootUri": "file:///Users/mymac/Documents/MyFlutter/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_messaging-11.2.7",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "firebase_messaging_platform_interface",
+      "rootUri": "file:///Users/mymac/Documents/MyFlutter/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_messaging_platform_interface-3.1.6",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "firebase_messaging_web",
+      "rootUri": "file:///Users/mymac/Documents/MyFlutter/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_messaging_web-2.2.8",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -80,6 +134,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "flutter_web_plugins",
+      "rootUri": "file:///Users/mymac/Documents/MyFlutter/flutter/packages/flutter_web_plugins",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "http",
       "rootUri": "file:///Users/mymac/Documents/MyFlutter/flutter/.pub-cache/hosted/pub.dartlang.org/http-0.13.3",
       "packageUri": "lib/",
@@ -94,6 +154,12 @@
     {
       "name": "intl",
       "rootUri": "file:///Users/mymac/Documents/MyFlutter/flutter/.pub-cache/hosted/pub.dartlang.org/intl-0.17.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "js",
+      "rootUri": "file:///Users/mymac/Documents/MyFlutter/flutter/.pub-cache/hosted/pub.dartlang.org/js-0.6.3",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -129,33 +195,9 @@
     },
     {
       "name": "path_provider",
-      "rootUri": "file:///Users/mymac/Documents/MyFlutter/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider-1.6.28",
+      "rootUri": "file:///Users/mymac/Documents/MyFlutter/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider-1.6.1",
       "packageUri": "lib/",
-      "languageVersion": "2.1"
-    },
-    {
-      "name": "path_provider_linux",
-      "rootUri": "file:///Users/mymac/Documents/MyFlutter/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider_linux-0.0.1+2",
-      "packageUri": "lib/",
-      "languageVersion": "2.1"
-    },
-    {
-      "name": "path_provider_macos",
-      "rootUri": "file:///Users/mymac/Documents/MyFlutter/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider_macos-0.0.4+8",
-      "packageUri": "lib/",
-      "languageVersion": "2.1"
-    },
-    {
-      "name": "path_provider_platform_interface",
-      "rootUri": "file:///Users/mymac/Documents/MyFlutter/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider_platform_interface-1.0.4",
-      "packageUri": "lib/",
-      "languageVersion": "2.1"
-    },
-    {
-      "name": "path_provider_windows",
-      "rootUri": "file:///Users/mymac/Documents/MyFlutter/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider_windows-0.0.5",
-      "packageUri": "lib/",
-      "languageVersion": "2.11"
+      "languageVersion": "2.0"
     },
     {
       "name": "pedantic",
@@ -165,21 +207,39 @@
     },
     {
       "name": "platform",
-      "rootUri": "file:///Users/mymac/Documents/MyFlutter/flutter/.pub-cache/hosted/pub.dartlang.org/platform-3.0.2",
+      "rootUri": "file:///Users/mymac/Documents/MyFlutter/flutter/.pub-cache/hosted/pub.dartlang.org/platform-2.2.1",
+      "packageUri": "lib/",
+      "languageVersion": "1.24"
+    },
+    {
+      "name": "plugin_platform_interface",
+      "rootUri": "file:///Users/mymac/Documents/MyFlutter/flutter/.pub-cache/hosted/pub.dartlang.org/plugin_platform_interface-2.1.2",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
     {
-      "name": "plugin_platform_interface",
-      "rootUri": "file:///Users/mymac/Documents/MyFlutter/flutter/.pub-cache/hosted/pub.dartlang.org/plugin_platform_interface-1.0.3",
+      "name": "shared_preferences",
+      "rootUri": "file:///Users/mymac/Documents/MyFlutter/flutter/.pub-cache/hosted/pub.dartlang.org/shared_preferences-0.5.7+3",
       "packageUri": "lib/",
       "languageVersion": "2.1"
     },
     {
-      "name": "process",
-      "rootUri": "file:///Users/mymac/Documents/MyFlutter/flutter/.pub-cache/hosted/pub.dartlang.org/process-4.2.3",
+      "name": "shared_preferences_macos",
+      "rootUri": "file:///Users/mymac/Documents/MyFlutter/flutter/.pub-cache/hosted/pub.dartlang.org/shared_preferences_macos-0.0.1+11",
       "packageUri": "lib/",
-      "languageVersion": "2.12"
+      "languageVersion": "2.1"
+    },
+    {
+      "name": "shared_preferences_platform_interface",
+      "rootUri": "file:///Users/mymac/Documents/MyFlutter/flutter/.pub-cache/hosted/pub.dartlang.org/shared_preferences_platform_interface-1.0.4",
+      "packageUri": "lib/",
+      "languageVersion": "2.1"
+    },
+    {
+      "name": "shared_preferences_web",
+      "rootUri": "file:///Users/mymac/Documents/MyFlutter/flutter/.pub-cache/hosted/pub.dartlang.org/shared_preferences_web-0.1.2+7",
+      "packageUri": "lib/",
+      "languageVersion": "2.1"
     },
     {
       "name": "sky_engine",
@@ -254,25 +314,13 @@
       "languageVersion": "2.12"
     },
     {
-      "name": "win32",
-      "rootUri": "file:///Users/mymac/Documents/MyFlutter/flutter/.pub-cache/hosted/pub.dartlang.org/win32-2.2.10",
-      "packageUri": "lib/",
-      "languageVersion": "2.13"
-    },
-    {
-      "name": "xdg_directories",
-      "rootUri": "file:///Users/mymac/Documents/MyFlutter/flutter/.pub-cache/hosted/pub.dartlang.org/xdg_directories-0.1.2",
-      "packageUri": "lib/",
-      "languageVersion": "2.3"
-    },
-    {
       "name": "stoke_management",
       "rootUri": "../",
       "packageUri": "lib/",
-      "languageVersion": "2.13"
+      "languageVersion": "2.12"
     }
   ],
-  "generated": "2022-04-05T12:21:57.439502Z",
+  "generated": "2022-04-06T12:27:42.646153Z",
   "generator": "pub",
   "generatorVersion": "2.13.0"
 }

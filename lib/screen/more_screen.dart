@@ -83,7 +83,6 @@ class _MoreScreenState extends State<MoreScreen> {
         width: MediaQuery.of(context).size.width,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-
           children:  [
             Container(
               margin: EdgeInsets.only(left: 15),

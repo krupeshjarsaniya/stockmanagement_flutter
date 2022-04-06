@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:sqflite/sqflite.dart';
-import 'package:stoke_management/database/database_helper.dart';
 import 'package:stoke_management/model/api_response/vender_model.dart';
 import 'package:stoke_management/screen/sub_screens/add_vendors.dart';
 import 'package:stoke_management/utills/color_constant.dart';
@@ -31,8 +30,7 @@ class _VendorScreenState extends State<VendorScreen> {
 
   @override
   void initState() {
-    DatabaseHelper.getVendor();
-    super.initState();
+   super.initState();
   }
 
   @override
@@ -109,7 +107,6 @@ class _VendorScreenState extends State<VendorScreen> {
                           child: IconButton(
                               icon: Icon(Icons.delete),
                               onPressed: (){
-                                DatabaseHelper.instance.delete(getVendor.vendorId);
                                 setState(() => {
                                   listVendor.removeWhere((item) => item.vendorId == getVendor.vendorId)
                                 });

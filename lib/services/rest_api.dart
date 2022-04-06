@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
-<<<<<<< HEAD
 import 'package:stoke_management/app.dart';
+import 'package:stoke_management/model/api_request/add_vepari_request.dart';
 import 'package:stoke_management/model/api_request/login_request.dart';
 import 'dart:convert';
 
@@ -15,14 +15,10 @@ import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 import 'package:stoke_management/model/api_request/register_request.dart';
-
-
-=======
 import 'package:http/http.dart';
 import 'package:stoke_management/model/api_request/login_request.dart';
 import 'package:http/http.dart' as http;
 import '../app.dart';
->>>>>>> development
 
 class RestApi {
   late BuildContext _context;
@@ -78,6 +74,29 @@ class RestApi {
     }
   }
 
+  Future<Response?> callAddVendor(AddVepariRequest vepariRequest) async {
+    String url = App.baseUrl + App.vepari_add;
+    // showLoader(_context);
+    Response response;
+    try {
+      print("===========Map==========" + vepariRequest.toMap().toString());
+
+      response = await http.post(
+          Uri.parse(url), headers: {App.HeaderName : App.HeaderValue},
+          body:
+          //{"vepari_data" : vepariRequest.toMap().toString()});
+          {"vepari_data" : vepariRequest.toMap().toString()});
+      //  hideLoader();
+      print('Response request: ${response.request}');
+      print('Response status: ${response.statusCode}');
+      print('Response body: ${response.body}');
+      return response;
+    } catch (e) {
+      print("===EXCEPTION==="  + e.toString());
+      //  hideLoader();
+      return null;
+    }
+  }
 
 
 

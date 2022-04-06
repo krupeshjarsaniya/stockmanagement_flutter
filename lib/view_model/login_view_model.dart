@@ -1,8 +1,11 @@
+import 'package:flutter/cupertino.dart';
+import 'package:stoke_management/app.dart';
 import 'package:stoke_management/model/api_request/login_request.dart';
 import 'package:stoke_management/model/api_response/login_model.dart';
 import 'package:stoke_management/screen/login_screen.dart';
 import 'package:stoke_management/services/interceptor_api.dart';
-import 'package:stoke_management/services/rest_api.dart';
+import 'package:stoke_management/utills/shared_preferences.dart';
+import 'package:stoke_management/utills/utils_routes.dart';
 
 class LoginViewModel {
   LoginScreenState? state;
@@ -16,13 +19,19 @@ class LoginViewModel {
   }
 
   callUserLogIn(UserLogInRequest logInRequest) async {
-    print("==========userLogIn===etger======="+logInRequest.toString());
+    print("==========userLogIn===etger=======" + logInRequest.toString());
     loginModel = (await interceptorApi!.callUserLogIn(logInRequest));
-    if(loginModel != null){
+    if (loginModel != null) {
+      if (loginModel!.success!) {
 
-    }else{
-      print("-----else---");
+
+        print("----userId------" );
+        print("----userId------" +loginModel!.items![0].userId.toString());
+
+        await Shared_Preferences.prefSetString(App.KEY_USER_ID,loginModel!.items![0].userId.toString());
+        Navigator.pushReplacementNamed(state!.context, UtilRoutes.HomeScreen);
+      } else {}
+      print("==========LogInPageView Api Responce==========" + loginModel.toString());
     }
-    print("==========LogInPageView Api Responce=========="+loginModel.toString());
   }
 }

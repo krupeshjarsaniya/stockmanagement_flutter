@@ -1,7 +1,15 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:stoke_management/model/api_request/add_vepari_request.dart';
+import 'package:stoke_management/model/api_response/Add_vepari_model.dart';
 import 'package:stoke_management/screen/vendor_screen.dart';
 import 'package:stoke_management/utills/color_constant.dart';
+import 'package:stoke_management/utills/shared_preferences.dart';
+import 'package:stoke_management/view_model/add_vendor_view_model.dart';
+
+import '../../app.dart';
 
 class AddVendors extends StatefulWidget {
 
@@ -11,11 +19,13 @@ class AddVendors extends StatefulWidget {
   //AddVendors.d();
 
   @override
-  _AddVendorsState createState() => _AddVendorsState();
+  AddVendorsState createState() => AddVendorsState();
 }
 
-class _AddVendorsState extends State<AddVendors> {
+class AddVendorsState extends State<AddVendors> {
 
+  AddVendorViewModel? model;
+  List<AddVepariModelItem>? item = <AddVepariModelItem>[];
   TextEditingController firstNameController = new TextEditingController();
   TextEditingController lastNameController = new TextEditingController();
   TextEditingController mobileNumberController = new TextEditingController();
@@ -25,6 +35,21 @@ class _AddVendorsState extends State<AddVendors> {
 
   String? firstname, lastname, mobile, company, address, email;
   int? curVendorId;
+
+  String DEVICE_TOKEN = "";
+  String USER_ID = "";
+  String DEVICE_ID = "";
+  String DEVICE_TYPE = "";
+
+  @override
+  void initState() {
+    super.initState();
+    init();
+    // scrollController.addListener(pagination);
+    Future.delayed(Duration.zero, () {
+      /*model ??*/ (model = AddVendorViewModel(this));
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -140,8 +165,25 @@ class _AddVendorsState extends State<AddVendors> {
   Widget w_Save(){
     return InkWell(
       onTap: () {
-        Navigator.pushAndRemoveUntil(
-            context,
+        if(firstNameController.text.isNotEmpty){
+          model!.vepariRequest =
+              AddVepariRequest(
+                  USER_ID.toString(),
+                  firstNameController.text.toString(),
+                  lastNameController.text.toString(),
+                  mobileNumberController.text.toString(),
+                  companyController.text.toString(),
+                  addressController.text.toString(),
+                  emailController.text.toString(),
+                  DEVICE_TYPE.toString(),
+                  DEVICE_ID.toString(),
+                  DEVICE_TOKEN.toString(),
+
+                 );
+
+          model!.callAddVendor(model!.vepariRequest!);
+        }
+        Navigator.pushAndRemoveUntil(context,
             MaterialPageRoute(builder: (_) => const VendorScreen()),
                 (r) => false);
         // Navigator.pushNamed(context, UtilRoutes.VendorScreen);
@@ -160,5 +202,18 @@ class _AddVendorsState extends State<AddVendors> {
         ),
       ),
     );
+
+  }
+  Future<Void?> init() async {
+    var deviceToken = await Shared_Preferences.prefGetString(App.KEY_DEVICE_TOKEN, "");
+    var userId = await Shared_Preferences.prefGetString(App.KEY_USER_ID, "");
+    var deviceId = await Shared_Preferences.prefGetString(App.KEY_DEVICE_ID, "");
+    var deviceType= await Shared_Preferences.prefGetString(App.KEY_DEVICE_TYPE, "");
+    setState(() {
+      DEVICE_TOKEN = deviceToken!;
+      USER_ID = userId!;
+      DEVICE_ID = deviceId!;
+      DEVICE_TYPE = deviceType!;
+    });
   }
 }
