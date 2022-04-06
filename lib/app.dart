@@ -2,6 +2,7 @@ class App {
   static String baseUrl = "https://technocometsolutions.com/stock/api_development/v1/";
 
 
+
   //api end point
   static String login = "login";
   static String register = "register";
@@ -11,6 +12,8 @@ class App {
 
  // Keys
  static String KEY_DEVICE_TOKEN = "KEY_DEVICE_TOKEN";
+
+
 
 
 }

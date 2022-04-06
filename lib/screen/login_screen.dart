@@ -1,11 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+<<<<<<< HEAD
 import 'package:stoke_management/model/api_request/login_request.dart';
+=======
+import 'package:stoke_management/screen/sub_screens/forgot_password_screen.dart';
+>>>>>>> development
 import 'package:stoke_management/utills/appbar_title_text.dart';
 import 'package:stoke_management/utills/color_constant.dart';
 import 'package:stoke_management/utills/utils_routes.dart';
 import 'package:stoke_management/view_model/login_view_model.dart';
+<<<<<<< HEAD
 // import 'package:stoke_management/widgets/common_toast.dart';
+=======
+>>>>>>> development
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -16,15 +23,20 @@ class LoginScreen extends StatefulWidget {
 
 class LoginScreenState extends State<LoginScreen> {
 
+<<<<<<< HEAD
   late LoginViewModel loginViewModel;
 
   TextEditingController phoneNumberController =  TextEditingController();
   TextEditingController passwordController =  TextEditingController();
 
+=======
+  LoginViewModel? model;
+>>>>>>> development
 
   @override
   void initState() {
     super.initState();
+<<<<<<< HEAD
 
     // scrollController.addListener(pagination);
 
@@ -34,6 +46,13 @@ class LoginScreenState extends State<LoginScreen> {
   }
 
 
+=======
+    Future.delayed(Duration.zero, () {
+       (model = LoginViewModel(this));
+    });
+  }
+
+>>>>>>> development
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -87,7 +106,7 @@ class LoginScreenState extends State<LoginScreen> {
           TextFormField(
             controller: phoneNumberController,
               decoration: InputDecoration(
-                  labelText: "Mobile/Email Adresss",
+                  labelText: "Mobile",
                   fillColor: Colors.black,
                   // border: OutlineInputBorder(
                   //   borderRadius: new BorderRadius.circular(10),
@@ -95,9 +114,7 @@ class LoginScreenState extends State<LoginScreen> {
                   // )
 
               )),
-          const SizedBox(
-            height: 30,
-          ),
+          const SizedBox(height: 20),
           TextFormField(
             controller: passwordController,
             decoration: InputDecoration(
@@ -162,7 +179,9 @@ class LoginScreenState extends State<LoginScreen> {
 
   Widget wForgetPassword() {
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        Navigator.push(context, MaterialPageRoute(builder: (context) => ForgotPasswordScreen()));
+      },
       child: const Text(
         "Forget Password ? ",
         style: TextStyle(

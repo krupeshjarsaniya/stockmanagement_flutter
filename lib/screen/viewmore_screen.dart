@@ -33,11 +33,8 @@ class _DashBordScreenState extends State<ViewMoreScreen> {
             // centerTitle: true,
             backgroundColor: ColorConstant.themColor,
             actions: [IconButton(onPressed: () {
-
-
             }, icon: Icon(Icons.wifi_protected_setup_sharp,))
             ],
-
             systemOverlayStyle: SystemUiOverlayStyle.dark.copyWith(
               statusBarColor: ColorConstant.themColor,
               statusBarIconBrightness: Brightness.light,
@@ -49,10 +46,8 @@ class _DashBordScreenState extends State<ViewMoreScreen> {
               // mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 w_toolbar(),
-
                 Container(
                   color: Colors.grey,
-
                   child: Row(
                     children: [
                       Expanded(
