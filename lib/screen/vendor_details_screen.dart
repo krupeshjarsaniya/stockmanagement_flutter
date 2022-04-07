@@ -7,7 +7,13 @@ import 'package:stoke_management/utills/appbar_title_text.dart';
 import 'add_transaction.dart';
 
 class VenderDetailsScreen extends StatefulWidget {
-  const VenderDetailsScreen({Key? key}) : super(key: key);
+
+  String venderName;
+  VenderDetailsScreen(this.venderName);
+
+
+
+  // const VenderDetailsScreen({Key? key}) : super(key: key);
 
   @override
   VenderDetailsScreenState createState() => VenderDetailsScreenState();
@@ -35,7 +41,7 @@ class VenderDetailsScreenState extends State<VenderDetailsScreen> {
               color: Colors.white, //change your color here
             ),
             elevation: 0,
-            title: Text("gdashgueaisrghf",style: AppBarTitle.myAppbarStyle,),
+            title: Text(widget.venderName.toString(),style: AppBarTitle.myAppbarStyle,),
 
             leading: InkWell(
               onTap: () {

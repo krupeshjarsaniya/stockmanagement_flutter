@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:stoke_management/utills/color_constant.dart';
 import 'package:stoke_management/utills/appbar_title_text.dart';
+import 'package:store_redirect/store_redirect.dart';
+import 'package:share_plus/share_plus.dart';
 
 class MoreScreen extends StatefulWidget {
   const MoreScreen({Key? key}) : super(key: key);
@@ -42,6 +44,7 @@ class _MoreScreenState extends State<MoreScreen> {
   Widget w_ShareApp(){
     return InkWell(
       onTap: (){
+        Share.share("https://play.google.com/store/apps/details?id=com.app.stockmanagement");
         // Navigator.push(context, CupertinoPageRoute(builder: (context) => EditProfile()));
       },
       child: Container(
@@ -75,6 +78,10 @@ class _MoreScreenState extends State<MoreScreen> {
   Widget w_rateFeedback(){
     return InkWell(
       onTap: (){
+        StoreRedirect.redirect(
+          androidAppId: "com.app.stockmanagement",
+          iOSAppId: "",
+        );
         // Navigator.push(context, CupertinoPageRoute(builder: (context) => EditProfile()));
       },
       child: Container(
@@ -83,7 +90,6 @@ class _MoreScreenState extends State<MoreScreen> {
         width: MediaQuery.of(context).size.width,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-
           children:  [
             Container(
               margin: EdgeInsets.only(left: 15),
@@ -91,7 +97,6 @@ class _MoreScreenState extends State<MoreScreen> {
                   "Rate and Feedback"
               ),
             ),
-
             Container(
                 margin: EdgeInsets.only(right: 15),
                 child:

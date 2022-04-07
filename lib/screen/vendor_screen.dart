@@ -6,6 +6,7 @@ import 'package:sqflite/sqflite.dart';
 import 'package:stoke_management/model/api_response/vepari_list_model.dart';
 
 import 'package:stoke_management/screen/sub_screens/add_vendors.dart';
+import 'package:stoke_management/screen/vendor_details_screen.dart';
 import 'package:stoke_management/utills/color_constant.dart';
 import 'package:stoke_management/utills/appbar_title_text.dart';
 import 'package:stoke_management/utills/shared_preferences.dart';
@@ -89,19 +90,29 @@ class VendorScreenState extends State<VendorScreen> {
                   elevation: 5,
                   child: Container(
 
-                    padding: EdgeInsets.all(10),
                     child:
                     Row(
                       children: [
-                        Container(
-                          color: Colors.grey,
-                          height: 60,
-                          width: 60,
-                        ),
-                        
-                        Expanded(
+                        InkWell(
+                          onTap: (){
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => VenderDetailsScreen(vepariList![position].firstName.toString())));
+                          },
                           child: Padding(
-                            padding: const EdgeInsets.only(left: 10),
+                            padding: EdgeInsets.all(10),
+                            child: Container(
+                              color: Colors.grey,
+                              height: 60,
+                              width: 60,
+                            ),
+                          ),
+                        ),
+
+
+                        Expanded(
+                          child: InkWell(
+                            onTap: (){
+                              Navigator.push(context, MaterialPageRoute(builder: (context) => VenderDetailsScreen(vepariList![position].firstName.toString())));
+                            },
                             child: Container(
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -118,17 +129,20 @@ class VendorScreenState extends State<VendorScreen> {
                             ),
                           ),
                         ),
-                        
-                        Container(
-                          child: Column(
-                            children: [
-                              Icon(Icons.delete,color: Colors.grey,),
-                              SizedBox(height: 10,),
-                              Icon(Icons.arrow_forward_ios_rounded,color: Colors.grey,size: 18,),
-                            ],
+
+                        Padding(
+                          padding: const EdgeInsets.all(10),
+                          child: Container(
+                            child: Column(
+                              children: [
+                                Icon(Icons.delete,color: Colors.grey,),
+                                SizedBox(height: 10,),
+                                Icon(Icons.arrow_forward_ios_rounded,color: Colors.grey,size: 18,),
+                              ],
+                            ),
                           ),
                         )
-                        
+
                       ],
                     ),
                   ),
@@ -140,6 +154,7 @@ class VendorScreenState extends State<VendorScreen> {
 
   Future<Void?> init() async {
     var userId = await Shared_Preferences.prefGetString(App.KEY_USER_ID, "");
+    print("----userId---");
     print("----userId---" + userId.toString());
 
     setState(() {

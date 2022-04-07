@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:stoke_management/model/api_request/register_request.dart';
 import 'package:stoke_management/utills/color_constant.dart';
-import 'package:stoke_management/utills/utils_routes.dart';
 import 'package:stoke_management/view_model/register_view_model.dart';
 
 class RegisterScreen extends StatefulWidget {
@@ -84,11 +83,11 @@ class RegisterScreenState extends State<RegisterScreen> {
 
   Widget wR_ProfileImage() {
     return Container(
-        height: 100.0,
-        width: 100.0,
+        height: 90.0,
+        width: 90.0,
         decoration: BoxDecoration(
-          color: Colors.grey,
-          borderRadius: BorderRadius.circular(4)
+          border: Border.all(color: Colors.grey),
+          borderRadius: BorderRadius.circular(10)
         )
     );
   }
@@ -99,9 +98,8 @@ class RegisterScreenState extends State<RegisterScreen> {
         children: [
           SizedBox(height: 20,),
           TextFormField(
-
-
-      controller: firstNameController,
+            keyboardType: TextInputType.text,
+            controller: firstNameController,
             decoration: InputDecoration(
                 labelText: "FirstName",
                 border: OutlineInputBorder(
@@ -111,7 +109,8 @@ class RegisterScreenState extends State<RegisterScreen> {
           ),
           SizedBox(height: 30,),
           TextFormField(
-    controller: lastNameController,
+            keyboardType: TextInputType.text,
+            controller: lastNameController,
             decoration: InputDecoration(
                 labelText: "LastName",
                 border: OutlineInputBorder(
@@ -121,7 +120,8 @@ class RegisterScreenState extends State<RegisterScreen> {
           ),
           SizedBox(height: 30,),
           TextFormField(
-    controller: mobileController,
+            keyboardType: TextInputType.number,
+            controller: mobileController,
             decoration: InputDecoration(
                 labelText: "Mobile Number",
                 border: OutlineInputBorder(
@@ -131,7 +131,8 @@ class RegisterScreenState extends State<RegisterScreen> {
           ),
           SizedBox(height: 30,),
           TextFormField(
-    controller: emailController,
+            keyboardType: TextInputType.emailAddress,
+            controller: emailController,
             decoration: InputDecoration(
                 labelText: "Email",
                 border: OutlineInputBorder(
@@ -141,7 +142,8 @@ class RegisterScreenState extends State<RegisterScreen> {
           ),
           SizedBox(height: 30,),
           TextFormField(
-    controller: passwordController,
+            keyboardType: TextInputType.number,
+            controller: passwordController,
             decoration: InputDecoration(
                 labelText: "Password",
                 border: OutlineInputBorder(
@@ -151,7 +153,8 @@ class RegisterScreenState extends State<RegisterScreen> {
           ),
           SizedBox(height: 30,),
           TextFormField(
-    controller: conformPasswordController,
+            keyboardType: TextInputType.number,
+            controller: conformPasswordController,
             decoration: InputDecoration(
                 labelText: "Confirm Password",
                 border: OutlineInputBorder(
@@ -167,29 +170,15 @@ class RegisterScreenState extends State<RegisterScreen> {
   Widget wR_RegisrationButton() {
     return InkWell(
       onTap: () {
-
-
-        TextEditingController firstNameController =  TextEditingController();
-        TextEditingController lastNameController =  TextEditingController();
-        TextEditingController mobileController =  TextEditingController();
-        TextEditingController emailController =  TextEditingController();
-        TextEditingController passwordController =  TextEditingController();
-        TextEditingController conformPasswordController =  TextEditingController();
-
         if(firstNameController.text.isEmpty){
-
         }else if(lastNameController.text.isEmpty){
-
         }else if(mobileController.text.isEmpty){
-
         }else if(emailController.text.isEmpty){
-
         }else if(passwordController.text.isEmpty){
-
         }else if(conformPasswordController.text.isEmpty){
-
-        }else{
-          viewModel.userRegisterRequest = UserRegisterRequest(firstNameController.text.toString(),
+        }else {
+          viewModel.userRegisterRequest = UserRegisterRequest(
+              firstNameController.text.toString(),
               lastNameController.text.toString(),
               mobileController.text.toString(),
               emailController.text.toString(),
@@ -197,8 +186,10 @@ class RegisterScreenState extends State<RegisterScreen> {
               "Android",
               "deviceuid",
               "token");
+          viewModel.callUserRegister(viewModel.userRegisterRequest!);
+          print(
+              "==================" + viewModel.userRegisterRequest.toString());
         }
-        viewModel.callUserRegister(viewModel.userRegisterRequest!);
 
         // Navigator.pushNamed(context, UtilRoutes.LoginScreen);
       },

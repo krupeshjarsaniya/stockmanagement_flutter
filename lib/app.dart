@@ -7,6 +7,8 @@ class App {
   static String vepari_list = "vepari_list";
   static String vepari_stock_list = "vepari_stock_list";
   static String vepari_add = "vepari_add";
+  static String register_device = "register_device";
+  static String profile_edit = "profile_edit";
 
 
 

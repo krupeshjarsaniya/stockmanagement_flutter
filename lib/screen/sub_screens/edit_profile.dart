@@ -1,41 +1,51 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:stoke_management/model/api_request/edit_profile_request.dart';
+import 'package:stoke_management/model/api_response/edit_profile_model.dart';
+import 'package:stoke_management/screen/profile_screen.dart';
 import 'package:stoke_management/utills/color_constant.dart';
+import 'package:stoke_management/utills/shared_preferences.dart';
 import 'package:stoke_management/utills/utils_routes.dart';
+import 'package:stoke_management/view_model/edit_profile_view_model.dart';
+
+import '../../app.dart';
 
 class EditProfile extends StatefulWidget {
   const EditProfile({Key? key}) : super(key: key);
 
   @override
-  _EditProfileState createState() => _EditProfileState();
+  EditProfileState createState() => EditProfileState();
 }
 
-class _EditProfileState extends State<EditProfile> {
+class EditProfileState extends State<EditProfile> {
+
+  String? USER_PROFILE;
+  String DEVICE_TOKEN = "";
+  String USER_ID = "";
+  String DEVICE_ID = "";
+  String DEVICE_TYPE = "";
+
+  List<Item>? item = <Item>[];
+
   TextEditingController displayFirstNameController = TextEditingController();
   TextEditingController displayLastNameController = TextEditingController();
   TextEditingController displayMobileNumberController = TextEditingController();
 
+  EditProfileViewModel? model;
 
   bool isLoading = false;
 
   @override
   void initState() {
     super.initState();
-    getUser();
-  }
-
-  getUser() async {
-    setState(() {
-      isLoading = true;
-    });
-    displayFirstNameController.text = "vivek";
-    displayLastNameController.text = "Sorathiya";
-    displayMobileNumberController.text = "9925755626";
-
-    setState(() {
-      isLoading = false;
+    init();
+    Future.delayed(Duration.zero, () {
+      (model = EditProfileViewModel(this));
     });
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -71,45 +81,45 @@ class _EditProfileState extends State<EditProfile> {
   Widget w_ImageProfile(){
     return Center(
       child: Container(
-        width: 70,
-        height: 70,
-        color: Colors.grey,
+        width: 80,
+        height: 80,
+        decoration: BoxDecoration(
+          border: Border.all(color: Colors.grey),
+          borderRadius: BorderRadius.circular(10),
+        ),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(10),
+          child: Image.network(
+              "https://monstar-lab.com/global/wp-content/uploads/sites/11/2019/04/male-placeholder-image.jpeg"),
+        ),
       ),
     );
   }
-
 
   Widget w_buildDisplayTextField() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-
         TextField(
           controller: displayFirstNameController,
           decoration: const InputDecoration(
-            labelText: "Firstname",
+            labelText: "First Name",
           ),
         ),
-
         const SizedBox(height: 20,),
-
         TextField(
           controller: displayLastNameController,
           decoration: const InputDecoration(
-            labelText : "Lastname",
+            labelText: "Last Name",
           ),
         ),
-
         const SizedBox(height: 20,),
-
         TextField(
           controller: displayMobileNumberController,
           decoration: const InputDecoration(
-          //  label: Text("Mobile Number"),
+            labelText: "Mobile Number",
           ),
         ),
-
-
       ],
     );
   }
@@ -117,33 +127,20 @@ class _EditProfileState extends State<EditProfile> {
   Widget w_TextField(){
     return Column(
       children:  const [
-
-
-
-
         TextField(
-
           decoration: InputDecoration(
-            labelText: "Firstname",
-            labelStyle: TextStyle(fontSize: 14),
-              hintText: "UserFirstName"
-          ),
-
-          ),
-
-
+              labelText: "First Name",
+              labelStyle: TextStyle(fontSize: 14),
+              hintText: "UserFirstName"),
+        ),
         SizedBox(height: 20,),
-
         TextField(
           decoration: InputDecoration(
-              labelText: "Lastname",
+              labelText: "Last Name",
               labelStyle: TextStyle(fontSize: 14),
               hintText: "UserLastName"),
-
           ),
-
         SizedBox(height: 20,),
-
         TextField(
           decoration: InputDecoration(
               labelText: "Mobile Number",labelStyle: TextStyle(fontSize: 14), hintText: "Mobile Number"),
@@ -156,7 +153,23 @@ class _EditProfileState extends State<EditProfile> {
   Widget w_SaveButton() {
     return InkWell(
       onTap: () {
-        Navigator.pushNamed(context, UtilRoutes.ProfileScreen);
+          if(displayFirstNameController.text.isNotEmpty){
+            model!.editProfileRequest =
+                EditProfileRequest(
+                  USER_ID.toString(),
+                  displayFirstNameController.text.toString(),
+                  displayLastNameController.text.toString(),
+                  displayMobileNumberController.text.toString(),
+                  "emailController.text.toString()",
+                  DEVICE_TYPE.toString(),
+                  DEVICE_ID.toString(),
+                  DEVICE_TOKEN.toString(),
+                );
+            model!.callEditProfile(model!.editProfileRequest!);
+          Navigator.pushAndRemoveUntil(context,
+              MaterialPageRoute(builder: (_) => const ProfileScreen()),
+                  (r) => false);
+        };
       },
       child: Container(
         width: MediaQuery.of(context).size.width,
@@ -176,6 +189,21 @@ class _EditProfileState extends State<EditProfile> {
         ),
       ),
     );
+  }
+
+  Future<Void?> init() async {
+    var deviceToken = await Shared_Preferences.prefGetString(App.KEY_DEVICE_TOKEN, "");
+    var userId = await Shared_Preferences.prefGetString(App.KEY_USER_ID, "");
+    var deviceId = await Shared_Preferences.prefGetString(App.KEY_DEVICE_ID, "");
+    var deviceType= await Shared_Preferences.prefGetString(App.KEY_DEVICE_TYPE, "");
+    var userProfile= await Shared_Preferences.prefGetString(App.KEY_USER_PROFILE, "");
+    setState(() {
+      DEVICE_TOKEN = deviceToken!;
+      USER_ID = userId!;
+      DEVICE_ID = deviceId!;
+      DEVICE_TYPE = deviceType!;
+      USER_PROFILE = userProfile!;
+    });
   }
 
 }

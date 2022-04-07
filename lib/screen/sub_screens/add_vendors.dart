@@ -159,7 +159,7 @@ class AddVendorsState extends State<AddVendors> {
   }
 
   Widget w_Image(){
-    return  InkWell(
+    return /* InkWell(
       onTap: (){
         _showPicker(context);
       },
@@ -179,18 +179,16 @@ class AddVendorsState extends State<AddVendors> {
             fit: BoxFit.cover,
           ),
         )
-            : Container(
+            :*/ Container(
             width: 80,
             height: 80,
             decoration: BoxDecoration(
+              color: Colors.grey
             ),
-            child: ImagePlaceHolder(
-              url: USER_PROFILE,
-              fit: BoxFit.cover,
-            )
-        ),
 
-        ),
+        // ),
+
+        // ),
       );
   }
 
@@ -216,9 +214,9 @@ class AddVendorsState extends State<AddVendors> {
             model!.callAddVendor(model!.vepariRequest!);
 
         }
-        Navigator.pushAndRemoveUntil(context,
-            MaterialPageRoute(builder: (_) => const VendorScreen()),
-                (r) => false);
+        // Navigator.pushAndRemoveUntil(context,
+        //     MaterialPageRoute(builder: (_) => const VendorScreen()),
+        //         (r) => false);
         // Navigator.pushNamed(context, UtilRoutes.VendorScreen);
       },
       child: Container(

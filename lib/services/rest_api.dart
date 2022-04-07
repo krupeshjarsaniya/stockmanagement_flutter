@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:stoke_management/app.dart';
 import 'package:stoke_management/model/api_request/add_vepari_request.dart';
+import 'package:stoke_management/model/api_request/edit_profile_request.dart';
 import 'package:stoke_management/model/api_request/login_request.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:path/path.dart';
@@ -12,6 +13,7 @@ import 'package:path/path.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
+import 'package:stoke_management/model/api_request/register_device_request.dart';
 import 'package:stoke_management/model/api_request/register_request.dart';
 import 'package:http/http.dart' as http;
 import '../app.dart';
@@ -180,6 +182,52 @@ class RestApi {
           body:
           //{"vepari_data" : vepariRequest.toMap().toString()});
           {"vepari_data" : vepariRequest.toMap().toString()});
+      //  hideLoader();
+      print('Response request: ${response.request}');
+      print('Response status: ${response.statusCode}');
+      print('Response body: ${response.body}');
+      return response;
+    } catch (e) {
+      print("===EXCEPTION==="  + e.toString());
+      //  hideLoader();
+      return null;
+    }
+  }
+
+
+  Future<Response?> callRegisterDevice(RegisterDeviceRequest? registerDeviceRequest) async {
+    String url = App.baseUrl + App.register_device;
+    // showLoader(_context);
+    Response response;
+    try {
+      print("===========Map==========" + registerDeviceRequest!.toMap().toString());
+
+      response = await http.post(
+          Uri.parse(url), headers: {App.HeaderName : App.HeaderValue},
+          body: registerDeviceRequest.toMap());
+      //  hideLoader();
+      print('Response request: ${response.request}');
+      print('Response status: ${response.statusCode}');
+      print('Response body: ${response.body}');
+      return response;
+    } catch (e) {
+      print("===EXCEPTION==="  + e.toString());
+
+      //  hideLoader();
+      return null;
+    }
+  }
+
+
+  Future<Response?> callEditProfile(EditProfileRequest profileRequest) async {
+    String url = App.baseUrl + App.profile_edit;
+    Response response;
+    try {
+      print("===========Map==========" + profileRequest.toMap().toString());
+
+      response = await http.post(
+          Uri.parse(url), headers: {App.HeaderName : App.HeaderValue},
+          body: profileRequest.toMap());
       //  hideLoader();
       print('Response request: ${response.request}');
       print('Response status: ${response.statusCode}');
