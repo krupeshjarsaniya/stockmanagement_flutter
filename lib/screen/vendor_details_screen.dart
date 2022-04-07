@@ -1,15 +1,29 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
+import 'package:stoke_management/model/api_response/vepari_list_model.dart';
+import 'package:stoke_management/model/api_response/vepari_stock_list_model.dart';
 import 'package:stoke_management/utills/color_constant.dart';
 import 'package:stoke_management/utills/appbar_title_text.dart';
+import 'package:stoke_management/utills/shared_preferences.dart';
+import 'package:stoke_management/view_model/vendor_details_viewmodel.dart';
 
+import '../app.dart';
 import 'add_transaction.dart';
+import 'edit_vendor.dart';
 
 class VenderDetailsScreen extends StatefulWidget {
+  String? vepariId;
+  String? first_name;
+  String? last_name;
+  String? mobile;
+  String? company_name;
+  String? address;
+  String? email;
+  VenderDetailsScreen({this.vepariId,this.first_name,this.last_name,this.mobile,this.company_name,this.address,this.email});
 
-  String venderName;
-  VenderDetailsScreen(this.venderName);
 
 
 
@@ -24,24 +38,74 @@ class VenderDetailsScreenState extends State<VenderDetailsScreen> {
   DateTime selectedDateFrom = DateTime.now();
   DateTime selectedDateTo = DateTime.now();
 
+  late VendorDetailsViewModel viewModel;
+
   TextEditingController _txtControllerDateFrom = new TextEditingController();
   TextEditingController _txtControllerDateTo = new TextEditingController();
+
+  List<CreditModel>? creditList = <CreditModel>[];
+  List<CreditModel>? debitList = <CreditModel>[];
 
 
   bool debitCheck = false;
   bool creditCheck = false;
 
+  String vepari_id_str = "";
+  String user_id_str = "";
+  String from_str = "";
+  String to_str = "";
+  String deviceType_str = "";
+  String deviceuid_str = "";
+  String token_str = "";
+
+
+
+
+  @override
+  void initState() {
+    super.initState();
+
+    init();
+    // scrollController.addListener(pagination);
+
+    Future.delayed(Duration.zero, () {
+      /*model ??*/ (viewModel = VendorDetailsViewModel(this));
+    });
+  }
+
+  Future<Void?> init() async {
+    var userId = await Shared_Preferences.prefGetString(App.KEY_USER_ID, "");
+    var userDeviceType = await Shared_Preferences.prefGetString(App.KEY_DEVICE_TYPE, "");
+    var userDeviceUID = await Shared_Preferences.prefGetString(App.KEY_DEVICE_ID, "");
+    var userDeviceToken = await Shared_Preferences.prefGetString(App.KEY_DEVICE_TOKEN, "");
+    print("----userId---");
+    print("----userId---" + userId.toString());
+
+    setState(() {
+      vepari_id_str = widget.vepariId.toString();
+      user_id_str = userId.toString();
+      from_str = _txtControllerDateFrom.text.toString();
+      to_str = _txtControllerDateTo.text.toString();
+      deviceType_str = userDeviceType.toString();
+      deviceuid_str = userDeviceUID.toString();
+      token_str = userDeviceToken.toString();
+    });
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-
             automaticallyImplyLeading: true,
             iconTheme: IconThemeData(
               color: Colors.white, //change your color here
             ),
             elevation: 0,
-            title: Text(widget.venderName.toString(),style: AppBarTitle.myAppbarStyle,),
+            title: GestureDetector(onTap : (){
+              Navigator.push(context, MaterialPageRoute(builder: (context) => EditVendor(vepariId: widget.vepariId.toString(),)));
+
+            },child: Text(widget.first_name.toString(),style: AppBarTitle.myAppbarStyle,)),
 
             leading: InkWell(
               onTap: () {
@@ -56,9 +120,22 @@ class VenderDetailsScreenState extends State<VenderDetailsScreen> {
             // centerTitle: true,
             backgroundColor: ColorConstant.themColor,
             actions: [
-              IconButton(onPressed: () {}, icon: Icon(Icons.wifi_protected_setup_sharp,)),
               IconButton(onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => AddTransactionScreen()));
+
+                viewModel.callVepariStockModel(user_id_str.toString(),vepari_id_str.toString());
+
+              }, icon: Icon(Icons.wifi_protected_setup_sharp,)),
+              IconButton(onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => AddTransactionScreen(
+                    vepariId: widget.vepariId.toString(),
+                    first_name: widget.first_name.toString(),
+                    last_name: widget.last_name.toString(),
+                    mobile: widget.mobile.toString(),
+                    company_name: widget.company_name.toString(),
+                    address: widget.address.toString(),
+                    email: widget.email.toString()
+
+                )));
 
 
               }, icon: Icon(Icons.add,)),
@@ -233,7 +310,7 @@ class VenderDetailsScreenState extends State<VenderDetailsScreen> {
 
                           height: MediaQuery.of(context).size.height,
                           child:  ListView.builder(
-                                    itemCount: 1,
+                                    itemCount: creditList!.length,
                                     itemBuilder: (context, position) {
                                       return Container(
                                         child: Column(
@@ -247,7 +324,7 @@ class VenderDetailsScreenState extends State<VenderDetailsScreen> {
                                                 children: [
                                                   Row(
                                                     children: [
-                                                      Text("geasfgear",style: TextStyle(color: Colors.red),),
+                                                      Text(creditList![position].description.toString(),style: TextStyle(color: Colors.red),),
 
 
                                                     ],
@@ -284,7 +361,7 @@ class VenderDetailsScreenState extends State<VenderDetailsScreen> {
                           height: MediaQuery.of(context).size.height,
                           color: Colors.white,
                           child:  ListView.builder(
-                              itemCount: 1,
+                              itemCount: debitList!.length,
                               itemBuilder: (context, position) {
                                 return Container(
                                   child: Column(
@@ -533,7 +610,8 @@ class VenderDetailsScreenState extends State<VenderDetailsScreen> {
     if (picked != null && picked != selectedDateFrom)
       setState(() {
         selectedDateFrom = picked;
-        _txtControllerDateFrom.text = DateFormat('yyyy-MM-dd').format(selectedDateFrom);
+        // _txtControllerDateFrom.text = DateFormat('yyyy-MM-dd').format(selectedDateFrom);
+        _txtControllerDateFrom.text = DateFormat('dd/MM/yyyy').format(selectedDateFrom);
       });
   }
 
@@ -547,7 +625,7 @@ class VenderDetailsScreenState extends State<VenderDetailsScreen> {
     if (picked != null && picked != selectedDateTo)
       setState(() {
         selectedDateTo = picked;
-        _txtControllerDateTo.text = DateFormat('yyyy-MM-dd').format(selectedDateTo);
+        _txtControllerDateTo.text = DateFormat('dd/MM/yyyy').format(selectedDateTo);
       });
   }
 }

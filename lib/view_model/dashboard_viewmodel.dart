@@ -12,14 +12,14 @@ class DashBoardViewModel {
     interceptorApi = InterceptorApi(context: state.context);
   }
 
-  callVepariStockList(String userId,String vepariId) async {
-    print("==========callVepariStockList=======");
-    vepariStockListModel = (await interceptorApi!.callVepariStockList(userId,vepariId));
-    if(vepariStockListModel != null){
-
-    }else{
-      print("-----user--first-login---");
-    }
-    print("==========vepariStockListModel Api Responce=========="+vepariStockListModel.toString());
-  }
+  // callVepariStockList(String userId,String vepariId) async {
+  //   print("==========callVepariStockList=======");
+  //   vepariStockListModel = (await interceptorApi!.callVepariStockList(userId,vepariId));
+  //   if(vepariStockListModel != null){
+  //
+  //   }else{
+  //     print("-----user--first-login---");
+  //   }
+  //   print("==========vepariStockListModel Api Responce=========="+vepariStockListModel.toString());
+  // }
 }

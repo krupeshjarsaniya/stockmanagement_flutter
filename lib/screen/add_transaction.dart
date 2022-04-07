@@ -1,24 +1,38 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
+import 'package:stoke_management/model/api_request/add_transaction_request.dart';
 import 'package:stoke_management/utills/color_constant.dart';
 import 'package:stoke_management/utills/appbar_title_text.dart';
+import 'package:stoke_management/utills/shared_preferences.dart';
+import 'package:stoke_management/view_model/add_transaction_view_model.dart';
+import '../app.dart';
 
 class AddTransactionScreen extends StatefulWidget {
-  const AddTransactionScreen({Key? key}) : super(key: key);
+  String? vepariId;
+  String? first_name;
+  String? last_name;
+  String? mobile;
+  String? company_name;
+  String? address;
+  String? email;
+
+  AddTransactionScreen({this.vepariId,this.first_name,this.last_name,this.mobile,this.company_name,this.address,this.email});
+
+
+
+  // const AddTransactionScreen({Key? key}) : super(key: key);
 
   @override
-  AddTransactionScreState createState() => AddTransactionScreState();
+  AddTransactionScreenState createState() => AddTransactionScreenState();
 }
 
-class AddTransactionScreState extends State<AddTransactionScreen> {
-
+class AddTransactionScreenState extends State<AddTransactionScreen> {
   DateTime selectedDateFrom = DateTime.now();
   DateTime selectedDateTo = DateTime.now();
-
-  TextEditingController _txtControllerDateFrom = new TextEditingController();
-  TextEditingController _txtControllerDateTo = new TextEditingController();
-
+  late AddTransactionViewModel viewModel;
   TextEditingController dateController =  TextEditingController();
   TextEditingController descriptionController =  TextEditingController();
   TextEditingController weightController =  TextEditingController();
@@ -29,11 +43,31 @@ class AddTransactionScreState extends State<AddTransactionScreen> {
   bool debitTab = false;
 
 
+  String? DEVICE_TYPE;
+  String? DEVICE_ID;
+  String? DEVICE_TOKEN;
+  String? USER_ID;
+  String? type;
+
+
+
+  @override
+  void initState() {
+    super.initState();
+
+    init();
+    // scrollController.addListener(pagination);
+
+    Future.delayed(Duration.zero, () {
+      /*model ??*/ (viewModel = AddTransactionViewModel(this));
+    });
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-
             automaticallyImplyLeading: true,
             iconTheme: IconThemeData(
               color: Colors.white, //change your color here
@@ -161,7 +195,6 @@ class AddTransactionScreState extends State<AddTransactionScreen> {
                           )),
                        SizedBox(height: 15),
                       TextFormField(
-                        keyboardType: TextInputType.number,
                         controller: descriptionController,
                         decoration: InputDecoration(
                             contentPadding: EdgeInsets.only(top:0.0,bottom:0.0),
@@ -242,6 +275,47 @@ class AddTransactionScreState extends State<AddTransactionScreen> {
 
                           else {
 
+                            if(creditTab){
+                              setState(() {
+                                type == "credit";
+                              });
+                            }
+
+                          //   this.vepari_id,
+                          // this.user_id,
+                          // this.debit_credit,
+                          // this.description,
+                          // this.weight,
+                          // this.touch,
+                          // this.fine_weight,
+                          // this.stock_date,
+
+                            if(creditTab == true){
+                              viewModel.addTransactionRequest = AddTransactionRequest(
+                                  widget.vepariId.toString(),
+                                  USER_ID.toString(),
+                                  "credit",
+                                  descriptionController.text.toString(),
+                                  weightController.text.toString(),
+                                  touchController.text.toString(),
+                                  fineweightController.text.toString(),
+                                  dateController.text.toString());
+                              viewModel.callAddTransaction(viewModel.addTransactionRequest!);
+                            }else{
+                              viewModel.addTransactionRequest = AddTransactionRequest(
+                                  widget.vepariId.toString(),
+                                  USER_ID.toString(),
+                                  "debit",
+                                  descriptionController.text.toString(),
+                                  weightController.text.toString(),
+                                  touchController.text.toString(),
+                                  fineweightController.text.toString(),
+                                  dateController.text.toString());
+                              viewModel.callAddTransaction(viewModel.addTransactionRequest!);
+                            }
+
+
+
 
                             // loginViewModel.logInRequest =
                             //     UserLogInRequest(phoneNumberController.text.toString(),
@@ -316,6 +390,23 @@ class AddTransactionScreState extends State<AddTransactionScreen> {
         // dateController.text = DateFormat('yyyy-MM-dd').format(selectedDateFrom);
         dateController.text = DateFormat('dd/MM/yyyy').format(selectedDateFrom);
       });
+  }
+
+
+  Future<Void?> init() async {
+    var userId = await Shared_Preferences.prefGetString(App.KEY_USER_ID, "");
+    var deviceId = await Shared_Preferences.prefGetString(App.KEY_DEVICE_ID, "");
+    var deviceToken = await Shared_Preferences.prefGetString(App.KEY_DEVICE_TOKEN, "");
+    var deviceType = await Shared_Preferences.prefGetString(App.KEY_DEVICE_TYPE, "");
+    print("----userId---");
+    print("----userId---" + userId.toString());
+
+    setState(() {
+      USER_ID = userId.toString();
+      DEVICE_TOKEN = deviceToken.toString();
+      DEVICE_ID= deviceId.toString();
+      DEVICE_TYPE = deviceType.toString();
+    });
   }
 
 

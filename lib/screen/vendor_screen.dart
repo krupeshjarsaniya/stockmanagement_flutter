@@ -95,7 +95,24 @@ class VendorScreenState extends State<VendorScreen> {
                       children: [
                         InkWell(
                           onTap: (){
-                            Navigator.push(context, MaterialPageRoute(builder: (context) => VenderDetailsScreen(vepariList![position].firstName.toString())));
+
+                            String? first_name;
+                            String? last_name;
+                            String? mobile;
+                            String? company_name;
+                            String? address;
+                            String? email;
+
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => VenderDetailsScreen(
+                                vepariId: vepariList![position].vepariId.toString(),
+
+                                first_name: vepariList![position].firstName.toString(),
+                                last_name: vepariList![position].lastName.toString(),
+                                mobile: vepariList![position].mobile.toString(),
+                                company_name: vepariList![position].companyName.toString(),
+                                address: vepariList![position].address.toString(),
+                                email: vepariList![position].email.toString()
+                            )) );
                           },
                           child: Padding(
                             padding: EdgeInsets.all(10),
@@ -111,7 +128,14 @@ class VendorScreenState extends State<VendorScreen> {
                         Expanded(
                           child: InkWell(
                             onTap: (){
-                              Navigator.push(context, MaterialPageRoute(builder: (context) => VenderDetailsScreen(vepariList![position].firstName.toString())));
+                              Navigator.push(context, MaterialPageRoute(builder: (context) => VenderDetailsScreen(
+                                  vepariId: vepariList![position].vepariId.toString(),
+                                  first_name: vepariList![position].firstName.toString(),
+                              last_name: vepariList![position].lastName.toString(),
+                              mobile: vepariList![position].mobile.toString(),
+                              company_name: vepariList![position].companyName.toString(),
+                              address: vepariList![position].address.toString(),
+                              email: vepariList![position].email.toString())));
                             },
                             child: Container(
                               child: Column(
