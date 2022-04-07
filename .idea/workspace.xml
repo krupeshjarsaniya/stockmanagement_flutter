@@ -20,6 +20,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="95949a3e-fb97-4e37-be1a-684b8978a2df" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/lib/model/api_request/add_vepari_request.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/model/api_response/Add_vepari_model.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/screen/notepad_editor_screen.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/view_model/add_vendor_view_model.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/widgets/image_placeholder.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_build/1e3af79fe87895670c476441f2b547eb/.filecache" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_build/1e3af79fe87895670c476441f2b547eb/.filecache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_build/1e3af79fe87895670c476441f2b547eb/app.dill" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_build/1e3af79fe87895670c476441f2b547eb/app.dill" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_build/1e3af79fe87895670c476441f2b547eb/debug_android_application.stamp" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_build/1e3af79fe87895670c476441f2b547eb/debug_android_application.stamp" afterDir="false" />
@@ -36,27 +41,80 @@
       <change beforePath="$PROJECT_DIR$/.packages" beforeDir="false" afterPath="$PROJECT_DIR$/.packages" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/android/.gradle/6.7/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/6.7/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/android/.gradle/6.7/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/6.7/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/android/local.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/intermediates/compile_and_runtime_not_namespaced_r_class_jar/debug/R.jar" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/compile_and_runtime_not_namespaced_r_class_jar/debug/R.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/intermediates/compressed_assets/debug/out/assets/flutter_assets/NOTICES.jar" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/compressed_assets/debug/out/assets/flutter_assets/NOTICES.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/app/intermediates/compressed_assets/debug/out/assets/flutter_assets/kernel_blob.bin.jar" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/compressed_assets/debug/out/assets/flutter_assets/kernel_blob.bin.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/intermediates/dex/debug/mergeExtDexDebug/classes.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/dex/debug/mergeExtDexDebug/classes.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/intermediates/dex/debug/mergeLibDexDebug/classes_0.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/dex/debug/mergeLibDexDebug/classes_0.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/intermediates/dex/debug/mergeLibDexDebug/classes_1.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/dex/debug/mergeLibDexDebug/classes_1.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/intermediates/dex/debug/mergeLibDexDebug/classes_2.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/dex/debug/mergeLibDexDebug/classes_2.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/intermediates/dex/debug/mergeLibDexDebug/classes_3.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/dex/debug/mergeLibDexDebug/classes_3.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/intermediates/dex/debug/mergeLibDexDebug/classes_4.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/dex/debug/mergeLibDexDebug/classes_4.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/intermediates/dex/debug/mergeLibDexDebug/classes_5.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/dex/debug/mergeLibDexDebug/classes_5.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/intermediates/dex/debug/mergeLibDexDebug/classes_6.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/dex/debug/mergeLibDexDebug/classes_6.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/intermediates/dex/debug/mergeProjectDexDebug/classes.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/dex/debug/mergeProjectDexDebug/classes.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/intermediates/dex_archive_input_jar_hashes/debug/out" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/dex_archive_input_jar_hashes/debug/out" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/app/intermediates/flutter/debug/flutter_assets/NOTICES" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/flutter/debug/flutter_assets/NOTICES" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/app/intermediates/flutter/debug/flutter_assets/kernel_blob.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/flutter/debug/flutter_assets/kernel_blob.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/app/intermediates/flutter/debug/flutter_build.d" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/flutter/debug/flutter_build.d" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/intermediates/incremental/debug-mergeJavaRes/merge-state" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/incremental/debug-mergeJavaRes/merge-state" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/intermediates/incremental/debug-mergeJavaRes/zip-cache/021pIhKU0Gl8LEPcc2VJWx+MzOM=" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/incremental/debug-mergeJavaRes/zip-cache/021pIhKU0Gl8LEPcc2VJWx+MzOM=" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/intermediates/incremental/debug-mergeJavaRes/zip-cache/2YP9eVZl6gXM4Z70r+bzPts+YNw=" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/incremental/debug-mergeJavaRes/zip-cache/2YP9eVZl6gXM4Z70r+bzPts+YNw=" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/intermediates/incremental/debug-mergeJavaRes/zip-cache/3v_k9YQwoYcfl7NoDIuRavfmsoA=" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/incremental/debug-mergeJavaRes/zip-cache/3v_k9YQwoYcfl7NoDIuRavfmsoA=" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/intermediates/incremental/debug-mergeJavaRes/zip-cache/HfWT91mXPNgm8K2NN043TXxoMRg=" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/incremental/debug-mergeJavaRes/zip-cache/HfWT91mXPNgm8K2NN043TXxoMRg=" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/intermediates/incremental/debug-mergeJavaRes/zip-cache/PIOLaXEWu4pqvMSo5SZQ+T7KItc=" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/incremental/debug-mergeJavaRes/zip-cache/PIOLaXEWu4pqvMSo5SZQ+T7KItc=" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/intermediates/incremental/debug-mergeJavaRes/zip-cache/cM7H9KSVdQm49d+_9IqViNtP3Ps=" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/incremental/debug-mergeJavaRes/zip-cache/cM7H9KSVdQm49d+_9IqViNtP3Ps=" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/intermediates/incremental/debug-mergeJavaRes/zip-cache/cTXy9zHbJEbt_pb+woxImDuo__I=" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/incremental/debug-mergeJavaRes/zip-cache/cTXy9zHbJEbt_pb+woxImDuo__I=" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/intermediates/incremental/debug-mergeJavaRes/zip-cache/kZJ42nq297yTki6UGuVydJgY8D4=" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/incremental/debug-mergeJavaRes/zip-cache/kZJ42nq297yTki6UGuVydJgY8D4=" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/intermediates/incremental/debug-mergeJavaRes/zip-cache/lAnezkPd7ffVjVq6pBnExtlz_0k=" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/incremental/debug-mergeJavaRes/zip-cache/lAnezkPd7ffVjVq6pBnExtlz_0k=" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/intermediates/incremental/debug-mergeJavaRes/zip-cache/qsqA27vtvKAduTbtfqR5mn_6bSs=" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/incremental/debug-mergeJavaRes/zip-cache/qsqA27vtvKAduTbtfqR5mn_6bSs=" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/intermediates/incremental/debug-mergeJavaRes/zip-cache/v4gHXR2W1sDTNYJRT26UBy4TbZk=" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/incremental/debug-mergeJavaRes/zip-cache/v4gHXR2W1sDTNYJRT26UBy4TbZk=" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/intermediates/incremental/debug-mergeNativeLibs/merge-state" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/incremental/debug-mergeNativeLibs/merge-state" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/intermediates/incremental/debug-mergeNativeLibs/zip-cache/021pIhKU0Gl8LEPcc2VJWx+MzOM=" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/incremental/debug-mergeNativeLibs/zip-cache/021pIhKU0Gl8LEPcc2VJWx+MzOM=" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/intermediates/incremental/debug-mergeNativeLibs/zip-cache/2YP9eVZl6gXM4Z70r+bzPts+YNw=" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/incremental/debug-mergeNativeLibs/zip-cache/2YP9eVZl6gXM4Z70r+bzPts+YNw=" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/intermediates/incremental/debug-mergeNativeLibs/zip-cache/3v_k9YQwoYcfl7NoDIuRavfmsoA=" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/incremental/debug-mergeNativeLibs/zip-cache/3v_k9YQwoYcfl7NoDIuRavfmsoA=" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/intermediates/incremental/debug-mergeNativeLibs/zip-cache/HfWT91mXPNgm8K2NN043TXxoMRg=" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/incremental/debug-mergeNativeLibs/zip-cache/HfWT91mXPNgm8K2NN043TXxoMRg=" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/intermediates/incremental/debug-mergeNativeLibs/zip-cache/PIOLaXEWu4pqvMSo5SZQ+T7KItc=" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/incremental/debug-mergeNativeLibs/zip-cache/PIOLaXEWu4pqvMSo5SZQ+T7KItc=" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/intermediates/incremental/debug-mergeNativeLibs/zip-cache/cM7H9KSVdQm49d+_9IqViNtP3Ps=" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/incremental/debug-mergeNativeLibs/zip-cache/cM7H9KSVdQm49d+_9IqViNtP3Ps=" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/intermediates/incremental/debug-mergeNativeLibs/zip-cache/cTXy9zHbJEbt_pb+woxImDuo__I=" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/incremental/debug-mergeNativeLibs/zip-cache/cTXy9zHbJEbt_pb+woxImDuo__I=" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/intermediates/incremental/debug-mergeNativeLibs/zip-cache/kZJ42nq297yTki6UGuVydJgY8D4=" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/incremental/debug-mergeNativeLibs/zip-cache/kZJ42nq297yTki6UGuVydJgY8D4=" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/intermediates/incremental/debug-mergeNativeLibs/zip-cache/lAnezkPd7ffVjVq6pBnExtlz_0k=" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/incremental/debug-mergeNativeLibs/zip-cache/lAnezkPd7ffVjVq6pBnExtlz_0k=" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/intermediates/incremental/debug-mergeNativeLibs/zip-cache/qsqA27vtvKAduTbtfqR5mn_6bSs=" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/incremental/debug-mergeNativeLibs/zip-cache/qsqA27vtvKAduTbtfqR5mn_6bSs=" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/intermediates/incremental/debug-mergeNativeLibs/zip-cache/v4gHXR2W1sDTNYJRT26UBy4TbZk=" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/incremental/debug-mergeNativeLibs/zip-cache/v4gHXR2W1sDTNYJRT26UBy4TbZk=" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/intermediates/incremental/mergeDebugAssets/merger.xml" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/incremental/mergeDebugAssets/merger.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/app/intermediates/incremental/mergeDebugResources/compile-file-map.properties" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/incremental/mergeDebugResources/compile-file-map.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/intermediates/incremental/mergeDebugResources/merger.xml" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/incremental/mergeDebugResources/merger.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/app/intermediates/incremental/packageDebug/tmp/debug/dex-renamer-state.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/incremental/packageDebug/tmp/debug/dex-renamer-state.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/intermediates/incremental/packageDebug/tmp/debug/zip-cache/androidResources" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/incremental/packageDebug/tmp/debug/zip-cache/androidResources" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/intermediates/incremental/packageDebug/tmp/debug/zip-cache/javaResources0" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/incremental/packageDebug/tmp/debug/zip-cache/javaResources0" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/intermediates/javac/debug/classes/io/flutter/plugins/GeneratedPluginRegistrant.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/javac/debug/classes/io/flutter/plugins/GeneratedPluginRegistrant.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/intermediates/manifest_merge_blame_file/debug/manifest-merger-blame-debug-report.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/manifest_merge_blame_file/debug/manifest-merger-blame-debug-report.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/app/intermediates/merged_assets/debug/out/flutter_assets/NOTICES" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/merged_assets/debug/out/flutter_assets/NOTICES" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/app/intermediates/merged_assets/debug/out/flutter_assets/kernel_blob.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/merged_assets/debug/out/flutter_assets/kernel_blob.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/app/outputs/apk/debug/app-debug.apk" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/app/outputs/flutter-apk/app-debug.apk" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/app/outputs/flutter-apk/app.apk" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/intermediates/merged_java_res/debug/out.jar" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/merged_java_res/debug/out.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/intermediates/merged_manifest/debug/out/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/merged_manifest/debug/out/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/intermediates/merged_manifests/debug/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/merged_manifests/debug/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/intermediates/packaged_manifests/debug/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/packaged_manifests/debug/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/intermediates/processed_res/debug/out/resources-debug.ap_" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/processed_res/debug/out/resources-debug.ap_" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/intermediates/project_dex_archive/debug/out/7fdcaf21015bada60fcc3809eec71535940820930185bab6c6aa0820b0085fc4_0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/intermediates/project_dex_archive/debug/out/7fdcaf21015bada60fcc3809eec71535940820930185bab6c6aa0820b0085fc4_1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/intermediates/project_dex_archive/debug/out/io/flutter/plugins/GeneratedPluginRegistrant.dex" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/project_dex_archive/debug/out/io/flutter/plugins/GeneratedPluginRegistrant.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/intermediates/runtime_symbol_list/debug/R.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/runtime_symbol_list/debug/R.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/intermediates/symbol_list_with_package_name/debug/package-aware-r.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/symbol_list_with_package_name/debug/package-aware-r.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/kotlin/compileDebugKotlin/build-history.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/kotlin/compileDebugKotlin/build-history.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/kotlin/compileDebugKotlin/last-build.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/kotlin/compileDebugKotlin/last-build.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/app/outputs/flutter-apk/app.apk.sha1" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/outputs/flutter-apk/app.apk.sha1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/outputs/logs/manifest-merger-debug-report.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/outputs/logs/manifest-merger-debug-report.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/f58ed05f7a6fba8f3451773989665e4b.cache.dill.track.dill" beforeDir="false" afterPath="$PROJECT_DIR$/build/f58ed05f7a6fba8f3451773989665e4b.cache.dill.track.dill" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/path_provider/intermediates/incremental/mergeDebugJniLibFolders/merger.xml" beforeDir="false" afterPath="$PROJECT_DIR$/build/path_provider/intermediates/incremental/mergeDebugJniLibFolders/merger.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/path_provider/intermediates/incremental/mergeDebugShaders/merger.xml" beforeDir="false" afterPath="$PROJECT_DIR$/build/path_provider/intermediates/incremental/mergeDebugShaders/merger.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/path_provider/intermediates/incremental/packageDebugResources/compile-file-map.properties" beforeDir="false" afterPath="$PROJECT_DIR$/build/path_provider/intermediates/incremental/packageDebugResources/compile-file-map.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/sqflite/intermediates/incremental/mergeDebugJniLibFolders/merger.xml" beforeDir="false" afterPath="$PROJECT_DIR$/build/sqflite/intermediates/incremental/mergeDebugJniLibFolders/merger.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/sqflite/intermediates/incremental/mergeDebugShaders/merger.xml" beforeDir="false" afterPath="$PROJECT_DIR$/build/sqflite/intermediates/incremental/mergeDebugShaders/merger.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/sqflite/intermediates/incremental/packageDebugResources/compile-file-map.properties" beforeDir="false" afterPath="$PROJECT_DIR$/build/sqflite/intermediates/incremental/packageDebugResources/compile-file-map.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screen/login_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screen/login_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Runner/GeneratedPluginRegistrant.m" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Runner/GeneratedPluginRegistrant.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/app.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/app.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screen/add_transaction.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screen/add_transaction.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screen/sub_screens/add_vendors.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screen/sub_screens/add_vendors.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screen/vendor_details_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screen/vendor_details_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screen/vendor_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screen/vendor_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/services/interceptor_api.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/services/interceptor_api.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/services/rest_api.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/services/rest_api.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
@@ -89,13 +147,17 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="dart.analysis.tool.window.visible" value="false" />
     <property name="io.flutter.reload.alreadyRun" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/screen" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/widgets" />
     <property name="settings.editor.selected.configurable" value="dart.settings" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/lib/screen" />
+      <recent name="$PROJECT_DIR$/lib/widgets" />
+      <recent name="$PROJECT_DIR$/lib/model/api_request" />
+      <recent name="$PROJECT_DIR$/lib/model/api_response" />
+      <recent name="$PROJECT_DIR$/lib/view_model" />
+      <recent name="$PROJECT_DIR$/lib/screen/sub_screens" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/lib/model/api_response" />
@@ -138,25 +200,29 @@
       <screen x="0" y="25" width="1920" height="979" />
     </state>
     <state x="424" y="173" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.25.1920.979@0.25.1920.979" timestamp="1649144134689" />
-    <state width="1878" height="333" key="GridCell.Tab.0.bottom" timestamp="1649306817602">
+    <state x="698" y="303" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1649315011985">
       <screen x="0" y="25" width="1920" height="1055" />
     </state>
-    <state width="1878" height="333" key="GridCell.Tab.0.bottom/0.25.1920.1055@0.25.1920.1055" timestamp="1649306817602" />
+    <state x="698" y="303" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.25.1920.1055@0.25.1920.1055" timestamp="1649315011985" />
+    <state width="1878" height="2" key="GridCell.Tab.0.bottom" timestamp="1649315245887">
+      <screen x="0" y="25" width="1920" height="1055" />
+    </state>
+    <state width="1878" height="2" key="GridCell.Tab.0.bottom/0.25.1920.1055@0.25.1920.1055" timestamp="1649315245887" />
     <state width="1878" height="459" key="GridCell.Tab.0.bottom/0.25.1920.979@0.25.1920.979" timestamp="1649162460229" />
-    <state width="1878" height="333" key="GridCell.Tab.0.center" timestamp="1649306817601">
+    <state width="1878" height="2" key="GridCell.Tab.0.center" timestamp="1649315245886">
       <screen x="0" y="25" width="1920" height="1055" />
     </state>
-    <state width="1878" height="333" key="GridCell.Tab.0.center/0.25.1920.1055@0.25.1920.1055" timestamp="1649306817601" />
+    <state width="1878" height="2" key="GridCell.Tab.0.center/0.25.1920.1055@0.25.1920.1055" timestamp="1649315245886" />
     <state width="1878" height="459" key="GridCell.Tab.0.center/0.25.1920.979@0.25.1920.979" timestamp="1649162460228" />
-    <state width="1878" height="333" key="GridCell.Tab.0.left" timestamp="1649306817601">
+    <state width="1878" height="2" key="GridCell.Tab.0.left" timestamp="1649315245886">
       <screen x="0" y="25" width="1920" height="1055" />
     </state>
-    <state width="1878" height="333" key="GridCell.Tab.0.left/0.25.1920.1055@0.25.1920.1055" timestamp="1649306817601" />
+    <state width="1878" height="2" key="GridCell.Tab.0.left/0.25.1920.1055@0.25.1920.1055" timestamp="1649315245886" />
     <state width="1878" height="459" key="GridCell.Tab.0.left/0.25.1920.979@0.25.1920.979" timestamp="1649162460228" />
-    <state width="1878" height="333" key="GridCell.Tab.0.right" timestamp="1649306817602">
+    <state width="1878" height="2" key="GridCell.Tab.0.right" timestamp="1649315245886">
       <screen x="0" y="25" width="1920" height="1055" />
     </state>
-    <state width="1878" height="333" key="GridCell.Tab.0.right/0.25.1920.1055@0.25.1920.1055" timestamp="1649306817602" />
+    <state width="1878" height="2" key="GridCell.Tab.0.right/0.25.1920.1055@0.25.1920.1055" timestamp="1649315245886" />
     <state width="1878" height="459" key="GridCell.Tab.0.right/0.25.1920.979@0.25.1920.979" timestamp="1649162460229" />
     <state x="461" y="150" key="SettingsEditor" timestamp="1649160602885">
       <screen x="0" y="25" width="1920" height="979" />
@@ -166,10 +232,10 @@
       <screen x="0" y="25" width="1920" height="1055" />
     </state>
     <state x="749" y="246" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.25.1920.1055@0.25.1920.1055" timestamp="1649306272948" />
-    <state x="652" y="288" width="615" height="529" key="find.popup" timestamp="1649306289249">
+    <state x="652" y="288" width="615" height="529" key="find.popup" timestamp="1649311860289">
       <screen x="0" y="25" width="1920" height="1055" />
     </state>
-    <state x="652" y="288" width="615" height="529" key="find.popup/0.25.1920.1055@0.25.1920.1055" timestamp="1649306289249" />
+    <state x="652" y="288" width="615" height="529" key="find.popup/0.25.1920.1055@0.25.1920.1055" timestamp="1649311860289" />
     <state x="652" y="269" width="615" height="490" key="find.popup/0.25.1920.979@0.25.1920.979" timestamp="1649161701643" />
   </component>
 </project>

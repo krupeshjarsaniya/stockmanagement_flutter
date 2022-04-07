@@ -61,12 +61,18 @@ class VendorScreenState extends State<VendorScreen> {
                   onTap: () {
                     Navigator.pushNamed(context, UtilRoutes.AddVendors);
                   },
-                  child: Container(
-                    width:50,
-                    child: const Icon(
-                      Icons.add,
-                      size: 30.0,
-                      color: Colors.white,
+                  child: GestureDetector(
+                    onTap: (){
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => AddVendors()));
+
+                    },
+                    child: Container(
+                      width:50,
+                      child: const Icon(
+                        Icons.add,
+                        size: 30.0,
+                        color: Colors.white,
+                      ),
                     ),
                   ),
                 ),
@@ -101,12 +107,12 @@ class VendorScreenState extends State<VendorScreen> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                                 children: [
-                                  Text("esghshsrghegs",style: TextStyle(color: Colors.black),),
+                                  Text(vepariList![position].firstName.toString() + " " +vepariList![position].lastName.toString(),style: TextStyle(color: Colors.black),),
                                   SizedBox(height: 6,),
-                                  Text("esghshsrghegs"),
+                                  Text(vepariList![position].companyName.toString()),
                                   SizedBox(height: 3,),
 
-                                  Text("esghshsrghegs"),
+                                  Text(vepariList![position].mobile.toString()),
                                 ],
                               ),
                             ),

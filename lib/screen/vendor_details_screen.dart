@@ -4,6 +4,8 @@ import 'package:intl/intl.dart';
 import 'package:stoke_management/utills/color_constant.dart';
 import 'package:stoke_management/utills/appbar_title_text.dart';
 
+import 'add_transaction.dart';
+
 class VenderDetailsScreen extends StatefulWidget {
   const VenderDetailsScreen({Key? key}) : super(key: key);
 
@@ -49,7 +51,11 @@ class VenderDetailsScreenState extends State<VenderDetailsScreen> {
             backgroundColor: ColorConstant.themColor,
             actions: [
               IconButton(onPressed: () {}, icon: Icon(Icons.wifi_protected_setup_sharp,)),
-              IconButton(onPressed: () {}, icon: Icon(Icons.add,)),
+              IconButton(onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => AddTransactionScreen()));
+
+
+              }, icon: Icon(Icons.add,)),
               Padding(
                 padding:  EdgeInsets.only(right: 10),
                 child: IconButton(onPressed: () {}, icon: Icon(Icons.assignment_outlined,)),

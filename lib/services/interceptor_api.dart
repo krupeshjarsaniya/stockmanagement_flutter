@@ -1,8 +1,10 @@
 import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
+import 'package:stoke_management/model/api_request/add_vepari_request.dart';
 import 'package:stoke_management/model/api_request/login_request.dart';
 import 'package:stoke_management/model/api_request/register_request.dart';
+import 'package:stoke_management/model/api_response/Add_vepari_model.dart';
 import 'package:stoke_management/model/api_response/login_model.dart';
 import 'package:stoke_management/model/api_response/register_model.dart';
 import 'package:stoke_management/model/api_response/vepari_list_model.dart';
@@ -90,6 +92,21 @@ class InterceptorApi {
   }
 
 
+  Future<AddVepariModel?> callAddVendor(AddVepariRequest vepariRequest) async {
+    var response = await restApi.callAddVendor(vepariRequest);
+    print("==========response===========" + response!.body.toString());
+    if (response == null) {}
+    else if (response.statusCode == 200 || response.statusCode == 201) {
+      var data = jsonDecode(response.body.toString());
+      if (response.statusCode == 200) {
+        var response = AddVepariModel.fromJson(data);
+        return response;
+      }
+    } else if (response.statusCode == 500) {
+      var data = jsonDecode(response.body);
+      String msg = data['message'];
+    } else {}
+  }
 
 
 

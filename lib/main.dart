@@ -61,8 +61,8 @@ class _MyAppState extends State<MyApp> {
       //   //   primaryColor : Colors.white
       //     primarySwatch: Colors.amber, splashColor: Colors.green
       // ),
-      // home: LoginScreen(),
-      home: VenderDetailsScreen(),
+      home: LoginScreen(),
+      // home: VenderDetailsScreen(),
       // home: AddTransactionScreen(),
       debugShowCheckedModeBanner: false,
       routes: {

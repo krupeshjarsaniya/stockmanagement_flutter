@@ -6,6 +6,7 @@ class App {
   static String register = "register";
   static String vepari_list = "vepari_list";
   static String vepari_stock_list = "vepari_stock_list";
+  static String vepari_add = "vepari_add";
 
 
 
@@ -17,6 +18,7 @@ class App {
   static String KEY_USER_ID = "KEY_USER_ID";
   static String KEY_DEVICE_ID = "KEY_DEVICE_ID";
   static String KEY_DEVICE_TYPE = "KEY_DEVICE_TYPE";
+  static String KEY_USER_PROFILE = "KEY_USER_PROFILE";
 
 
 }
