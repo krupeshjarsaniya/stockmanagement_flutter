@@ -3,15 +3,17 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:stoke_management/model/api_request/login_request.dart';
+import 'package:stoke_management/screen/sub_screens/forgot_password_screen.dart';
 import 'package:stoke_management/utills/appbar_title_text.dart';
 import 'package:stoke_management/utills/color_constant.dart';
 import 'package:stoke_management/utills/shared_preferences.dart';
 import 'package:stoke_management/utills/utils_routes.dart';
 import 'package:stoke_management/view_model/login_view_model.dart';
 import 'package:device_info/device_info.dart';
-
 import '../app.dart';
 import 'forgot_password_screen.dart';
+
+// import 'package:stoke_management/widgets/common_toast.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -21,23 +23,18 @@ class LoginScreen extends StatefulWidget {
 }
 
 class LoginScreenState extends State<LoginScreen> {
-
   String DEVICE_TOKEN = "";
+
   TextEditingController phoneNumberController =  TextEditingController();
   TextEditingController passwordController =  TextEditingController();
   late LoginViewModel model;
-
   DeviceInfoPlugin deviceInfoPlugin = DeviceInfoPlugin();
-
-
   String DEVICE_ID = "";
-
-
+  LoginViewModel? model;
 
   @override
   void initState() {
     super.initState();
-    // scrollController.addListener(pagination);
     Future.delayed(Duration.zero, () {
       /*model ??*/ (model = LoginViewModel(this));
     });
@@ -107,6 +104,7 @@ class LoginScreenState extends State<LoginScreen> {
     model.callApns(model.addApns);*/
     Shared_Preferences.prefSetString(App.KEY_DEVICE_ID,data.identifierForVendor);
     Shared_Preferences.prefSetString(App.KEY_DEVICE_TYPE,"Ios");
+
 
   }
 

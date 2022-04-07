@@ -17,4 +17,6 @@ class App {
   static String KEY_USER_ID = "KEY_USER_ID";
   static String KEY_DEVICE_ID = "KEY_DEVICE_ID";
   static String KEY_DEVICE_TYPE = "KEY_DEVICE_TYPE";
+
+
 }

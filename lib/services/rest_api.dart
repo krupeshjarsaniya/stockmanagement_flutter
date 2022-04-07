@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+<<<<<<< HEAD
 import 'package:stoke_management/app.dart';
 import 'package:stoke_management/model/api_request/login_request.dart';
 import 'dart:convert';
@@ -16,6 +17,12 @@ import 'package:http/http.dart';
 import 'package:stoke_management/model/api_request/register_request.dart';
 
 
+=======
+import 'package:http/http.dart';
+import 'package:stoke_management/model/api_request/login_request.dart';
+import 'package:http/http.dart' as http;
+import '../app.dart';
+>>>>>>> development
 
 class RestApi {
   late BuildContext _context;
