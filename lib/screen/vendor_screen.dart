@@ -1,39 +1,44 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:sqflite/sqflite.dart';
-import 'package:stoke_management/database/database_helper.dart';
-import 'package:stoke_management/model/api_response/vender_model.dart';
+import 'package:stoke_management/model/api_response/vepari_list_model.dart';
+
 import 'package:stoke_management/screen/sub_screens/add_vendors.dart';
 import 'package:stoke_management/utills/color_constant.dart';
 import 'package:stoke_management/utills/appbar_title_text.dart';
+import 'package:stoke_management/utills/shared_preferences.dart';
 import 'package:stoke_management/utills/utils_routes.dart';
+import 'package:stoke_management/view_model/vendar_view_model.dart';
 import 'package:stoke_management/widgets/card_vendors.dart';
+
+import '../app.dart';
 
 class VendorScreen extends StatefulWidget {
   const VendorScreen({Key? key}) : super(key: key);
 
   @override
-  _VendorScreenState createState() => _VendorScreenState();
+  VendorScreenState createState() => VendorScreenState();
 }
 
-class _VendorScreenState extends State<VendorScreen> {
-  List<VenderModel> listVendor = [];
+class VendorScreenState extends State<VendorScreen> {
 
+  late VendorViewModel viewModel;
 
-  //
-  // Future<List<Map<String, dynamic>>> getVendor() async {
-  //   List<Map<String, dynamic>> listMap = await DatabaseHelper.instance.queryAllRows();
-  //   setState(() {
-  //     listMap.forEach((map) => listVendor.add(VenderModel.fromMap(map)));
-  //   });
-  // }
-
+  List<VepariListItem>? vepariList = <VepariListItem>[];
 
   @override
   void initState() {
-    DatabaseHelper.getVendor();
+    init();
+    Future.delayed(Duration.zero, () {
+      /*model ??*/ (viewModel = VendorViewModel(this));
+    });
     super.initState();
   }
+
+  String? USER_ID;
+
 
   @override
   Widget build(BuildContext context) {
@@ -69,56 +74,55 @@ class _VendorScreenState extends State<VendorScreen> {
           ],
         ),
       body: Container(
-          padding: EdgeInsets.all(15),
+          padding: EdgeInsets.all(10),
           child: ListView.builder(
-              itemCount: listVendor.length,
+              // itemCount: 4,
+              itemCount: vepariList!.length,
               itemBuilder: (context, position) {
-                VenderModel getVendor = listVendor[position];
-                var fistname = getVendor.Firstname;
-                var lastname = getVendor.Lastname;
-                var mobile = getVendor.MobileNumber;
-                var company = getVendor.CompanyName;
                 return Card(
-                  elevation: 8,
+                  elevation: 5,
                   child: Container(
-                    height: 80,
-                    padding: EdgeInsets.all(15),
-                    child: Stack(
-                      children: <Widget>[
-                        Align(
-                            alignment: Alignment.topLeft,
-                            child: Text(getVendor.Firstname,
-                                style: TextStyle(fontSize: 18))),
-                        Align(
-                          alignment: Alignment.centerRight,
-                          child: Container(
-                            margin: EdgeInsets.only(right: 45),
-                            child: IconButton(
-                                icon: Icon(Icons.edit),
-                                onPressed: () {
-                                //   Navigator.push(
-                                //       context,
-                                //       MaterialPageRoute(
-                                //           builder: (_) => AddVendors(
-                                //               true, getVendor)));
-                                }),
+
+                    padding: EdgeInsets.all(10),
+                    child:
+                    Row(
+                      children: [
+                        Container(
+                          color: Colors.grey,
+                          height: 60,
+                          width: 60,
+                        ),
+                        
+                        Expanded(
+                          child: Padding(
+                            padding: const EdgeInsets.only(left: 10),
+                            child: Container(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                children: [
+                                  Text("esghshsrghegs",style: TextStyle(color: Colors.black),),
+                                  SizedBox(height: 6,),
+                                  Text("esghshsrghegs"),
+                                  SizedBox(height: 3,),
+
+                                  Text("esghshsrghegs"),
+                                ],
+                              ),
+                            ),
                           ),
                         ),
-                        Align(
-                          alignment: Alignment.centerRight,
-                          child: IconButton(
-                              icon: Icon(Icons.delete),
-                              onPressed: (){
-                                DatabaseHelper.instance.delete(getVendor.vendorId);
-                                setState(() => {
-                                  listVendor.removeWhere((item) => item.vendorId == getVendor.vendorId)
-                                });
-                              }),
-                        ),
-                        Align(
-                            alignment: Alignment.bottomLeft,
-                            child: Text("fisrtname: $fistname | lastname: $lastname",
-                                style: TextStyle(fontSize: 18))),
+                        
+                        Container(
+                          child: Column(
+                            children: [
+                              Icon(Icons.delete,color: Colors.grey,),
+                              SizedBox(height: 10,),
+                              Icon(Icons.arrow_forward_ios_rounded,color: Colors.grey,size: 18,),
+                            ],
+                          ),
+                        )
+                        
                       ],
                     ),
                   ),
@@ -126,4 +130,15 @@ class _VendorScreenState extends State<VendorScreen> {
               })),
     );
   }
+
+
+  Future<Void?> init() async {
+    var userId = await Shared_Preferences.prefGetString(App.KEY_USER_ID, "");
+    print("----userId---" + userId.toString());
+
+    setState(() {
+      USER_ID = userId.toString();
+    });
+  }
+
 }

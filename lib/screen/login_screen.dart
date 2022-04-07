@@ -1,11 +1,17 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:stoke_management/model/api_request/login_request.dart';
 import 'package:stoke_management/utills/appbar_title_text.dart';
 import 'package:stoke_management/utills/color_constant.dart';
+import 'package:stoke_management/utills/shared_preferences.dart';
 import 'package:stoke_management/utills/utils_routes.dart';
 import 'package:stoke_management/view_model/login_view_model.dart';
-// import 'package:stoke_management/widgets/common_toast.dart';
+import 'package:device_info/device_info.dart';
+
+import '../app.dart';
+import 'forgot_password_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -16,23 +22,93 @@ class LoginScreen extends StatefulWidget {
 
 class LoginScreenState extends State<LoginScreen> {
 
-  late LoginViewModel loginViewModel;
-
+  String DEVICE_TOKEN = "";
   TextEditingController phoneNumberController =  TextEditingController();
   TextEditingController passwordController =  TextEditingController();
+  late LoginViewModel model;
+
+  DeviceInfoPlugin deviceInfoPlugin = DeviceInfoPlugin();
+
+
+  String DEVICE_ID = "";
+
 
 
   @override
   void initState() {
     super.initState();
-
     // scrollController.addListener(pagination);
-
     Future.delayed(Duration.zero, () {
-      /*model ??*/ (loginViewModel = LoginViewModel(this));
+      /*model ??*/ (model = LoginViewModel(this));
     });
   }
 
+  Future<void> initPlatformState() async {
+    String deviceData = "";
+
+    try {
+      if (Platform.isAndroid) {
+     _readAndroidBuildData(await deviceInfoPlugin.androidInfo);
+      } else if (Platform.isIOS) {
+        _readIosDeviceInfo(await deviceInfoPlugin.iosInfo);
+      }
+    } on PlatformException {
+      'Failed to get platform version.';
+    }
+    if (mounted) return;
+
+    /* setState(() {
+      _deviceData = deviceData;
+    });*/
+  }
+
+
+  _readAndroidBuildData(AndroidDeviceInfo build) async{
+    print("-->"+build.model);
+    print("-->"+build.androidId);
+    print("-->"+build.type);
+    print("-->"+build.version.release.toString());
+    print("-->"+build.device);
+
+    model.logInRequest = UserLogInRequest(
+        phoneNumberController.text.toString(),
+        passwordController.text.toString(),
+        "Android",
+        build.androidId.toString(),
+        DEVICE_TOKEN.toString(),
+    );
+
+
+
+    model.callUserLogIn(model.logInRequest!);
+    /* model.addApns=AddApns("testmobile","1.0",build.androidId,await App.getToken(),build.model,build.device,build.version.release.toString(),"Android");
+    model.callApns(model.addApns);*/
+    print("=====DeviceId====="+build.androidId);
+    Shared_Preferences.prefSetString(App.KEY_DEVICE_ID,build.androidId);
+    Shared_Preferences.prefSetString(App.KEY_DEVICE_TYPE,"Android");
+  }
+
+  _readIosDeviceInfo(IosDeviceInfo data) {
+    print("-->"+data.model);
+    print("-->"+data.name);
+    print("-->"+data.systemVersion);
+    print("-->"+data.utsname.version);
+    print("-->"+data.systemName);
+    print("-->"+data.identifierForVendor);
+    model.logInRequest = UserLogInRequest(
+        phoneNumberController.text.toString(),
+        passwordController.text.toString(),
+        "Ios",
+        data.identifierForVendor,
+        "xyz321",
+    );
+    model.callUserLogIn(model.logInRequest!);
+    /* model.addApns=AddApns("testmobile", "1.0", data.identifierForVendor,"xyz321", data.name, data.model,  data.systemVersion, "Ios");
+    model.callApns(model.addApns);*/
+    Shared_Preferences.prefSetString(App.KEY_DEVICE_ID,data.identifierForVendor);
+    Shared_Preferences.prefSetString(App.KEY_DEVICE_TYPE,"Ios");
+
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -85,9 +161,10 @@ class LoginScreenState extends State<LoginScreen> {
       child: Column(
         children: [
           TextFormField(
+            keyboardType: TextInputType.number,
             controller: phoneNumberController,
               decoration: InputDecoration(
-                  labelText: "Mobile/Email Adresss",
+                  labelText: "Mobile",
                   fillColor: Colors.black,
                   // border: OutlineInputBorder(
                   //   borderRadius: new BorderRadius.circular(10),
@@ -95,10 +172,9 @@ class LoginScreenState extends State<LoginScreen> {
                   // )
 
               )),
-          const SizedBox(
-            height: 30,
-          ),
+          const SizedBox(height: 20),
           TextFormField(
+            keyboardType: TextInputType.number,
             controller: passwordController,
             decoration: InputDecoration(
                 labelText: "Password",
@@ -117,28 +193,24 @@ class LoginScreenState extends State<LoginScreen> {
   Widget wLoginButton() {
     return GestureDetector(
       onTap: () {
-
-
         if(phoneNumberController.text.isEmpty){
-
-          print("--phone_number_is_empty"
-          );
-
+          print("--phone_number_is_empty");
           // commonToast("Please Enter Mobile or Email Number");
         }else if(passwordController.text.isEmpty){
-
-          print("--Password_number_is_empty"
-          );
+          print("--Password_number_is_empty");
           // commonToast("Please Enter Password");
         }else {
-          loginViewModel.logInRequest =
-              UserLogInRequest(phoneNumberController.text.toString(),
-                  passwordController.text.toString(),
-                  "sdfag",
-                  "fwef",
-                  "fraew");
 
-          loginViewModel.callUserLogIn(loginViewModel.logInRequest!);
+
+          initPlatformState();
+          // loginViewModel.logInRequest =
+          //     UserLogInRequest(phoneNumberController.text.toString(),
+          //         passwordController.text.toString(),
+          //         "sdfag",
+          //         "fwef",
+          //         "fraew");
+          //
+          // loginViewModel.callUserLogIn(loginViewModel.logInRequest!);
         }
         // Navigator.pushNamed(context, UtilRoutes.HomeScreen);
       },
@@ -162,7 +234,9 @@ class LoginScreenState extends State<LoginScreen> {
 
   Widget wForgetPassword() {
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        Navigator.push(context, MaterialPageRoute(builder: (context) => ForgotPasswordScreen()));
+      },
       child: const Text(
         "Forget Password ? ",
         style: TextStyle(

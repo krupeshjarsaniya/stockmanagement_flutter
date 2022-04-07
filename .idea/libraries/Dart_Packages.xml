@@ -51,6 +51,20 @@
             </list>
           </value>
         </entry>
+        <entry key="device_info">
+          <value>
+            <list>
+              <option value="$PROJECT_DIR$/../../flutter-2.2.0/.pub-cache/hosted/pub.dartlang.org/device_info-2.0.3/lib" />
+            </list>
+          </value>
+        </entry>
+        <entry key="device_info_platform_interface">
+          <value>
+            <list>
+              <option value="$PROJECT_DIR$/../../flutter-2.2.0/.pub-cache/hosted/pub.dartlang.org/device_info_platform_interface-2.0.1/lib" />
+            </list>
+          </value>
+        </entry>
         <entry key="fake_async">
           <value>
             <list>
@@ -110,7 +124,7 @@
         <entry key="firebase_messaging_platform_interface">
           <value>
             <list>
-              <option value="$PROJECT_DIR$/../../flutter-2.2.0/.pub-cache/hosted/pub.dartlang.org/firebase_messaging_platform_interface-3.2.0/lib" />
+              <option value="$PROJECT_DIR$/../../flutter-2.2.0/.pub-cache/hosted/pub.dartlang.org/firebase_messaging_platform_interface-3.1.6/lib" />
             </list>
           </value>
         </entry>
@@ -362,6 +376,8 @@
       <root url="file://$PROJECT_DIR$/../../flutter-2.2.0/.pub-cache/hosted/pub.dartlang.org/clock-1.1.0/lib" />
       <root url="file://$PROJECT_DIR$/../../flutter-2.2.0/.pub-cache/hosted/pub.dartlang.org/collection-1.15.0/lib" />
       <root url="file://$PROJECT_DIR$/../../flutter-2.2.0/.pub-cache/hosted/pub.dartlang.org/cupertino_icons-1.0.3/lib" />
+      <root url="file://$PROJECT_DIR$/../../flutter-2.2.0/.pub-cache/hosted/pub.dartlang.org/device_info-2.0.3/lib" />
+      <root url="file://$PROJECT_DIR$/../../flutter-2.2.0/.pub-cache/hosted/pub.dartlang.org/device_info_platform_interface-2.0.1/lib" />
       <root url="file://$PROJECT_DIR$/../../flutter-2.2.0/.pub-cache/hosted/pub.dartlang.org/fake_async-1.2.0/lib" />
       <root url="file://$PROJECT_DIR$/../../flutter-2.2.0/.pub-cache/hosted/pub.dartlang.org/firebase_auth-3.3.8/lib" />
       <root url="file://$PROJECT_DIR$/../../flutter-2.2.0/.pub-cache/hosted/pub.dartlang.org/firebase_auth_platform_interface-6.2.0/lib" />
@@ -370,7 +386,7 @@
       <root url="file://$PROJECT_DIR$/../../flutter-2.2.0/.pub-cache/hosted/pub.dartlang.org/firebase_core_platform_interface-4.2.4/lib" />
       <root url="file://$PROJECT_DIR$/../../flutter-2.2.0/.pub-cache/hosted/pub.dartlang.org/firebase_core_web-1.6.0/lib" />
       <root url="file://$PROJECT_DIR$/../../flutter-2.2.0/.pub-cache/hosted/pub.dartlang.org/firebase_messaging-11.2.7/lib" />
-      <root url="file://$PROJECT_DIR$/../../flutter-2.2.0/.pub-cache/hosted/pub.dartlang.org/firebase_messaging_platform_interface-3.2.0/lib" />
+      <root url="file://$PROJECT_DIR$/../../flutter-2.2.0/.pub-cache/hosted/pub.dartlang.org/firebase_messaging_platform_interface-3.1.6/lib" />
       <root url="file://$PROJECT_DIR$/../../flutter-2.2.0/.pub-cache/hosted/pub.dartlang.org/firebase_messaging_web-2.2.8/lib" />
       <root url="file://$PROJECT_DIR$/../../flutter-2.2.0/.pub-cache/hosted/pub.dartlang.org/flutter_lints-1.0.4/lib" />
       <root url="file://$PROJECT_DIR$/../../flutter-2.2.0/.pub-cache/hosted/pub.dartlang.org/http-0.13.3/lib" />

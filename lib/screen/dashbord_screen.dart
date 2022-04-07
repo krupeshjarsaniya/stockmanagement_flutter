@@ -3,15 +3,31 @@ import 'package:flutter/services.dart';
 import 'package:stoke_management/utills/color_constant.dart';
 import 'package:stoke_management/utills/appbar_title_text.dart';
 import 'package:stoke_management/utills/utils_routes.dart';
+import 'package:stoke_management/view_model/dashboard_viewmodel.dart';
 
 class DashBordScreen extends StatefulWidget {
   const DashBordScreen({Key? key}) : super(key: key);
 
   @override
-  _DashBordScreenState createState() => _DashBordScreenState();
+  DashBordScreenState createState() => DashBordScreenState();
 }
 
-class _DashBordScreenState extends State<DashBordScreen> {
+class DashBordScreenState extends State<DashBordScreen> {
+
+  late DashBoardViewModel model;
+
+
+  @override
+  void initState() {
+    super.initState();
+    // scrollController.addListener(pagination);
+    Future.delayed(Duration.zero, () {
+      /*model ??*/ (model = DashBoardViewModel(this));
+    });
+  }
+
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

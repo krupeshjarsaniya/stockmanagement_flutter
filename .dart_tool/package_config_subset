@@ -30,6 +30,14 @@ cupertino_icons
 2.12
 file:///Users/mymac/Documents/flutter-2.2.0/.pub-cache/hosted/pub.dartlang.org/cupertino_icons-1.0.3/
 file:///Users/mymac/Documents/flutter-2.2.0/.pub-cache/hosted/pub.dartlang.org/cupertino_icons-1.0.3/lib/
+device_info
+2.12
+file:///Users/mymac/Documents/flutter-2.2.0/.pub-cache/hosted/pub.dartlang.org/device_info-2.0.3/
+file:///Users/mymac/Documents/flutter-2.2.0/.pub-cache/hosted/pub.dartlang.org/device_info-2.0.3/lib/
+device_info_platform_interface
+2.12
+file:///Users/mymac/Documents/flutter-2.2.0/.pub-cache/hosted/pub.dartlang.org/device_info_platform_interface-2.0.1/
+file:///Users/mymac/Documents/flutter-2.2.0/.pub-cache/hosted/pub.dartlang.org/device_info_platform_interface-2.0.1/lib/
 fake_async
 2.12
 file:///Users/mymac/Documents/flutter-2.2.0/.pub-cache/hosted/pub.dartlang.org/fake_async-1.2.0/
@@ -64,8 +72,8 @@ file:///Users/mymac/Documents/flutter-2.2.0/.pub-cache/hosted/pub.dartlang.org/f
 file:///Users/mymac/Documents/flutter-2.2.0/.pub-cache/hosted/pub.dartlang.org/firebase_messaging-11.2.7/lib/
 firebase_messaging_platform_interface
 2.12
-file:///Users/mymac/Documents/flutter-2.2.0/.pub-cache/hosted/pub.dartlang.org/firebase_messaging_platform_interface-3.2.0/
-file:///Users/mymac/Documents/flutter-2.2.0/.pub-cache/hosted/pub.dartlang.org/firebase_messaging_platform_interface-3.2.0/lib/
+file:///Users/mymac/Documents/flutter-2.2.0/.pub-cache/hosted/pub.dartlang.org/firebase_messaging_platform_interface-3.1.6/
+file:///Users/mymac/Documents/flutter-2.2.0/.pub-cache/hosted/pub.dartlang.org/firebase_messaging_platform_interface-3.1.6/lib/
 firebase_messaging_web
 2.12
 file:///Users/mymac/Documents/flutter-2.2.0/.pub-cache/hosted/pub.dartlang.org/firebase_messaging_web-2.2.8/

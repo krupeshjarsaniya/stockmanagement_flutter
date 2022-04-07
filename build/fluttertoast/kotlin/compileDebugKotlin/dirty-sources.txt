@@ -1,2 +1,0 @@
-/Users/mymac/Documents/flutter-2.2.0/.pub-cache/hosted/pub.dartlang.org/fluttertoast-8.0.9/android/src/main/kotlin/io/github/ponnamkarthik/toast/fluttertoast/FlutterToastPlugin.kt
-/Users/mymac/Documents/flutter-2.2.0/.pub-cache/hosted/pub.dartlang.org/fluttertoast-8.0.9/android/src/main/kotlin/io/github/ponnamkarthik/toast/fluttertoast/MethodCallHandlerImpl.kt
