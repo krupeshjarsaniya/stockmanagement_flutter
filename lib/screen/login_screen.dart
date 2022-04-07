@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:stoke_management/model/api_request/login_request.dart';
@@ -11,8 +10,6 @@ import 'package:stoke_management/utills/utils_routes.dart';
 import 'package:stoke_management/view_model/login_view_model.dart';
 import 'package:device_info/device_info.dart';
 import '../app.dart';
-import 'forgot_password_screen.dart';
-
 // import 'package:stoke_management/widgets/common_toast.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -30,7 +27,6 @@ class LoginScreenState extends State<LoginScreen> {
   late LoginViewModel model;
   DeviceInfoPlugin deviceInfoPlugin = DeviceInfoPlugin();
   String DEVICE_ID = "";
-  LoginViewModel? model;
 
   @override
   void initState() {

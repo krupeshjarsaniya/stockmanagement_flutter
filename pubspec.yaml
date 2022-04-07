@@ -40,10 +40,6 @@ dependencies:
   device_info: ^2.0.3
 
 #  fluttertoast: "8.0.9"
-  page_transition: 1.1.7+6
-  sqflite:
-  path_provider:
-  intl: 0.17.0
   http: 0.13.3
 
 

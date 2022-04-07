@@ -151,18 +151,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-<<<<<<< HEAD
   flutter_web_plugins:
     dependency: transitive
     description: flutter
     source: sdk
     version: "0.0.0"
   http:
-    dependency: "direct dev"
-=======
-  http:
     dependency: "direct main"
->>>>>>> development
     description:
       name: http
       url: "https://pub.dartlang.org"
@@ -258,20 +253,8 @@ packages:
       name: shared_preferences
       url: "https://pub.dartlang.org"
     source: hosted
-<<<<<<< HEAD
     version: "0.5.7+3"
   shared_preferences_macos:
-=======
-    version: "0.0.5"
-  pedantic:
-    dependency: transitive
-    description:
-      name: pedantic
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.11.1"
-  platform:
->>>>>>> development
     dependency: transitive
     description:
       name: shared_preferences_macos
@@ -375,5 +358,5 @@ packages:
     source: hosted
     version: "2.1.0"
 sdks:
-  dart: ">=2.12.0 <3.0.0"
+  dart: ">=2.13.0 <3.0.0"
   flutter: ">=1.22.2"
