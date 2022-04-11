@@ -50,13 +50,47 @@ class VendorDetailsViewModel {
         state!.creditList = vepariStockListModel!.credit;
         state!.debitList = vepariStockListModel!.debit;
       });
+      dashBordRequest = DashBordRequest(state!.user_id_str.toString(),state!.token_str.toString(),state!.deviceType_str.toString(),state!.deviceuid_str.toString());
+      callDashBordWithOutLoader(dashBordRequest!);
     }
     print("==========VepariList Api Responce=========="+vepariStockListModel.toString());
   }
 
+  callVepariStockModelLoader(VepariStockListRequest vepariStockListRequest) async {
+    print("==========callVepariListModel=======");
+    vepariStockListModel = await interceptorApi!.callVepariStockModelLoader(vepariStockListRequest);
+    if(vepariStockListModel != null){
+      state!.setState(() {
+        state!.creditList = vepariStockListModel!.credit;
+        state!.debitList = vepariStockListModel!.debit;
+      });
+      dashBordRequest = DashBordRequest(state!.user_id_str.toString(),state!.token_str.toString(),state!.deviceType_str.toString(),state!.deviceuid_str.toString());
+      callDashBordWithOutLoader(dashBordRequest!);
+    }
+    print("==========VepariList Api Responce=========="+vepariStockListModel.toString());
+  }
+
+
+
+
+
+
   callDashBord(DashBordRequest dashBordRequest) async {
     print("==========Edit Vepari==========" + dashBordRequest.toString());
     dashBordModel = (await interceptorApi!.callDashBord(dashBordRequest));
+    if (dashBordModel != null) {
+      state!.setState(() {
+        print("------a----");
+
+        state!.dashBordModel = dashBordModel!;
+      });
+      print("==========Edit Vendor Api Responce==========" + dashBordModel.toString());
+    }
+  }
+
+  callDashBordWithOutLoader(DashBordRequest dashBordRequest) async {
+    print("==========Edit Vepari==========" + dashBordRequest.toString());
+    dashBordModel = (await interceptorApi!.callDashBordWithOutLoader(dashBordRequest));
     if (dashBordModel != null) {
       state!.setState(() {
         state!.dashBordModel = dashBordModel!;
@@ -82,7 +116,17 @@ class VendorDetailsViewModel {
     print("==========callUserRegister=======");
     stockDeleteModel = (await interceptorApi!.callDeleteStock(deleteStockRequest));
     if(stockDeleteModel != null){
+      if(stockDeleteModel!.success!){
 
+        state!.setState(() {
+          // state!.creditList!.clear();
+          // state!.debitList!.clear();
+        });
+        vepariStockListRequest = VepariStockListRequest(state!.widget.vepariId.toString(), state!.user_id_str.toString(), state!.from_str.toString(), state!.to_str.toString(), state!.deviceType_str.toString(), state!.deviceuid_str.toString(), state!.token_str.toString());
+        callVepariStockModelLoader(vepariStockListRequest!);
+        // dashBordRequest = DashBordRequest(state!.user_id_str.toString(),state!.token_str.toString(),state!.deviceType_str.toString(),state!.deviceuid_str.toString());
+        // callDashBord(dashBordRequest!);
+      }
     }else{
       print("-----user--first-login---");
     }

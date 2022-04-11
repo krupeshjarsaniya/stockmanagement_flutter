@@ -5,6 +5,7 @@ import 'package:stoke_management/utills/color_constant.dart';
 import 'package:stoke_management/utills/appbar_title_text.dart';
 import 'package:store_redirect/store_redirect.dart';
 import 'package:share_plus/share_plus.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class MoreScreen extends StatefulWidget {
   const MoreScreen({Key? key}) : super(key: key);
@@ -113,6 +114,7 @@ class _MoreScreenState extends State<MoreScreen> {
   Widget w_payment(){
     return InkWell(
       onTap: (){
+        launch("tel://9925755626");
         // Navigator.push(context, CupertinoPageRoute(builder: (context) => EditProfile()));
       },
       child: Container(

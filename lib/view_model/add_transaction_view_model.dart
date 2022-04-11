@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:stoke_management/model/api_request/add_transaction_request.dart';
 import 'package:stoke_management/model/api_response/add_transaction_model.dart';
 import 'package:stoke_management/screen/add_transaction.dart';
@@ -20,7 +21,7 @@ class AddTransactionViewModel {
     if(addTransactionModel != null){
       if(addTransactionModel!.success!){
         // await Shared_Preferences.prefSetString(App.KEY_USER_ID,loginModel!.items![0].userId.toString());
-        // Navigator.pushReplacementNamed(state!.context, UtilRoutes.HomeScreen);
+        Navigator.of(state!.context).pop();
       }
     }else{
     }

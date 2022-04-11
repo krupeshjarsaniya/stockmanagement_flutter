@@ -3,6 +3,7 @@ import 'dart:ffi';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
+import 'package:stoke_management/model/api_request/delete_stoke_request.dart';
 import 'package:stoke_management/model/api_request/edit_stocks_request.dart';
 import 'package:stoke_management/utills/appbar_title_text.dart';
 import 'package:stoke_management/utills/color_constant.dart';
@@ -31,7 +32,7 @@ class EditTransactionScreen extends StatefulWidget {
 
 class EditTransactionScreenState extends State<EditTransactionScreen> {
 
-  EditStocksViewModel? model;
+  late EditStocksViewModel model;
 
   DateTime selectedDateFrom = DateTime.now();
   DateTime selectedDateTo = DateTime.now();
@@ -65,7 +66,10 @@ class EditTransactionScreenState extends State<EditTransactionScreen> {
           appBar: AppBar(
             actions: [
               IconButton(
-                  onPressed: (){},
+                  onPressed: (){
+                    model.deleteStockRequest = DeleteStockRequest(widget.stock_id.toString());
+                    model.callDeleteStock(model.deleteStockRequest!);
+                  },
                   icon: Icon(Icons.delete))
             ],
               automaticallyImplyLeading: true,
@@ -250,7 +254,7 @@ class EditTransactionScreenState extends State<EditTransactionScreen> {
                             else {
 
                               if(creditTab == true){
-                                model!.editStocksRequest = EditStocksRequest(
+                                model.editStocksRequest = EditStocksRequest(
                                   widget.stock_id.toString(),
                                   USER_ID.toString(),
                                   "credit",
@@ -264,7 +268,7 @@ class EditTransactionScreenState extends State<EditTransactionScreen> {
                                 );
 
                               }else{
-                                model!.editStocksRequest = EditStocksRequest(
+                                model.editStocksRequest = EditStocksRequest(
                                   widget.stock_id.toString(),
                                   USER_ID.toString(),
                                   "debit",
@@ -277,11 +281,9 @@ class EditTransactionScreenState extends State<EditTransactionScreen> {
 
                                 );
                               }
-
-
-                              model!.callEditStocks(model!.editStocksRequest!);
+                              model.callEditStocks(model.editStocksRequest!);
                               print(
-                                  "==================" + model!.editStocksRequest.toString());
+                                  "==================" + model.editStocksRequest.toString());
                             }
                           },
                           child: Container(

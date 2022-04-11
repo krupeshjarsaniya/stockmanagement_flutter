@@ -3,6 +3,7 @@ import 'package:stoke_management/model/api_request/change_password_request.dart'
 import 'package:stoke_management/model/api_response/change_password_model.dart';
 import 'package:stoke_management/screen/change_password.dart';
 import 'package:stoke_management/services/interceptor_api.dart';
+import 'package:stoke_management/widgets/common_toast.dart';
 
 class ChangePasswordViewModel {
   ChangePasswordState? state;
@@ -20,8 +21,11 @@ class ChangePasswordViewModel {
     changePasswordModel = (await interceptorApi!.callChangePassword(changePasswordRequest));
     if(changePasswordModel != null){
       if(changePasswordModel!.success!){
+        commonToast(changePasswordModel!.message.toString());
         Navigator.of(state!.context).pop();
       }
+      commonToast(changePasswordModel!.message.toString());
+
     }else{
       print("-----else---");
     }

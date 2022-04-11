@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:stoke_management/model/api_request/register_request.dart';
 import 'package:stoke_management/utills/color_constant.dart';
 import 'package:stoke_management/view_model/register_view_model.dart';
+import 'package:stoke_management/widgets/common_toast.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({Key? key}) : super(key: key);
@@ -12,11 +14,7 @@ class RegisterScreen extends StatefulWidget {
 }
 
 class RegisterScreenState extends State<RegisterScreen> {
-
-
-
   late RegisterViewModel viewModel;
-
   @override
   void initState() {
     super.initState();
@@ -120,6 +118,9 @@ class RegisterScreenState extends State<RegisterScreen> {
           TextFormField(
               keyboardType: TextInputType.number,
               controller: mobileController,
+              inputFormatters: [
+                new LengthLimitingTextInputFormatter(10),
+              ],
               decoration: InputDecoration(
                 contentPadding: EdgeInsets.only(top:0.0,bottom:0.0),
                 alignLabelWithHint: true,
@@ -165,11 +166,34 @@ class RegisterScreenState extends State<RegisterScreen> {
     return InkWell(
       onTap: () {
         if(firstNameController.text.isEmpty){
+
+          print("------------");
+          commonToast("Please Enter First Name");
+
+          //
+          // Fluttertoast.showToast(
+          //     msg: "Hi Codesinsider !!",
+          //     toastLength: Toast.LENGTH_SHORT,
+          //     fontSize: 20,
+          //     textColor: Colors.white
+          // );
         }else if(lastNameController.text.isEmpty){
+          commonToast("Please Enter Last Name");
+
         }else if(mobileController.text.isEmpty){
+          commonToast("Please Enter Mobile Number");
+
         }else if(emailController.text.isEmpty){
+          commonToast("Please Enter Email");
+
         }else if(passwordController.text.isEmpty){
+          commonToast("Please Enter Password");
+        }else if(mobileController.text.length == 10){
+          commonToast("Please Enter Valid Mobile Number");
         }else if(conformPasswordController.text.isEmpty){
+          commonToast("Please Enter Confirm Password");
+        }else if(conformPasswordController.text != passwordController.text){
+          commonToast("Password Does Not Match");
         }else {
           viewModel.userRegisterRequest = UserRegisterRequest(
               firstNameController.text.toString(),

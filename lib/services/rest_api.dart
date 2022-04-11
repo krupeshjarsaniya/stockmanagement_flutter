@@ -107,36 +107,38 @@ class RestApi {
     }
   }
 
-
-  Future<Response?> callVepariStockList(String userId,String vepariId) async {
-    String url = App.baseUrl + App.vepari_stock_list;
-   showLoader(_context);
-    Response response;
-    try {
-
-      print("===========Map=====userId=====" + userId.toString());
-      print("===========Map======vepariId====" + vepariId.toString());
-
-      response = await http.post(
-          Uri.parse(url), headers: {App.HeaderName : App.HeaderValue},
-          body: {"user_id": userId.toString(),"vepari_id": vepariId.toString()});
-     hideLoader();
-      print('Response request: ${response.request}');
-      print('Response status: ${response.statusCode}');
-      print('Response body: ${response.body}');
-      return response;
-    } catch (e) {
-      print("===EXCEPTION==="  + e.toString());
-
-     hideLoader();
-      return null;
-    }
-  }
+  //
+  // Future<Response?> callVepariStockList(String userId,String vepariId) async {
+  //   String url = App.baseUrl + App.vepari_stock_list;
+  //  showLoader(_context);
+  //   Response response;
+  //   try {
+  //
+  //     print("===========Map=====userId=====" + userId.toString());
+  //     print("===========Map======vepariId====" + vepariId.toString());
+  //
+  //     response = await http.post(
+  //         Uri.parse(url), headers: {App.HeaderName : App.HeaderValue},
+  //         body: {"user_id": userId.toString(),"vepari_id": vepariId.toString()});
+  //    hideLoader();
+  //     print('Response request: ${response.request}');
+  //     print('Response status: ${response.statusCode}');
+  //     print('Response body: ${response.body}');
+  //     return response;
+  //   } catch (e) {
+  //     print("===EXCEPTION==="  + e.toString());
+  //
+  //    hideLoader();
+  //     return null;
+  //   }
+  // }
 
 
   Future<Response?> callAddVendor(AddVepariRequest vepariRequest) async {
     String url = App.baseUrl + App.vepari_add;
     Response response;
+    showLoader(_context);
+
     /*try {
       d.FormData formData = d.FormData();
       if(vepariRequest.image != null){
@@ -192,14 +194,14 @@ class RestApi {
           body:
           //{"vepari_data" : vepariRequest.toMap().toString()});
           {"vepari_data" : vepariRequest.toMap().toString()});
-      //  hideLoader();
+       hideLoader();
       print('Response request: ${response.request}');
       print('Response status: ${response.statusCode}');
       print('Response body: ${response.body}');
       return response;
     } catch (e) {
       print("===EXCEPTION==="  + e.toString());
-      //  hideLoader();
+       hideLoader();
       return null;
     }
   }
@@ -232,7 +234,6 @@ class RestApi {
   Future<Response?> callEditProfile(EditProfileRequest profileRequest) async {
     String url = App.baseUrl + App.profile_edit;
     showLoader(_context);
-
     Response response;
     try {
       print("===========Map==========" + profileRequest.toMap().toString());
@@ -332,10 +333,8 @@ class RestApi {
 
 Future<Response?> callVepariStockModel(VepariStockListRequest vepariStockListRequest) async {
     String url = App.baseUrl + App.vepari_stock_list;
-    showLoader(_context);
-
     Response response;
-
+    showLoader(_context);
     try {
       print("===========Map=========" + vepariStockListRequest.toMap().toString());
 
@@ -353,6 +352,31 @@ Future<Response?> callVepariStockModel(VepariStockListRequest vepariStockListReq
     } catch (e) {
       print("===EXCEPTION==="  + e.toString());
        hideLoader();
+      return null;
+    }
+  }
+
+Future<Response?> callVepariStockModelLoader(VepariStockListRequest vepariStockListRequest) async {
+    String url = App.baseUrl + App.vepari_stock_list;
+    Response response;
+    // showLoader(_context);
+    try {
+      print("===========Map=========" + vepariStockListRequest.toMap().toString());
+
+      response = await http.post(
+          Uri.parse(url), headers: {App.HeaderName : App.HeaderValue},
+          body:vepariStockListRequest.toMap());
+
+      // {"vepari_data" : editVendorRequest.toMap().toString()}
+
+       // hideLoader();
+      print('Response request: ${response.request}');
+      print('Response status: ${response.statusCode}');
+      print('Response body: ${response.body}');
+      return response;
+    } catch (e) {
+      print("===EXCEPTION==="  + e.toString());
+       // hideLoader();
       return null;
     }
   }
@@ -388,7 +412,7 @@ Future<Response?> callVepariStockModel(VepariStockListRequest vepariStockListReq
 
   Future<Response?> callDeleteStock(DeleteStockRequest deleteStockRequest) async {
     String url = App.baseUrl + App.stock_delete;
-    showLoader(_context);
+    // showLoader(_context);
     Response response;
     try {
       print("===========Map=====stockId=====" + deleteStockRequest.toMap().toString());
@@ -399,7 +423,7 @@ Future<Response?> callVepariStockModel(VepariStockListRequest vepariStockListReq
           // body: {"stock_delete_data": '[{'+ "stock_id" +  '"'+stockId.toString()+'"'+'}]'
           body: {"stock_delete_data" : '['+deleteStockRequest.toMap().toString()+']' });
 
-       hideLoader();
+       // hideLoader();
       print('Response request: ${response.request}');
       print('Response status: ${response.statusCode}');
       print('Response body: ${response.body}');
@@ -407,7 +431,7 @@ Future<Response?> callVepariStockModel(VepariStockListRequest vepariStockListReq
     } catch (e) {
       print("===EXCEPTION==="  + e.toString());
 
-       hideLoader();
+       // hideLoader();
       return null;
     }
   }
@@ -505,6 +529,50 @@ Future<Response?> callVepariStockModel(VepariStockListRequest vepariStockListReq
 
   Future<Response?> callDashBord(DashBordRequest dashBordRequest) async {
     String url = App.baseUrl + App.dashboard;
+    // showLoader(_context);
+    Response response;
+    try {
+      print("===========Map==========" + dashBordRequest.toMap().toString());
+
+      response = await http.post(
+          Uri.parse(url), headers: {App.HeaderName : App.HeaderValue},
+          body: dashBordRequest.toMap());
+       // hideLoader();
+      print('Response request: ${response.request}');
+      print('Response status: ${response.statusCode}');
+      print('Response body: ${response.body}');
+      // return response;
+    } catch (e) {
+      print("===EXCEPTION==="  + e.toString());
+       hideLoader();
+      return null;
+    }
+  }
+
+ Future<Response?> callDashBordModel(DashBordRequest dashBordRequest) async {
+    String url = App.baseUrl + App.dashboard;
+    // showLoader(_context);
+    Response response;
+    try {
+      print("===========Map==========" + dashBordRequest.toMap().toString());
+
+      response = await http.post(
+          Uri.parse(url), headers: {App.HeaderName : App.HeaderValue},
+          body: dashBordRequest.toMap());
+       // hideLoader();
+      print('Response request: ${response.request}');
+      print('Response status: ${response.statusCode}');
+      print('Response body: ${response.body}');
+      // return response;
+    } catch (e) {
+      print("===EXCEPTION==="  + e.toString());
+       hideLoader();
+      return null;
+    }
+  }
+
+  Future<Response?> callDashBordWithOutLoader(DashBordRequest dashBordRequest) async {
+    String url = App.baseUrl + App.dashboard;
     showLoader(_context);
     Response response;
     try {
@@ -513,6 +581,27 @@ Future<Response?> callVepariStockModel(VepariStockListRequest vepariStockListReq
       response = await http.post(
           Uri.parse(url), headers: {App.HeaderName : App.HeaderValue},
           body: dashBordRequest.toMap());
+      hideLoader();
+      print('Response request: ${response.request}');
+      print('Response status: ${response.statusCode}');
+      print('Response body: ${response.body}');
+      return response;
+    } catch (e) {
+      print("===EXCEPTION==="  + e.toString());
+      hideLoader();
+      return null;
+    }
+  }
+
+
+  Future<Response?> callStockList(String user_id) async {
+    String url = App.baseUrl + App.text_stock_list;
+    showLoader(_context);
+    Response response;
+    try {
+      response = await http.post(
+          Uri.parse(url), headers: {App.HeaderName : App.HeaderValue},
+          body: {"user_id" : user_id.toString()});
        hideLoader();
       print('Response request: ${response.request}');
       print('Response status: ${response.statusCode}');
@@ -525,6 +614,26 @@ Future<Response?> callVepariStockModel(VepariStockListRequest vepariStockListReq
     }
   }
 
+
+  Future<Response?> callForgotPassword(String user_id) async {
+    String url = App.baseUrl + App.forgot_password;
+    showLoader(_context);
+    Response response;
+    try {
+      response = await http.post(
+          Uri.parse(url), headers: {App.HeaderName : App.HeaderValue},
+          body: {"email" : user_id.toString()});
+       hideLoader();
+      print('Response request: ${response.request}');
+      print('Response status: ${response.statusCode}');
+      print('Response body: ${response.body}');
+      return response;
+    } catch (e) {
+      print("===EXCEPTION==="  + e.toString());
+       hideLoader();
+      return null;
+    }
+  }
 
 
 }

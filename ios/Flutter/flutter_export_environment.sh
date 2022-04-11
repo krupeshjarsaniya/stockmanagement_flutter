@@ -1,10 +1,6 @@
 #!/bin/sh
 # This is a generated file; do not edit or check into version control.
-<<<<<<< HEAD
 export "FLUTTER_ROOT=/Users/mymac/Documents/flutter-2.2.0"
-=======
-export "FLUTTER_ROOT=/Users/mymac/Documents/MyFlutter/flutter"
->>>>>>> development
 export "FLUTTER_APPLICATION_PATH=/Users/mymac/Documents/GitHub/stockmanagement_flutter"
 export "COCOAPODS_PARALLEL_CODE_SIGN=true"
 export "FLUTTER_TARGET=lib/main.dart"

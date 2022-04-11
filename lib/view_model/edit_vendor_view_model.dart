@@ -1,8 +1,10 @@
 
+import 'package:flutter/cupertino.dart';
 import 'package:stoke_management/model/api_request/edit_vendor_request.dart';
 import 'package:stoke_management/model/api_response/edit_vendor_model.dart';
 import 'package:stoke_management/screen/edit_vendor.dart';
 import 'package:stoke_management/services/interceptor_api.dart';
+import 'package:stoke_management/widgets/common_toast.dart';
 
 class EditVendorViewModel {
   EditVendorState? state;
@@ -20,10 +22,10 @@ class EditVendorViewModel {
     print("==========Edit Vepari==========" + editVendorRequest.toString());
     editVendorModel = (await interceptorApi!.callEditVendor(editVendorRequest));
     if (editVendorModel != null) {
-      /*state!.setState(() {
-        state!.item = vepariModel!.items;
-      });*/
-      // Navigator.pushReplacementNamed(state!.context, UtilRoutes.HomeScreen);
+      if(editVendorModel!.success!){
+        commonToast(editVendorModel!.message.toString());
+        Navigator.of(state!.context).pop();
+      }
       print("==========Edit Vendor Api Responce==========" + editVendorModel.toString());
     }
   }

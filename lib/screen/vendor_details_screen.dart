@@ -17,6 +17,7 @@ import '../app.dart';
 import 'add_transaction.dart';
 import 'edit_transaction_screen.dart';
 import 'edit_vendor.dart';
+import 'note_screen.dart';
 
 class VenderDetailsScreen extends StatefulWidget {
   String? vepariId;
@@ -75,6 +76,15 @@ class VenderDetailsScreenState extends State<VenderDetailsScreen> {
   }
 
 
+  @override
+  void dispose() {
+    super.dispose();
+
+    // setState(() {
+      delete_list_credit.clear();
+      delete_list_debit.clear();
+    // });
+  }
 
 
   Future<Void?> init() async {
@@ -86,13 +96,10 @@ class VenderDetailsScreenState extends State<VenderDetailsScreen> {
     print("----userId---" + userId.toString());
 
     setState(() {
-
       _txtControllerDateFrom = TextEditingController(text: "${selectedDateFrom.day}/${selectedDateFrom.month}/${selectedDateFrom.year}" );
       _txtControllerDateFrom.selection = TextSelection.fromPosition(TextPosition(offset: _txtControllerDateFrom.text.length));
-
       _txtControllerDateTo = TextEditingController(text: "${selectedDateTo.day}/${selectedDateTo.month}/${selectedDateTo.year}" );
       _txtControllerDateTo.selection = TextSelection.fromPosition(TextPosition(offset: _txtControllerDateTo.text.length));
-
       vepari_id_str = widget.vepariId.toString();
       user_id_str = userId.toString();
       from_str = _txtControllerDateFrom.text.toString();
@@ -115,13 +122,6 @@ class VenderDetailsScreenState extends State<VenderDetailsScreen> {
             elevation: 0,
             title: GestureDetector(onTap : (){
 
-              // String? vepariId;
-              // String? first_name;
-              // String? last_name;
-              // String? mobile;
-              // String? company_name;
-              // String? address;
-              // String? email;
               Navigator.push(context, MaterialPageRoute(builder: (context) =>
 
                   EditVendor(vepariId: widget.vepariId.toString(),
@@ -160,22 +160,36 @@ class VenderDetailsScreenState extends State<VenderDetailsScreen> {
 
               }, icon: Icon(Icons.wifi_protected_setup_sharp,)),
               IconButton(onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => AddTransactionScreen(
-                    vepariId: widget.vepariId.toString(),
-                    first_name: widget.first_name.toString(),
-                    last_name: widget.last_name.toString(),
-                    mobile: widget.mobile.toString(),
-                    company_name: widget.company_name.toString(),
-                    address: widget.address.toString(),
-                    email: widget.email.toString()
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => AddTransactionScreen(
+                      vepariId: widget.vepariId.toString(),
+                      first_name: widget.first_name.toString(),
+                      last_name: widget.last_name.toString(),
+                      mobile: widget.mobile.toString(),
+                      company_name: widget.company_name.toString(),
+                      address: widget.address.toString(),
+                      email: widget.email.toString()
 
-                )));
+                  )),
+                ).then((data){
+                  // then will return value when the loginScreen's pop is called.
+                  debugPrint(data);
 
-
+                  setState(() {
+                    // creditList!.clear();
+                    // debitList!.clear();
+                  });
+                  viewModel.vepariStockListRequest = VepariStockListRequest(widget.vepariId.toString(), user_id_str.toString(), _txtControllerDateFrom.text.toString(), _txtControllerDateTo.text.toString(), deviceType_str.toString(), deviceuid_str.toString(), token_str.toString());
+                  viewModel.callVepariStockModel(viewModel.vepariStockListRequest!);
+                  print("------a-----");
+                });
               }, icon: Icon(Icons.add,)),
               Padding(
                 padding:  EdgeInsets.only(right: 10),
-                child: IconButton(onPressed: () {}, icon: Icon(Icons.assignment_outlined,)),
+                child: IconButton(onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => NoteScreen()));
+                }, icon: Icon(Icons.assignment_outlined,)),
               ),
             ],
 
@@ -211,37 +225,44 @@ class VenderDetailsScreenState extends State<VenderDetailsScreen> {
                                   child:
                                   GestureDetector(onTap:(){
 
+                                    showDialog<String>(
+                                      context: context,
+                                      builder: (BuildContext context)
+                                      {
+                                        return AlertDialog(
+                                        title: const Text('Alert!'),
+                                        content: const Text('Are you sure want to delete ?'),
+                                        actions: <Widget>[
+                                          TextButton(
+                                            onPressed: () { return Navigator.pop(context, 'Cancel');},
+                                            child: const Text('Cancel'),
+                                          ),
+                                          TextButton(
+                                            onPressed: () {
+                                              if(delete_list_credit != null && !delete_list_credit.isEmpty){
+                                                for(int i = 0 ; i< delete_list_credit.length; i++){
+                                                  var id  = delete_list_credit[i];
+                                                  viewModel.deleteStockRequest = DeleteStockRequest(id);
+                                                  viewModel.callDeleteStock(viewModel.deleteStockRequest!);
+                                                }
+                                                Navigator.pop(context, 'Cancel');
 
-
-
-                                    if(delete_list_credit != null && !delete_list_credit.isEmpty){
-
-                                      for(int i = 0 ; i< delete_list_credit.length; i++){
-                                        var id  = delete_list_credit[i];
-                                        csvBuilder.write(id);
-                                        csvBuilder.write(SEPARATOR);
+                                                setState(() {
+                                                  delete_list_credit.clear();
+                                                  creditCheck =false;
+                                                });
+                                              }
+                                              else {
+                                                print("---ewaf----");
+                                              }
+                                            },
+                                            child: const Text('OK'),
+                                          ),
+                                        ],
+                                      );
                                       }
-
-                                      var delete_item = csvBuilder.toString() ;
-                                      delete_item = delete_item.substring(
-                                          0, delete_list_credit.length - SEPARATOR.length
-                                      );   //remove last comma
-                                      // viewModel.callDeleteStock(delete_item);
-
-                                      print("--delete_item--");
-                                      print("--delete_item--" + delete_item.toString());
-                                      var newDeItem =  delete_item.replaceAll(",", "");
-                                      viewModel.deleteStockRequest = DeleteStockRequest(newDeItem);
-                                      viewModel.callDeleteStock(viewModel.deleteStockRequest!);
-                                    }
-                                    else {
-                                      print("---ewaf----");
-                                    }
-
+                                    );
                                   }
-
-
-
                                       ,child: Icon(Icons.delete,color: Colors.red,))),
 
                               Theme(
@@ -266,36 +287,22 @@ class VenderDetailsScreenState extends State<VenderDetailsScreen> {
                                         creditCheck = !creditCheck;
 
                                         if(creditCheck) {
-                                          for (int i = 0; i <
-                                              creditList!.length; i++) {
+
+                                          delete_list_credit.clear();
+                                          for (int i = 0; i < creditList!.length; i++) {
                                             creditList![i].isCheck = true;
+                                            setState(() {
+                                              delete_list_credit.add(creditList![i].stockId.toString());
+                                            });
                                           }
                                         }else{
-                                          for (int i = 0; i <
-                                              creditList!.length; i++) {
-
+                                          for (int i = 0; i < creditList!.length; i++) {
                                             setState(() {
-                                              // delete_list_credit.clear();
+                                              delete_list_credit.remove(creditList![i].stockId.toString());
                                             });
                                             creditList![i].isCheck = false;
                                           }
                                         }
-
-                                        // creditCheck = !creditCheck;
-                                        // notificationData[index].isCheck = value!;
-                                        //
-                                        //
-                                        // if(notificationData[index].isCheck == true){
-                                        //   // delete_list.clear();
-                                        //   delete_list.add(notificationData[index].id.toString());
-                                        //   print("----notificationlist------" + delete_list.length.toString());
-                                        //   print("----notificationId------" + notificationData[index].id.toString());
-                                        // }else{
-                                        //   delete_list.remove(notificationData[index].id.toString());
-                                        //   print("----notificationlist------" + delete_list.length.toString());
-                                        //   print("----notificationId------" + notificationData[index].id.toString());
-                                        // }
-
                                       });
                                     },
                                   ),
@@ -330,38 +337,48 @@ class VenderDetailsScreenState extends State<VenderDetailsScreen> {
 
                               Visibility(
                                 visible: delete_list_debit.length != 0 ? true : false,
-                                  child: GestureDetector(
+                                  child:
+                                  GestureDetector(onTap:(){
+                                    showDialog<String>(
+                                        context: context,
+                                        builder: (BuildContext context)
+                                        {
+                                          return AlertDialog(
+                                            title: const Text('Alert!'),
+                                            content: const Text('Are you sure want to delete ?'),
+                                            actions: <Widget>[
+                                              TextButton(
+                                                onPressed: () { return Navigator.pop(context, 'Cancel');},
+                                                child: const Text('Cancel'),
+                                              ),
+                                              TextButton(
+                                                onPressed: () {
+                                                  if(delete_list_debit != null && !delete_list_debit.isEmpty){
+                                                    for(int i = 0 ; i< delete_list_debit.length; i++){
+                                                      var id  = delete_list_debit[i];
+                                                      viewModel.deleteStockRequest = DeleteStockRequest(id);
+                                                      viewModel.callDeleteStock(viewModel.deleteStockRequest!);
+                                                    }
+                                                    Navigator.pop(context, 'Cancel');
 
-                                      onTap: (){
+                                                    setState(() {
+                                                      delete_list_debit.clear();
+                                                      debitCheck =false;
 
-
-                                        if(delete_list_debit != null && !delete_list_debit.isEmpty){
-
-                                          for(int i = 0 ; i< delete_list_debit.length; i++){
-                                            var id  = delete_list_debit[i];
-                                            csvBuilder.write(id);
-                                            csvBuilder.write(SEPARATOR);
-                                          }
-
-                                          var delete_item = csvBuilder.toString() ;
-                                          delete_item = delete_item.substring(
-                                              0, delete_list_debit.length - SEPARATOR.length
-                                          );   //remove last comma
-                                          // viewModel.callDeleteStock(delete_item);
-
-                                          print("--delete_item--");
-                                          print("--delete_item--" + delete_item.toString());
-                                          var newDeItem =  delete_item.replaceAll(",", "");
-                                          viewModel.deleteStockRequest = DeleteStockRequest(newDeItem);
-                                          viewModel.callDeleteStock(viewModel.deleteStockRequest!);
-
+                                                    });
+                                                  }
+                                                  else {
+                                                    print("---ewaf----");
+                                                  }
+                                                },
+                                                child: const Text('OK'),
+                                              ),
+                                            ],
+                                          );
                                         }
-                                        else {
-                                          print("---ewaf----");
-                                        }
-                                      },
-                                      child: Icon(Icons.delete,color: Colors.red,))),
-
+                                    );
+                                  }
+                                      ,child: Icon(Icons.delete,color: Colors.red,))),
 
                               Theme(
                                 data: ThemeData(
@@ -378,43 +395,35 @@ class VenderDetailsScreenState extends State<VenderDetailsScreen> {
                                     checkColor: Colors.white,
                                     activeColor: Colors.amber,
                                     // value: notificationData[index].isCheck,
-                                    value:  debitCheck,
+                                    value: debitCheck,
                                     onChanged: (bool? value) {
                                       setState(() {
                                         debitCheck = !debitCheck;
-
                                         if(debitCheck) {
-                                          for (int i = 0; i <
-                                              debitList!.length; i++) {
+                                          delete_list_debit.clear();
+
+                                          for (int i = 0; i < debitList!.length; i++) {
                                             debitList![i].isCheck = true;
+                                            setState(() {
+                                              delete_list_debit.add(debitList![i].stockId.toString());
+                                            });
                                           }
                                         }else{
-                                          for (int i = 0; i <
-                                              debitList!.length; i++) {
+                                          for (int i = 0; i < debitList!.length; i++) {
+                                            setState(() {
+                                              delete_list_debit.remove(debitList![i].stockId.toString());
+                                            });
                                             debitList![i].isCheck = false;
                                           }
                                         }
-
-
-                                        // notificationData[index].isCheck = value!;
-                                        //
-                                        //
-                                        // if(notificationData[index].isCheck == true){
-                                        //   // delete_list.clear();
-                                        //   delete_list.add(notificationData[index].id.toString());
-                                        //   print("----notificationlist------" + delete_list.length.toString());
-                                        //   print("----notificationId------" + notificationData[index].id.toString());
-                                        // }else{
-                                        //   delete_list.remove(notificationData[index].id.toString());
-                                        //   print("----notificationlist------" + delete_list.length.toString());
-                                        //   print("----notificationId------" + notificationData[index].id.toString());
-                                        // }
-
                                       });
                                     },
                                   ),
                                 ),
                               ),
+
+
+
                             ],
                           ),
                         ),
@@ -447,16 +456,32 @@ class VenderDetailsScreenState extends State<VenderDetailsScreen> {
 
                                       return GestureDetector(
                                         onTap: (){
-                                          Navigator.push(context, MaterialPageRoute(builder: (context) => EditTransactionScreen(
-                                            stock_id: creditList![position].stockId.toString(),
-                                            debit_credit: creditList![position].debitCredit.toString(),
-                                            weight: creditList![position].weight.toString(),
-                                            touch: creditList![position].touch.toString(),
-                                            fine_weight: creditList![position].fineWeight.toString(),
-                                            stock_date: date_to.toString(),
-                                            vepari_id: widget.vepariId.toString(),
-                                            description:creditList![position].description.toString(),
-                                          )));
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(builder: (context) => EditTransactionScreen(
+                                              stock_id: creditList![position].stockId.toString(),
+                                              debit_credit: creditList![position].debitCredit.toString(),
+                                              weight: creditList![position].weight.toString(),
+                                              touch: creditList![position].touch.toString(),
+                                              fine_weight: creditList![position].fineWeight.toString(),
+                                              stock_date: date_to.toString(),
+                                              vepari_id: widget.vepariId.toString(),
+                                              description:creditList![position].description.toString(),
+                                            )),
+                                          ).then((data){
+                                            // then will return value when the loginScreen's pop is called.
+                                            debugPrint(data);
+
+                                            setState(() {
+                                              // creditList!.clear();
+                                              // debitList!.clear();
+                                            });
+                                            viewModel.vepariStockListRequest = VepariStockListRequest(widget.vepariId.toString(), user_id_str.toString(), _txtControllerDateFrom.text.toString(), _txtControllerDateTo.text.toString(), deviceType_str.toString(), deviceuid_str.toString(), token_str.toString());
+                                            viewModel.callVepariStockModel(viewModel.vepariStockListRequest!);
+                                            print("------a-----");
+                                          });
+
+
                                         },
                                         child: Container(
                                           child: Column(
@@ -501,6 +526,13 @@ class VenderDetailsScreenState extends State<VenderDetailsScreen> {
                                                                     delete_list_credit.remove(creditList![position].stockId.toString());
                                                                     print("----notificationlist------" + delete_list_credit.length.toString());
                                                                     print("----notificationId------" + creditList![position].stockId.toString());
+                                                                  }
+
+
+                                                                  if(delete_list_credit.length == 0){
+                                                                    setState(() {
+                                                                      creditCheck = false;
+                                                                    });
                                                                   }
 
                                                                 });
@@ -569,16 +601,30 @@ class VenderDetailsScreenState extends State<VenderDetailsScreen> {
                                   GestureDetector(
                                   onTap: (){
                                     print("---credit_debit---" + debitList![position].debitCredit.toString() );
-                                    Navigator.push(context, MaterialPageRoute(builder: (context) => EditTransactionScreen(
-                                      stock_id: debitList![position].stockId.toString(),
-                                      debit_credit: debitList![position].debitCredit.toString(),
-                                      weight: debitList![position].weight.toString(),
-                                      touch: debitList![position].touch.toString(),
-                                      fine_weight: debitList![position].fineWeight.toString(),
-                                      stock_date: date_to.toString(),
-                                      vepari_id: widget.vepariId.toString(),
-                                      description:debitList![position].description.toString(),
-                                    )));
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(builder: (context) => EditTransactionScreen(
+                                        stock_id: debitList![position].stockId.toString(),
+                                        debit_credit: debitList![position].debitCredit.toString(),
+                                        weight: debitList![position].weight.toString(),
+                                        touch: debitList![position].touch.toString(),
+                                        fine_weight: debitList![position].fineWeight.toString(),
+                                        stock_date: date_to.toString(),
+                                        vepari_id: widget.vepariId.toString(),
+                                        description:debitList![position].description.toString(),
+                                      )),
+                                    ).then((data){
+                                      // then will return value when the loginScreen's pop is called.
+                                      debugPrint(data);
+
+                                      setState(() {
+                                        // creditList!.clear();
+                                        // debitList!.clear();
+                                      });
+                                      viewModel.vepariStockListRequest = VepariStockListRequest(widget.vepariId.toString(), user_id_str.toString(), _txtControllerDateFrom.text.toString(), _txtControllerDateTo.text.toString(), deviceType_str.toString(), deviceuid_str.toString(), token_str.toString());
+                                      viewModel.callVepariStockModel(viewModel.vepariStockListRequest!);
+                                      print("------a-----");
+                                    });
                                   },
                                   child: Container(
                                     child: Column(
@@ -628,6 +674,12 @@ class VenderDetailsScreenState extends State<VenderDetailsScreen> {
                                                               print("----debitStockId------" + debitList![position].stockId.toString());
                                                             }
 
+
+                                                            if(delete_list_debit.length == 0){
+                                                              setState(() {
+                                                                debitCheck = false;
+                                                              });
+                                                            }
 
                                                           });
                                                         },

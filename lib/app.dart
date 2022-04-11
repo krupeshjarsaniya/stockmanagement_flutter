@@ -17,8 +17,8 @@ class App {
   static String logout = "logout";
   static String full_view_details = "full_view_details";
   static String dashboard = "dashboard";
-
-
+  static String text_stock_list = "text_stock_list";
+  static String forgot_password = "forgot_password";
 
 
   static String HeaderName = "Authkey";
@@ -32,11 +32,13 @@ class App {
   static String KEY_USER_PROFILE = "KEY_USER_PROFILE";
   static String KEY_VEPARI_ID = "KEY_VEPARI_ID";
   static String KEY_IS_LOGIN = "KEY_IS_LOGIN";
-
-
+  static String KEY_FIRST_NAME = "KEY_FIRST_NAME";
+  static String KEY_LAST_NAME = "KEY_LAST_NAME";
+  static String KEY_MOBILE_NUMBER = "KEY_MOBILE_NUMBER";
   static String ASSETS_IMAGES_PATH = "assets/images/";
 
   static String ic_splash = ASSETS_IMAGES_PATH + "splash.png";
+  static String ic_profile = ASSETS_IMAGES_PATH + "profile.png";
 
 
 

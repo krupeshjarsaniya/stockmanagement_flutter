@@ -1,6 +1,11 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:stoke_management/utills/color_constant.dart';
+import 'package:stoke_management/utills/shared_preferences.dart';
 import 'package:stoke_management/view_model/text_stock_list_view_model.dart';
+
+import '../app.dart';
 
 class NoteScreen extends StatefulWidget {
   const NoteScreen({Key? key}) : super(key: key);
@@ -15,10 +20,13 @@ class NoteScreenState extends State<NoteScreen> {
 
   TextStockListViewModel? model;
 
+  String? USER_ID;
+
+
   @override
   void initState() {
     super.initState();
-   // init();
+   init();
     // scrollController.addListener(pagination);
     Future.delayed(Duration.zero, () {
       (model = TextStockListViewModel(this));
@@ -38,7 +46,7 @@ class NoteScreenState extends State<NoteScreen> {
           IconButton(
               onPressed: (){
                 if(controller.text.isNotEmpty) {
-                  model!.callStockList("user_id");
+                  model!.callStockList(USER_ID.toString());
                 }
               },
               icon: Icon(Icons.save))
@@ -64,4 +72,16 @@ class NoteScreenState extends State<NoteScreen> {
       ),
     );
   }
+
+
+
+  Future<Void?> init() async {
+    var userId = await Shared_Preferences.prefGetString(App.KEY_USER_ID, "");
+
+    setState(() {
+      USER_ID = userId.toString();
+
+    });
+  }
+
 }

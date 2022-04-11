@@ -6,6 +6,7 @@ INJECTED from /Users/mymac/Documents/GitHub/stockmanagement_flutter/android/app/
 INJECTED from /Users/mymac/Documents/GitHub/stockmanagement_flutter/android/app/src/main/AndroidManifest.xml:1:1-41:12
 MERGED from /Users/mymac/Documents/GitHub/stockmanagement_flutter/android/app/src/main/AndroidManifest.xml:1:1-41:12
 MERGED from [:share_plus] /Users/mymac/Documents/GitHub/stockmanagement_flutter/build/share_plus/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-19:12
+MERGED from [:fluttertoast] /Users/mymac/Documents/GitHub/stockmanagement_flutter/build/fluttertoast/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-7:12
 MERGED from [:sqflite] /Users/mymac/Documents/GitHub/stockmanagement_flutter/build/sqflite/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-7:12
 MERGED from [:device_info] /Users/mymac/Documents/GitHub/stockmanagement_flutter/build/device_info/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-7:12
 MERGED from [:image_picker] /Users/mymac/Documents/GitHub/stockmanagement_flutter/build/image_picker/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-19:12
@@ -206,6 +207,8 @@ INJECTED from /Users/mymac/Documents/GitHub/stockmanagement_flutter/android/app/
 INJECTED from /Users/mymac/Documents/GitHub/stockmanagement_flutter/android/app/src/main/AndroidManifest.xml
 MERGED from [:share_plus] /Users/mymac/Documents/GitHub/stockmanagement_flutter/build/share_plus/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [:share_plus] /Users/mymac/Documents/GitHub/stockmanagement_flutter/build/share_plus/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:fluttertoast] /Users/mymac/Documents/GitHub/stockmanagement_flutter/build/fluttertoast/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:fluttertoast] /Users/mymac/Documents/GitHub/stockmanagement_flutter/build/fluttertoast/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [:sqflite] /Users/mymac/Documents/GitHub/stockmanagement_flutter/build/sqflite/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [:sqflite] /Users/mymac/Documents/GitHub/stockmanagement_flutter/build/sqflite/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [:device_info] /Users/mymac/Documents/GitHub/stockmanagement_flutter/build/device_info/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44

@@ -8,6 +8,7 @@ import 'package:stoke_management/services/interceptor_api.dart';
 import 'package:stoke_management/services/rest_api.dart';
 import 'package:stoke_management/utills/shared_preferences.dart';
 import 'package:stoke_management/utills/utils_routes.dart';
+import 'package:stoke_management/widgets/common_toast.dart';
 
 class LoginViewModel {
   LoginScreenState? state;
@@ -28,8 +29,14 @@ class LoginViewModel {
     await Shared_Preferences.prefSetBool(App.KEY_IS_LOGIN, true);
 
         await Shared_Preferences.prefSetString(App.KEY_USER_ID,loginModel!.items![0].userId.toString());
+        await Shared_Preferences.prefSetString(App.KEY_FIRST_NAME,loginModel!.items![0].firstName.toString());
+        await Shared_Preferences.prefSetString(App.KEY_LAST_NAME,loginModel!.items![0].lastName.toString());
+        await Shared_Preferences.prefSetString(App.KEY_MOBILE_NUMBER,loginModel!.items![0].mobile.toString());
+        commonToast(loginModel!.message.toString());
         Navigator.pushReplacementNamed(state!.context, UtilRoutes.HomeScreen);
       }
+      commonToast(loginModel!.message.toString());
+
     }else{
       print("-----else---");
     }

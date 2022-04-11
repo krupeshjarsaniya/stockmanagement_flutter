@@ -440,8 +440,6 @@ class ViewMoreScreenState extends State<ViewMoreScreen> {
                   child: Container(
                     child : Column(
                       children:  [
-
-
                         Text(
                           "BALANCE",
                           style: TextStyle(
@@ -456,7 +454,6 @@ class ViewMoreScreenState extends State<ViewMoreScreen> {
                               color: Colors.white
                           ),
                         ),
-
 
                       ],
                     ),

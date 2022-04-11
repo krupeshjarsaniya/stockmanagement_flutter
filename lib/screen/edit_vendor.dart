@@ -52,7 +52,10 @@ class EditVendorState extends State<EditVendor> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Edit Vendor"),
+        iconTheme: IconThemeData(
+          color: Colors.white, //change your color here
+        ),
+        title: Text("Edit Vendor",style: TextStyle(color: Colors.white),),
         centerTitle: true,
       ),
       body: SingleChildScrollView(
@@ -88,8 +91,8 @@ class EditVendorState extends State<EditVendor> {
           borderRadius: BorderRadius.circular(10)),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(10),
-        child: Image.network(
-            "https://monstar-lab.com/global/wp-content/uploads/sites/11/2019/04/male-placeholder-image.jpeg"),
+        child: Image.asset(
+            App.ic_profile,fit: BoxFit.fitHeight,),
       ),
     );
   }
@@ -166,13 +169,6 @@ class EditVendorState extends State<EditVendor> {
   Widget wRSaveButton() {
     return InkWell(
       onTap: () {
-        if(firstName.text.isEmpty){
-        }else if(lastName.text.isEmpty){
-        }else if(mobileNumber.text.isEmpty){
-        }else if(companyName.text.isEmpty){
-        }else if(address.text.isEmpty){
-        }else if(emailController.text.isEmpty){
-        }else {
           model!.editVendorRequest = EditVendorRequest(
               widget.vepariId.toString(),
               USER_ID.toString(),
@@ -186,7 +182,7 @@ class EditVendorState extends State<EditVendor> {
           model!.callEditVendor(model!.editVendorRequest!);
           print(
               "==================" + model!.editVendorRequest.toString());
-        }
+
       },
       child: Container(
         width: MediaQuery.of(context).size.width,

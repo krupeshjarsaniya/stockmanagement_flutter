@@ -1,14 +1,32 @@
 import 'package:flutter/material.dart';
 import 'package:stoke_management/utills/color_constant.dart';
+import 'package:stoke_management/view_model/forgot_password_viewmodel.dart';
+import 'package:stoke_management/widgets/common_toast.dart';
 
 class ForgotPasswordScreen extends StatefulWidget {
   const ForgotPasswordScreen({Key? key}) : super(key: key);
 
   @override
-  _ForgotPasswordScreenState createState() => _ForgotPasswordScreenState();
+  ForgotPasswordScreenState createState() => ForgotPasswordScreenState();
 }
 
-class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
+class ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
+
+  late ForgotPasswordViewModel viewModel;
+  TextEditingController emailController =  TextEditingController();
+
+
+  @override
+  void initState() {
+    super.initState();
+    // init();
+    Future.delayed(Duration.zero, () {
+      /*model ??*/ (viewModel = ForgotPasswordViewModel(this));
+    });
+  }
+
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,10 +42,13 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
         child: ListView(
           children: [
             SizedBox(height: 20),
-            TextField(
-              keyboardType: TextInputType.number,
+            TextFormField(
+              controller: emailController,
+              keyboardType: TextInputType.emailAddress,
               cursorColor: Colors.yellow,
               decoration: InputDecoration(
+                contentPadding: EdgeInsets.only(top:0.0,bottom:0.0),
+                alignLabelWithHint: true,
                 labelText: "Email",
                 focusedBorder: UnderlineInputBorder(
                   borderSide: BorderSide(color: ColorConstant.themColor!),
@@ -35,18 +56,30 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
               ),
             ),
             SizedBox(height: 20),
-            Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(8),
-                color: ColorConstant.themColor,
+            GestureDetector(
+              onTap: (){
+                if(emailController.text.isEmpty){
+                  commonToast("Please Enter Email");
+
+                }else{
+                  viewModel.callForgotPassword(emailController.text.toString());
+                }
+              },
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(8),
+                  color: ColorConstant.themColor,
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(10),
+                  child: Center(
+                      child: Text("Submit",
+                          style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white))),
+                ),
               ),
-              height: 60,
-              child: Center(
-                  child: Text("Submit",
-                      style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white))),
             ),
           ],
         ),

@@ -64,7 +64,21 @@ class VendorScreenState extends State<VendorScreen> {
                   },
                   child: GestureDetector(
                     onTap: (){
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => AddVendors()));
+
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => AddVendors(
+                        )),
+                      ).then((data){
+                        // then will return value when the loginScreen's pop is called.
+                        debugPrint(data);
+
+                        setState(() {
+                          // creditList!.clear();
+                          // debitList!.clear();
+                        });
+                        viewModel.callVepariListModel(USER_ID.toString());
+                      });
 
                     },
                     child: Container(
@@ -158,7 +172,13 @@ class VendorScreenState extends State<VendorScreen> {
                           child: Container(
                             child: Column(
                               children: [
-                                Icon(Icons.delete,color: Colors.grey,),
+                                GestureDetector(onTap : (){
+
+                                  setState(() {
+                                    vepariList!.removeAt(position);
+
+                                  });
+                                },child: Icon(Icons.delete,color: Colors.grey,)),
                                 SizedBox(height: 10,),
                                 Icon(Icons.arrow_forward_ios_rounded,color: Colors.grey,size: 18,),
                               ],

@@ -15,17 +15,51 @@ class DashBordViewModel {
     this.state = state;
     interceptorApi = InterceptorApi(context: state.context);
     dashBordRequest = DashBordRequest(state.USER_ID.toString(),state.DEVICE_TOKEN.toString(),state.DEVICE_TYPE.toString(),state.DEVICE_ID.toString());
-    callDashBord(dashBordRequest!);
+    callDashBordModel(dashBordRequest!);
   }
 
-  callDashBord(DashBordRequest dashBordRequest) async {
+
+  callDashBordModel(DashBordRequest dashBordRequest) async {
     print("==========Edit Vepari==========" + dashBordRequest.toString());
-    dashBordModel = (await interceptorApi!.callDashBord(dashBordRequest));
+    dashBordModel = (await interceptorApi!.callDashBordModel(dashBordRequest));
     if (dashBordModel != null) {
       state!.setState(() {
         state!.dashBordModel = dashBordModel!;
+        state!.totalCredit = dashBordModel!.totalCredit;
+        state!.totalDebit = dashBordModel!.totalDebit;
+        state!.totalBalance = dashBordModel!.balance;
       });
       print("==========Edit Vendor Api Responce==========" + dashBordModel.toString());
     }
   }
+
+  // callDashBord(DashBordRequest dashBordRequest) async {
+  //   print("==========Edit Vepari==========" + dashBordRequest.toString());
+  //   dashBordModel = (await interceptorApi!.callDashBord(dashBordRequest));
+  //
+  //   if(dashBordModel!.success!){
+  //     print("---s---");
+  //   }
+  //
+  //
+  //
+  //   // if (dashBordModel != null) {
+  //   //   print("---a---b");
+  //   //
+  //   //   state!.setState(() {
+  //   //     state!.dashBordModel = dashBordModel!;
+  //       state!.totalCredit = dashBordModel!.totalCredit;
+  //       state!.totalDebit = dashBordModel!.totalDebit;
+  //       state!.totalBalance = dashBordModel!.balance;
+  //   //
+  //   //
+  //   //     print("---a---");
+  //   //     print("---totalBal---" + dashBordModel!.totalDebit);
+  //   //   });
+  //   //   print("==========Edit Vendor Api Responce==========" + dashBordModel.toString());
+  //   // }
+  //
+  //
+  //
+  // }
 }

@@ -223,7 +223,32 @@ class ProfileScreenState extends State<ProfileScreen> {
     return GestureDetector(
       onTap: (){
         print("---Logout---");
-        showAlertDialog(context);
+        // showAlertDialog(context);
+        showDialog<String>(
+            context: context,
+            builder: (BuildContext context)
+            {
+              return AlertDialog(
+                title: const Text('Alert!'),
+                content: const Text('Are you sure you want to logout?'),
+                actions: <Widget>[
+                  TextButton(
+                    onPressed: () { return Navigator.pop(context, 'Cancel');},
+                    child: const Text('cancel',style: TextStyle(color: Colors.black),),
+                  ),
+                  TextButton(
+                    onPressed: () {
+
+                      viewModel.logoutRequest = LogoutRequest(USER_ID.toString(), DEVICE_TYPE.toString(), DEVICE_ID.toString(), DEVICE_TOKEN.toString());
+                      viewModel.callLogOut(viewModel.logoutRequest!);
+                    },
+                    child: const Text('Yes'),
+                  ),
+                ],
+              );
+            }
+        );
+
       },
       child: Container(
         alignment: Alignment.center,
@@ -253,7 +278,7 @@ class ProfileScreenState extends State<ProfileScreen> {
 
 
     Widget cancleButton = GestureDetector(
-      child: Text("cancel"),
+      child: Text("cancel",style: TextStyle(fontSize: 15),),
       onTap: () {
         Navigator.of(context).pop();
       },

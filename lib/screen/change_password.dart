@@ -7,6 +7,7 @@ import 'package:stoke_management/utills/color_constant.dart';
 import 'package:stoke_management/utills/shared_preferences.dart';
 import 'package:stoke_management/utills/utils_routes.dart';
 import 'package:stoke_management/view_model/change_password_viewmodel.dart';
+import 'package:stoke_management/widgets/common_toast.dart';
 
 import '../app.dart';
 
@@ -60,14 +61,18 @@ class ChangePasswordState extends State<ChangePassword> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-            backgroundColor: ColorConstant.themColor,
-            automaticallyImplyLeading: false,
-            systemOverlayStyle: SystemUiOverlayStyle.dark.copyWith(
-              statusBarColor: ColorConstant.themColor,
-              statusBarIconBrightness: Brightness.light,
-            )
+      appBar: AppBar(
+        iconTheme: IconThemeData(
+          color: Colors.white, //change your color here
         ),
+        title: Text("Change Password",style: TextStyle(color: Colors.white),),
+        centerTitle: true,
+        backgroundColor: ColorConstant.themColor,
+        systemOverlayStyle: SystemUiOverlayStyle.dark.copyWith(
+          statusBarColor: ColorConstant.themColor,
+          statusBarIconBrightness: Brightness.light,
+        ),
+      ),
       body: SingleChildScrollView(
         child: Container(
           margin: EdgeInsets.all(20),
@@ -139,11 +144,15 @@ class ChangePasswordState extends State<ChangePassword> {
       onTap: () {
 
         if(oldPwdController.text.isEmpty){
+          commonToast("Please Enter Old Password");
 
         }else if(newPwdController.text.isEmpty){
+          commonToast("Please Enter New Password ");
 
-        }else if(confirmPwdController.text.isEmpty){
-
+        }else if(confirmPwdController.text.isEmpty) {
+          commonToast("Please Enter Confirm Password");
+        }else if(newPwdController.text.toString() != confirmPwdController.text.toString()){
+          commonToast("Password Does Not Match");
         }else{
 
           viewModel.changePasswordRequest = ChangePasswordRequest(USER_ID.toString(), oldPwdController.text.toString(), newPwdController.text.toString(), confirmPwdController.text.toString(), DEVICE_TYPE.toString(), DEVICE_ID.toString(), DEVICE_TOKEN.toString());
@@ -166,7 +175,7 @@ class ChangePasswordState extends State<ChangePassword> {
             child: Text(
               "Change Password",
               style: TextStyle(
-                  fontWeight: FontWeight.w400,
+                  fontWeight: FontWeight.bold,
                   fontSize: 18,
                   color: Colors.white
               ),),

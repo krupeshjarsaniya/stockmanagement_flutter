@@ -22,11 +22,13 @@ import 'package:stoke_management/model/api_response/dashbord_model.dart';
 import 'package:stoke_management/model/api_response/edit_profile_model.dart';
 import 'package:stoke_management/model/api_response/edit_stocks_model.dart';
 import 'package:stoke_management/model/api_response/edit_vendor_model.dart';
+import 'package:stoke_management/model/api_response/forgot_password_model.dart';
 import 'package:stoke_management/model/api_response/login_model.dart';
 import 'package:stoke_management/model/api_response/logout_model.dart';
 import 'package:stoke_management/model/api_response/register_device_model.dart';
 import 'package:stoke_management/model/api_response/register_model.dart';
 import 'package:stoke_management/model/api_response/stock_delete_model.dart';
+import 'package:stoke_management/model/api_response/text_stock_list_model.dart';
 import 'package:stoke_management/model/api_response/vepari_list_model.dart';
 import 'package:stoke_management/model/api_response/vepari_stock_list_model.dart';
 import 'package:stoke_management/model/api_response/view_more_model.dart';
@@ -67,7 +69,6 @@ class InterceptorApi {
       var data = jsonDecode(response.body);
       if (response.statusCode == 200) {
         var response = RegisterModel.fromJson(data);
-
         return response;
       }
     } else if (response.statusCode == 500) {
@@ -95,22 +96,22 @@ class InterceptorApi {
   }
 
 
-  Future<VepariStockListModel?> callVepariStockList(String useId,String vepariId) async {
-    var response = await restApi.callVepariStockList(useId,vepariId);
-    print("==========responce===========" + response!.body.toString());
-    if (response == null) {}
-    else if (response.statusCode == 200 || response.statusCode == 201) {
-      var data = jsonDecode(response.body);
-      if (response.statusCode == 200) {
-        var response = VepariStockListModel.fromJson(data);
-
-        return response;
-      }
-    } else if (response.statusCode == 500) {
-      var data = jsonDecode(response.body);
-      String msg = data['message'];
-    } else {}
-  }
+  // Future<VepariStockListModel?> callVepariStockList(String useId,String vepariId) async {
+  //   var response = await restApi.callVepariStockList(useId,vepariId);
+  //   print("==========responce===========" + response!.body.toString());
+  //   if (response == null) {}
+  //   else if (response.statusCode == 200 || response.statusCode == 201) {
+  //     var data = jsonDecode(response.body);
+  //     if (response.statusCode == 200) {
+  //       var response = VepariStockListModel.fromJson(data);
+  //
+  //       return response;
+  //     }
+  //   } else if (response.statusCode == 500) {
+  //     var data = jsonDecode(response.body);
+  //     String msg = data['message'];
+  //   } else {}
+  // }
 
 
   Future<AddVepariModel?> callAddVendor(AddVepariRequest vepariRequest) async {
@@ -215,6 +216,21 @@ class InterceptorApi {
   //
  Future<VepariStockListModel?> callVepariStockModel(VepariStockListRequest vepariStockListRequest) async {
     var response = await restApi.callVepariStockModel(vepariStockListRequest);
+    if (response == null) {}
+    else if (response.statusCode == 200 || response.statusCode == 201) {
+      var data = jsonDecode(response.body.toString());
+      if (response.statusCode == 200) {
+        var response = VepariStockListModel.fromJson(data);
+        return response;
+      }
+    } else if (response.statusCode == 500) {
+      var data = jsonDecode(response.body);
+      String msg = data['message'];
+    } else {}
+  }
+
+Future<VepariStockListModel?> callVepariStockModelLoader(VepariStockListRequest vepariStockListRequest) async {
+    var response = await restApi.callVepariStockModelLoader(vepariStockListRequest);
     if (response == null) {}
     else if (response.statusCode == 200 || response.statusCode == 201) {
       var data = jsonDecode(response.body.toString());
@@ -342,6 +358,72 @@ class InterceptorApi {
       String msg = data['message'];
     } else {}
   }
+
+
+  Future<DashBordModel?> callDashBordModel(DashBordRequest dashBordRequest) async {
+    var response = await restApi.callDashBordModel(dashBordRequest);
+    if (response == null) {}
+    else if (response.statusCode == 200 || response.statusCode == 201) {
+      var data = jsonDecode(response.body.toString());
+      if (response.statusCode == 200) {
+        var response = DashBordModel.fromJson(data);
+        return response;
+      }
+    } else if (response.statusCode == 500) {
+      var data = jsonDecode(response.body);
+      String msg = data['message'];
+    } else {}
+  }
+
+
+  Future<DashBordModel?> callDashBordWithOutLoader(DashBordRequest dashBordRequest) async {
+    var response = await restApi.callDashBordWithOutLoader(dashBordRequest);
+    if (response == null) {}
+    else if (response.statusCode == 200 || response.statusCode == 201) {
+      var data = jsonDecode(response.body.toString());
+      if (response.statusCode == 200) {
+        var response = DashBordModel.fromJson(data);
+        return response;
+      }
+    } else if (response.statusCode == 500) {
+      var data = jsonDecode(response.body);
+      String msg = data['message'];
+    } else {}
+  }
+
+  Future<TextStockListModel?> callStockList(String user_id) async {
+    var response = await restApi.callStockList(user_id);
+    if (response == null) {}
+    else if (response.statusCode == 200 || response.statusCode == 201) {
+      var data = jsonDecode(response.body.toString());
+      if (response.statusCode == 200) {
+        var response = TextStockListModel.fromJson(data);
+        return response;
+      }
+    } else if (response.statusCode == 500) {
+      var data = jsonDecode(response.body);
+      String msg = data['message'];
+    } else {}
+  }
+
+
+  Future<ForgotPasswordModel?> callForgotPassword(String email) async {
+    var response = await restApi.callForgotPassword(email);
+    if (response == null) {}
+    else if (response.statusCode == 200 || response.statusCode == 201) {
+      var data = jsonDecode(response.body.toString());
+      if (response.statusCode == 200) {
+        var response = ForgotPasswordModel.fromJson(data);
+        return response;
+      }
+    } else if (response.statusCode == 500) {
+      var data = jsonDecode(response.body);
+      String msg = data['message'];
+    } else {}
+  }
+
+
+
 
 }
 

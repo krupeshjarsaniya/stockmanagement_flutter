@@ -8,6 +8,7 @@ import 'package:stoke_management/utills/color_constant.dart';
 import 'package:stoke_management/utills/appbar_title_text.dart';
 import 'package:stoke_management/utills/shared_preferences.dart';
 import 'package:stoke_management/view_model/add_transaction_view_model.dart';
+import 'package:stoke_management/widgets/common_toast.dart';
 import '../app.dart';
 
 class AddTransactionScreen extends StatefulWidget {
@@ -154,14 +155,6 @@ class AddTransactionScreenState extends State<AddTransactionScreen> {
                   ],
                 ),
 
-
-    //
-    //     TextEditingController dateController =  TextEditingController();
-    // TextEditingController descriptionController =  TextEditingController();
-    // TextEditingController weightController =  TextEditingController();
-    // TextEditingController touchController =  TextEditingController();
-    // TextEditingController fineweightController =  TextEditingController();
-
                 Padding(
                   padding:  EdgeInsets.all(10),
                   child: Column(
@@ -255,17 +248,17 @@ class AddTransactionScreenState extends State<AddTransactionScreen> {
                         onTap: () {
                           if(dateController.text.isEmpty){
                             print("--phone_number_is_empty");
-                            // commonToast("Please Enter Mobile or Email Number");
+                            commonToast("Please Enter Mobile or Email Number");
                           }else if(descriptionController.text.isEmpty){
                             print("--Password_number_is_empty");
-                            // commonToast("Please Enter Password");
+                            commonToast("Please Enter Password");
                           }
                           else if(weightController.text.isEmpty){
                             print("--Password_number_is_empty");
-                            // commonToast("Please Enter Password");
+                            commonToast("Please Enter Password");
                           } else if(touchController.text.isEmpty){
                             print("--Password_number_is_empty");
-                            // commonToast("Please Enter Password");
+                            commonToast("Please Enter Password");
                           }
 
                           else {
@@ -308,18 +301,6 @@ class AddTransactionScreenState extends State<AddTransactionScreen> {
                                   dateController.text.toString());
                               viewModel.callAddTransaction(viewModel.addTransactionRequest!);
                             }
-
-
-
-
-                            // loginViewModel.logInRequest =
-                            //     UserLogInRequest(phoneNumberController.text.toString(),
-                            //         passwordController.text.toString(),
-                            //         "sdfag",
-                            //         "fwef",
-                            //         "fraew");
-                            //
-                            // loginViewModel.callUserLogIn(loginViewModel.logInRequest!);
                           }
                           // Navigator.pushNamed(context, UtilRoutes.HomeScreen);
                         },
@@ -339,17 +320,9 @@ class AddTransactionScreenState extends State<AddTransactionScreen> {
                           ),
                         ),
                       ),
-
-
                     ],
                   ),
                 ),
-
-
-
-
-
-
               ],
             ),
           ],

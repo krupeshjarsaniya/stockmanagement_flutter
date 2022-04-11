@@ -8,6 +8,7 @@ import 'package:stoke_management/utills/shared_preferences.dart';
 import 'package:stoke_management/utills/utils_routes.dart';
 import 'package:stoke_management/view_model/login_view_model.dart';
 import 'package:device_info/device_info.dart';
+import 'package:stoke_management/widgets/common_toast.dart';
 import '../app.dart';
 import 'forgot_password_screen.dart';
 // import 'package:stoke_management/widgets/common_toast.dart';
@@ -196,22 +197,12 @@ class LoginScreenState extends State<LoginScreen> {
       onTap: () {
         if(phoneNumberController.text.isEmpty){
           print("--phone_number_is_empty");
-          // commonToast("Please Enter Mobile or Email Number");
+          commonToast("Please Enter Mobile or Email Number");
         }else if(passwordController.text.isEmpty){
           print("--Password_number_is_empty");
-          // commonToast("Please Enter Password");
+          commonToast("Please Enter Password");
         }else {
-
-
           initPlatformState();
-          // loginViewModel.logInRequest =
-          //     UserLogInRequest(phoneNumberController.text.toString(),
-          //         passwordController.text.toString(),
-          //         "sdfag",
-          //         "fwef",
-          //         "fraew");
-          //
-          // loginViewModel.callUserLogIn(loginViewModel.logInRequest!);
         }
         // Navigator.pushNamed(context, UtilRoutes.HomeScreen);
       },

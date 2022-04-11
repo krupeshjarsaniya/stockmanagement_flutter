@@ -10,6 +10,7 @@ import 'package:stoke_management/utills/color_constant.dart';
 import 'package:stoke_management/utills/shared_preferences.dart';
 import 'package:stoke_management/view_model/add_vendor_view_model.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:stoke_management/widgets/common_toast.dart';
 import 'package:stoke_management/widgets/image_placeholder.dart';
 import '../app.dart';
 
@@ -61,9 +62,13 @@ class AddVendorsState extends State<AddVendors> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
+      appBar:  AppBar(
+        iconTheme: IconThemeData(
+          color: Colors.white, //change your color here
+        ),
+        title: Text("Add Vendor",style: TextStyle(color: Colors.white),),
+        centerTitle: true,
         backgroundColor: ColorConstant.themColor,
-        automaticallyImplyLeading: false,
         systemOverlayStyle: SystemUiOverlayStyle.dark.copyWith(
           statusBarColor: ColorConstant.themColor,
           statusBarIconBrightness: Brightness.light,
@@ -98,6 +103,8 @@ class AddVendorsState extends State<AddVendors> {
             controller: firstNameController,
             keyboardType: TextInputType.text,
               decoration: const InputDecoration(
+                contentPadding: EdgeInsets.only(top:0.0,bottom:0.0),
+                alignLabelWithHint: true,
                   labelText: "First Name",
                   fillColor: Colors.black,
                   ),
@@ -108,6 +115,8 @@ class AddVendorsState extends State<AddVendors> {
             controller: lastNameController,
             keyboardType: TextInputType.text,
               decoration: const InputDecoration(
+                contentPadding: EdgeInsets.only(top:0.0,bottom:0.0),
+                alignLabelWithHint: true,
                 labelText: "Last Name",
                 fillColor: Colors.black,
               ),
@@ -118,6 +127,8 @@ class AddVendorsState extends State<AddVendors> {
             controller: mobileNumberController,
             keyboardType: TextInputType.number,
               decoration: const InputDecoration(
+                contentPadding: EdgeInsets.only(top:0.0,bottom:0.0),
+                alignLabelWithHint: true,
                 labelText: "Mobile Number",
                 fillColor: Colors.black,
               ),
@@ -128,6 +139,8 @@ class AddVendorsState extends State<AddVendors> {
             controller: companyController,
             keyboardType: TextInputType.text,
               decoration: const InputDecoration(
+                contentPadding: EdgeInsets.only(top:0.0,bottom:0.0),
+                alignLabelWithHint: true,
                 labelText: "Company Name",
                 fillColor: Colors.black,
               ),
@@ -138,6 +151,8 @@ class AddVendorsState extends State<AddVendors> {
             controller: addressController,
             keyboardType: TextInputType.text,
               decoration: const InputDecoration(
+                contentPadding: EdgeInsets.only(top:0.0,bottom:0.0),
+                alignLabelWithHint: true,
                 labelText: "Address",
                 fillColor: Colors.black,
               ),
@@ -148,6 +163,8 @@ class AddVendorsState extends State<AddVendors> {
             controller: emailController,
             keyboardType: TextInputType.emailAddress,
               decoration: const InputDecoration(
+                contentPadding: EdgeInsets.only(top:0.0,bottom:0.0),
+                alignLabelWithHint: true,
                 labelText: "Email",
                 fillColor: Colors.black,
               ),
@@ -160,59 +177,46 @@ class AddVendorsState extends State<AddVendors> {
 
   Widget w_Image(){
     return /* InkWell(
-      onTap: (){
-        _showPicker(context);
-      },
-      child: Container(
-        height: 80,
-        width: 80,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
-          border: Border.all(color: Colors.grey)
-        ),
-        child: _image != null
-            ? ClipRRect(
-          borderRadius: BorderRadius.circular(10),
-          child: Image.file(_image!,
-            width: 80,
-            height: 100,
-            fit: BoxFit.cover,
-          ),
-        )
             :*/ Container(
-            width: 80,
-            height: 80,
-            decoration: BoxDecoration(
-              color: Colors.grey
-            ),
+            width: 90,
+            height: 90,
+            child: Image.asset(App.ic_profile,fit: BoxFit.fitHeight,),
 
-        // ),
-
-        // ),
       );
   }
 
   Widget w_Save(){
     return InkWell(
       onTap: () {
-        if(firstNameController.text.isNotEmpty){
-            model!.vepariRequest =
-                AddVepariRequest(
-                  USER_ID.toString(),
-                  firstNameController.text.toString(),
-                  lastNameController.text.toString(),
-                  mobileNumberController.text.toString(),
-                  companyController.text.toString(),
-                  addressController.text.toString(),
-                  emailController.text.toString(),
-                  DEVICE_TYPE.toString(),
-                  DEVICE_ID.toString(),
-                  DEVICE_TOKEN.toString(),
+        if(firstNameController.text.isEmpty){
+          commonToast("Please Enter First Name");
+        }else if(lastNameController.text.isEmpty){
+          commonToast("Please Enter Last Name");
+        }else if(mobileNumberController.text.isEmpty){
+          commonToast("Please Enter Mobile Name");
+        }else if(companyController.text.isEmpty){
+          commonToast("Please Enter Company Name");
+        }else if(addressController.text.isEmpty){
+          commonToast("Please Enter Address");
+        }else if(emailController.text.isEmpty){
+          commonToast("Please Enter Email");
+        }else {
+          model!.vepariRequest =
+              AddVepariRequest(
+                USER_ID.toString(),
+                firstNameController.text.toString(),
+                lastNameController.text.toString(),
+                mobileNumberController.text.toString(),
+                companyController.text.toString(),
+                addressController.text.toString(),
+                emailController.text.toString(),
+                DEVICE_TYPE.toString(),
+                DEVICE_ID.toString(),
+                DEVICE_TOKEN.toString(),
 
-                );
+              );
 
-            model!.callAddVendor(model!.vepariRequest!);
-
+          model!.callAddVendor(model!.vepariRequest!);
         }
         // Navigator.pushAndRemoveUntil(context,
         //     MaterialPageRoute(builder: (_) => const VendorScreen()),
@@ -220,15 +224,17 @@ class AddVendorsState extends State<AddVendors> {
         // Navigator.pushNamed(context, UtilRoutes.VendorScreen);
       },
       child: Container(
-        height: 60,
         decoration: BoxDecoration(
           color: ColorConstant.primarycolor,
-          borderRadius: BorderRadius.circular(4),
+          borderRadius: BorderRadius.circular(6),
         ),
-        child: const Center(
-          child: Text("Save",
-            style: TextStyle(
-                fontWeight: FontWeight.bold, fontSize: 18, color: Colors.white),
+        child: Padding(
+          padding: const EdgeInsets.all(10),
+          child: const Center(
+            child: Text("Save",
+              style: TextStyle(
+                  fontWeight: FontWeight.bold, fontSize: 18, color: Colors.white),
+            ),
           ),
         ),
       ),

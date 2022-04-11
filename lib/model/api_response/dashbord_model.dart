@@ -11,9 +11,9 @@ class DashBordModel {
 
   List<dynamic>? items;
   bool? payment;
-  String? totalDebit;
-  String? totalCredit;
-  String? balance;
+  dynamic totalDebit;
+  dynamic totalCredit;
+  dynamic balance;
   bool? success;
   String? message;
 

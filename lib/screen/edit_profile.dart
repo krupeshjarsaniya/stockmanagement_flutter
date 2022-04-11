@@ -9,6 +9,7 @@ import 'package:stoke_management/utills/color_constant.dart';
 import 'package:stoke_management/utills/shared_preferences.dart';
 import 'package:stoke_management/utills/utils_routes.dart';
 import 'package:stoke_management/view_model/edit_profile_view_model.dart';
+import 'package:stoke_management/widgets/common_toast.dart';
 
 import '../app.dart';
 
@@ -27,7 +28,6 @@ class EditProfileState extends State<EditProfile> {
   String DEVICE_ID = "";
   String DEVICE_TYPE = "";
 
-  List<Item>? item = <Item>[];
 
   TextEditingController displayFirstNameController = TextEditingController();
   TextEditingController displayLastNameController = TextEditingController();
@@ -36,6 +36,9 @@ class EditProfileState extends State<EditProfile> {
   EditProfileViewModel? model;
 
   bool isLoading = false;
+  String? firstName;
+  String? lastName;
+  String? mobileName;
 
   @override
   void initState() {
@@ -51,7 +54,10 @@ class EditProfileState extends State<EditProfile> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Edit Profile"),
+        iconTheme: IconThemeData(
+          color: Colors.white, //change your color here
+        ),
+        title: Text("Edit Profile",style: TextStyle(color: Colors.white),),
         centerTitle: true,
         backgroundColor: ColorConstant.themColor,
         systemOverlayStyle: SystemUiOverlayStyle.dark.copyWith(
@@ -61,7 +67,7 @@ class EditProfileState extends State<EditProfile> {
       ),
       body: SingleChildScrollView(
         child: Container(
-          margin: EdgeInsets.all(30),
+          margin: EdgeInsets.all(20),
           child: Column(
             children: [
               const SizedBox(height: 10,),
@@ -89,8 +95,7 @@ class EditProfileState extends State<EditProfile> {
         ),
         child: ClipRRect(
           borderRadius: BorderRadius.circular(10),
-          child: Image.network(
-              "https://monstar-lab.com/global/wp-content/uploads/sites/11/2019/04/male-placeholder-image.jpeg"),
+          child: Image.asset(App.ic_profile,fit: BoxFit.fitHeight,),
         ),
       ),
     );
@@ -100,23 +105,29 @@ class EditProfileState extends State<EditProfile> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        TextField(
+        TextFormField(
           controller: displayFirstNameController,
           decoration: const InputDecoration(
+            contentPadding: EdgeInsets.only(top:0.0,bottom:0.0),
+            alignLabelWithHint: true,
             labelText: "First Name",
           ),
         ),
-        const SizedBox(height: 20,),
-        TextField(
+         SizedBox(height: 20,),
+        TextFormField(
           controller: displayLastNameController,
           decoration: const InputDecoration(
+            contentPadding: EdgeInsets.only(top:0.0,bottom:0.0),
+            alignLabelWithHint: true,
             labelText: "Last Name",
           ),
         ),
-        const SizedBox(height: 20,),
-        TextField(
+         SizedBox(height: 20,),
+        TextFormField(
           controller: displayMobileNumberController,
           decoration: const InputDecoration(
+            contentPadding: EdgeInsets.only(top:0.0,bottom:0.0),
+            alignLabelWithHint: true,
             labelText: "Mobile Number",
           ),
         ),
@@ -153,7 +164,6 @@ class EditProfileState extends State<EditProfile> {
   Widget w_SaveButton() {
     return InkWell(
       onTap: () {
-          if(displayFirstNameController.text.isNotEmpty){
             model!.editProfileRequest =
                 EditProfileRequest(
                   USER_ID.toString(),
@@ -166,26 +176,25 @@ class EditProfileState extends State<EditProfile> {
                   DEVICE_TOKEN.toString(),
                 );
             model!.callEditProfile(model!.editProfileRequest!);
-          Navigator.pushAndRemoveUntil(context,
-              MaterialPageRoute(builder: (_) => const ProfileScreen()),
-                  (r) => false);
-        };
       },
       child: Container(
         width: MediaQuery.of(context).size.width,
-        height: 60,
         decoration: BoxDecoration(
           color: ColorConstant.primarycolor,
           borderRadius: BorderRadius.circular(10),
         ),
-        child: const Center(
-          child: Text(
-            "Edit Profile",
-            style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 18,
-                color: Colors.white
-            ),),
+        child:
+        Padding(
+          padding: const EdgeInsets.all(10),
+          child: Center(
+            child: Text(
+              "Edit Profile",
+              style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18,
+                  color: Colors.white
+              ),),
+          ),
         ),
       ),
     );
@@ -197,12 +206,28 @@ class EditProfileState extends State<EditProfile> {
     var deviceId = await Shared_Preferences.prefGetString(App.KEY_DEVICE_ID, "");
     var deviceType= await Shared_Preferences.prefGetString(App.KEY_DEVICE_TYPE, "");
     var userProfile= await Shared_Preferences.prefGetString(App.KEY_USER_PROFILE, "");
+    var userFirstName= await Shared_Preferences.prefGetString(App.KEY_FIRST_NAME, "");
+    var userLastName= await Shared_Preferences.prefGetString(App.KEY_LAST_NAME, "");
+    var userMobileNumber= await Shared_Preferences.prefGetString(App.KEY_MOBILE_NUMBER, "");
     setState(() {
       DEVICE_TOKEN = deviceToken!;
       USER_ID = userId!;
       DEVICE_ID = deviceId!;
       DEVICE_TYPE = deviceType!;
       USER_PROFILE = userProfile!;
+      firstName = userFirstName!;
+      lastName = userLastName!;
+      mobileName = userMobileNumber!;
+
+      displayFirstNameController = TextEditingController(text: firstName.toString() );
+      displayFirstNameController.selection = TextSelection.fromPosition(TextPosition(offset: displayFirstNameController.text.length));
+
+      displayLastNameController = TextEditingController(text: lastName.toString() );
+      displayLastNameController.selection = TextSelection.fromPosition(TextPosition(offset: displayLastNameController.text.length));
+
+      displayMobileNumberController = TextEditingController(text: mobileName.toString() );
+      displayMobileNumberController.selection = TextSelection.fromPosition(TextPosition(offset: displayMobileNumberController.text.length));
+
     });
   }
 
