@@ -25,6 +25,8 @@ class LoginViewModel {
     loginModel = (await interceptorApi!.callUserLogIn(logInRequest));
     if(loginModel != null){
       if(loginModel!.success!){
+    await Shared_Preferences.prefSetBool(App.KEY_IS_LOGIN, true);
+
         await Shared_Preferences.prefSetString(App.KEY_USER_ID,loginModel!.items![0].userId.toString());
         Navigator.pushReplacementNamed(state!.context, UtilRoutes.HomeScreen);
       }

@@ -83,17 +83,19 @@ class _MeltingScreenState extends State<MeltingScreen> {
             SizedBox(height: 20),
             Container(
               color: ColorConstant.themColor,
-              height: 60,
-              child: Center(
-                  child: Text("CALCULATE",
-                      style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white))),
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Center(
+                    child: Text("CALCULATE",
+                        style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white))),
+              ),
             ),
             SizedBox(height: 20),
             Text("Select Your Language",
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+              style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
             ),
             SizedBox(height: 20),
             Row(

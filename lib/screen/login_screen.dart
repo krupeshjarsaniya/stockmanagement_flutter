@@ -2,7 +2,6 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:stoke_management/model/api_request/login_request.dart';
-import 'package:stoke_management/screen/sub_screens/forgot_password_screen.dart';
 import 'package:stoke_management/utills/appbar_title_text.dart';
 import 'package:stoke_management/utills/color_constant.dart';
 import 'package:stoke_management/utills/shared_preferences.dart';
@@ -10,6 +9,7 @@ import 'package:stoke_management/utills/utils_routes.dart';
 import 'package:stoke_management/view_model/login_view_model.dart';
 import 'package:device_info/device_info.dart';
 import '../app.dart';
+import 'forgot_password_screen.dart';
 // import 'package:stoke_management/widgets/common_toast.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -108,6 +108,9 @@ class LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        iconTheme: IconThemeData(
+          color: Colors.white, //change your color here
+        ),
         title: Text("Login",style: AppBarTitle.myAppbarStyle,),
         // centerTitle: true,
         backgroundColor: ColorConstant.themColor,
@@ -130,7 +133,7 @@ class LoginScreenState extends State<LoginScreen> {
                   ),
                   wTextField(),
                    SizedBox(
-                    height: 40,
+                    height: 30,
                   ),
                   wLoginButton(),
                    SizedBox(
@@ -138,7 +141,7 @@ class LoginScreenState extends State<LoginScreen> {
                   ),
                   wForgetPassword(),
                    SizedBox(
-                    height: 50,
+                    height: 20,
                   ),
                   wTextRegister()
                 ],
@@ -158,6 +161,8 @@ class LoginScreenState extends State<LoginScreen> {
             keyboardType: TextInputType.number,
             controller: phoneNumberController,
               decoration: InputDecoration(
+                contentPadding: EdgeInsets.only(top:0.0,bottom:0.0),
+                alignLabelWithHint: true,
                   labelText: "Mobile",
                   fillColor: Colors.black,
                   // border: OutlineInputBorder(
@@ -166,11 +171,13 @@ class LoginScreenState extends State<LoginScreen> {
                   // )
 
               )),
-          const SizedBox(height: 20),
+           SizedBox(height: 20),
           TextFormField(
             keyboardType: TextInputType.number,
             controller: passwordController,
             decoration: InputDecoration(
+              contentPadding: EdgeInsets.only(top:0.0,bottom:0.0),
+              alignLabelWithHint: true,
                 labelText: "Password",
                 fillColor: Colors.black,
                 // border: OutlineInputBorder(

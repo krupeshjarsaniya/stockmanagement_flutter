@@ -8,12 +8,12 @@ import 'package:stoke_management/screen/add_transaction.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:stoke_management/screen/profile_screen.dart';
-import 'package:stoke_management/screen/sub_screens/add_vendors.dart';
+import 'package:stoke_management/screen/splace_screen.dart';
+import 'package:stoke_management/screen/add_vendors.dart';
 import 'package:stoke_management/screen/home_screen.dart';
 import 'package:stoke_management/screen/login_screen.dart';
 import 'package:stoke_management/screen/register_screen.dart';
-import 'package:stoke_management/screen/sub_screens/change_password.dart';
-import 'package:stoke_management/screen/sub_screens/details_vendors.dart';
+import 'package:stoke_management/screen/change_password.dart';
 import 'package:stoke_management/screen/vendor_details_screen.dart';
 import 'package:stoke_management/screen/vendor_screen.dart';
 import 'package:stoke_management/screen/viewmore_screen.dart';
@@ -156,7 +156,8 @@ class MyAppState extends State<MyApp> {
       //   //   primaryColor : Colors.white
       //     primarySwatch: Colors.amber, splashColor: Colors.green
       // ),
-      home: LoginScreen(),
+      // home: LoginScreen(),
+      home: SplashScreen(),
       // home: HomeScreen(),
       // home: VenderDetailsScreen(),
       // home: AddTransactionScreen(),
@@ -169,7 +170,6 @@ class MyAppState extends State<MyApp> {
         UtilRoutes.VendorScreen:(context) => VendorScreen(),
         UtilRoutes.ProfileScreen:(context) => ProfileScreen(),
         UtilRoutes.ChangePassword:(context) => ChangePassword(),
-        UtilRoutes.DetailsVendors:(context) => DetailsVendors(),
         UtilRoutes.ViewMoreScreen:(context) => ViewMoreScreen(),
       },
     );

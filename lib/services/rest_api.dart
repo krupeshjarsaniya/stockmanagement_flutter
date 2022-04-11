@@ -1,8 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:stoke_management/app.dart';
+import 'package:stoke_management/model/api_request/Full_more_Request.dart';
 import 'package:stoke_management/model/api_request/add_transaction_request.dart';
 import 'package:stoke_management/model/api_request/add_vepari_request.dart';
+import 'package:stoke_management/model/api_request/change_password_request.dart';
+import 'package:stoke_management/model/api_request/dashbord_request.dart';
+import 'package:stoke_management/model/api_request/delete_stoke_request.dart';
 import 'package:stoke_management/model/api_request/edit_profile_request.dart';
+import 'package:stoke_management/model/api_request/edit_stocks_request.dart';
 import 'package:stoke_management/model/api_request/edit_vendor_request.dart';
 import 'package:stoke_management/model/api_request/login_request.dart';
 import 'package:flutter/cupertino.dart';
@@ -15,9 +20,11 @@ import 'package:path/path.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
+import 'package:stoke_management/model/api_request/logout_request.dart';
 import 'package:stoke_management/model/api_request/register_device_request.dart';
 import 'package:stoke_management/model/api_request/register_request.dart';
 import 'package:http/http.dart' as http;
+import 'package:stoke_management/model/api_request/vepari_stock_list_request.dart';
 import 'package:stoke_management/widgets/common_route.dart';
 import '../app.dart';
 
@@ -294,20 +301,47 @@ class RestApi {
       return null;
     }
   }
+//
+// Future<Response?> callVepariStockModel(String userId,String vepariId) async {
+//     String url = App.baseUrl + App.vepari_stock_list;
+//     showLoader(_context);
+//
+//     Response response;
+//
+//     try {
+//       print("===========Map======userId====" + userId.toString());
+//       print("===========Map======vepariId====" + vepariId.toString());
+//
+//       response = await http.post(
+//           Uri.parse(url), headers: {App.HeaderName : App.HeaderValue},
+//           body:{"user_id": userId.toString(),"vepari_id":vepariId.toString()});
+//
+//       // {"vepari_data" : editVendorRequest.toMap().toString()}
+//
+//        hideLoader();
+//       print('Response request: ${response.request}');
+//       print('Response status: ${response.statusCode}');
+//       print('Response body: ${response.body}');
+//       return response;
+//     } catch (e) {
+//       print("===EXCEPTION==="  + e.toString());
+//        hideLoader();
+//       return null;
+//     }
+//   }
 
-Future<Response?> callVepariStockModel(String userId,String vepariId) async {
+Future<Response?> callVepariStockModel(VepariStockListRequest vepariStockListRequest) async {
     String url = App.baseUrl + App.vepari_stock_list;
     showLoader(_context);
 
     Response response;
 
     try {
-      print("===========Map======userId====" + userId.toString());
-      print("===========Map======vepariId====" + vepariId.toString());
+      print("===========Map=========" + vepariStockListRequest.toMap().toString());
 
       response = await http.post(
           Uri.parse(url), headers: {App.HeaderName : App.HeaderValue},
-          body:{"user_id": userId.toString(),"vepari_id":vepariId.toString()});
+          body:vepariStockListRequest.toMap());
 
       // {"vepari_data" : editVendorRequest.toMap().toString()}
 
@@ -325,15 +359,46 @@ Future<Response?> callVepariStockModel(String userId,String vepariId) async {
 
 
 
-  Future<Response?> callDeleteStock(String stockId) async {
+  // Future<Response?> callDeleteStock(String stockId) async {
+  //   String url = App.baseUrl + App.stock_delete;
+  //   showLoader(_context);
+  //   Response response;
+  //   try {
+  //     print("===========Map=====stockId=====" + stockId.toString());
+  //     response = await http.post(
+  //         Uri.parse(url), headers: {App.HeaderName : App.HeaderValue},
+  //         // body: {"stock_delete_data": stockId.toString()});
+  //         // body: {"stock_delete_data": {"stock_id" : stockId.toString()}
+  //         body: {"stock_delete_data": '[{'+ "stock_id" +  '"'+stockId.toString()+'"'+'}]'
+  //
+  //
+  //         });
+  //      hideLoader();
+  //     print('Response request: ${response.request}');
+  //     print('Response status: ${response.statusCode}');
+  //     print('Response body: ${response.body}');
+  //     return response;
+  //   } catch (e) {
+  //     print("===EXCEPTION==="  + e.toString());
+  //
+  //      hideLoader();
+  //     return null;
+  //   }
+  // }
+
+  Future<Response?> callDeleteStock(DeleteStockRequest deleteStockRequest) async {
     String url = App.baseUrl + App.stock_delete;
     showLoader(_context);
     Response response;
     try {
-      print("===========Map=====stockId=====" + stockId.toString());
+      print("===========Map=====stockId=====" + deleteStockRequest.toMap().toString());
       response = await http.post(
           Uri.parse(url), headers: {App.HeaderName : App.HeaderValue},
-          body: {"stock_delete_data": stockId.toString()});
+          // body: {"stock_delete_data": stockId.toString()});
+          // body: {"stock_delete_data": {"stock_id" : stockId.toString()}
+          // body: {"stock_delete_data": '[{'+ "stock_id" +  '"'+stockId.toString()+'"'+'}]'
+          body: {"stock_delete_data" : '['+deleteStockRequest.toMap().toString()+']' });
+
        hideLoader();
       print('Response request: ${response.request}');
       print('Response status: ${response.statusCode}');
@@ -347,6 +412,118 @@ Future<Response?> callVepariStockModel(String userId,String vepariId) async {
     }
   }
 
+  Future<Response?> callChangePassword(ChangePasswordRequest changePasswordRequest) async {
+    String url = App.baseUrl + App.change_password;
+    showLoader(_context);
+    Response response;
+    try {
+      print("===========Map==========" + changePasswordRequest.toMap().toString());
+
+      response = await http.post(
+          Uri.parse(url), headers: {App.HeaderName : App.HeaderValue},
+          body: changePasswordRequest.toMap());
+      hideLoader();
+      print('Response request: ${response.request}');
+      print('Response status: ${response.statusCode}');
+      print('Response body: ${response.body}');
+      return response;
+    } catch (e) {
+      print("===EXCEPTION==="  + e.toString());
+
+      hideLoader();
+      return null;
+    }
+  }
+
+  Future<Response?> callEditStocks(EditStocksRequest editStocksRequest) async {
+    String url = App.baseUrl + App.stock_edit;
+    showLoader(_context);
+    Response response;
+    try {
+      print("===========Map==========" + editStocksRequest.toMap().toString());
+
+      response = await http.post(
+          Uri.parse(url), headers: {App.HeaderName : App.HeaderValue},
+          body: {"stock_update_data" : '['+editStocksRequest.toMap().toString()+']' });
+
+      hideLoader();
+
+      print('Response request: ${response.request}');
+      print('Response status: ${response.statusCode}');
+      print('Response body: ${response.body}');
+      return response;
+    } catch (e) {
+      print("===EXCEPTION==="  + e.toString());
+       hideLoader();
+      return null;
+    }
+  }
+
+
+
+  Future<Response?> callLogOut(LogoutRequest logoutRequest) async {
+    String url = App.baseUrl + App.logout;
+    showLoader(_context);
+    Response response;
+    try {
+      print("===========Map==========" + logoutRequest.toMap().toString());
+      response = await http.post(
+          Uri.parse(url), headers: {App.HeaderName : App.HeaderValue},
+          body: logoutRequest.toMap());
+      hideLoader();
+      print('Response request: ${response.request}');
+      print('Response status: ${response.statusCode}');
+      print('Response body: ${response.body}');
+      return response;
+    } catch (e) {
+      print("===EXCEPTION==="  + e.toString());
+       hideLoader();
+      return null;
+    }
+  }
+
+  Future<Response?> callFullView(FullViewDetailrequest viewDetailrequest) async {
+    String url = App.baseUrl + App.full_view_details;
+    showLoader(_context);
+    Response response;
+    try {
+      print("===========Map==========" + viewDetailrequest.toMap().toString());
+      response = await http.post(
+          Uri.parse(url), headers: {App.HeaderName : App.HeaderValue},
+          body: viewDetailrequest.toMap());
+       hideLoader();
+      print('Response request: ${response.request}');
+      print('Response status: ${response.statusCode}');
+      print('Response body: ${response.body}');
+      return response;
+    } catch (e) {
+      print("===EXCEPTION==="  + e.toString());
+       hideLoader();
+      return null;
+    }
+  }
+
+  Future<Response?> callDashBord(DashBordRequest dashBordRequest) async {
+    String url = App.baseUrl + App.dashboard;
+    showLoader(_context);
+    Response response;
+    try {
+      print("===========Map==========" + dashBordRequest.toMap().toString());
+
+      response = await http.post(
+          Uri.parse(url), headers: {App.HeaderName : App.HeaderValue},
+          body: dashBordRequest.toMap());
+       hideLoader();
+      print('Response request: ${response.request}');
+      print('Response status: ${response.statusCode}');
+      print('Response body: ${response.body}');
+      return response;
+    } catch (e) {
+      print("===EXCEPTION==="  + e.toString());
+       hideLoader();
+      return null;
+    }
+  }
 
 
 

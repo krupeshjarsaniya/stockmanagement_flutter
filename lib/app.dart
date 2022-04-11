@@ -12,6 +12,11 @@ class App {
   static String stock_add = "stock_add";
   static String vepari_edit = "vepari_edit";
   static String stock_delete = "stock_delete";
+  static String change_password = "change_password";
+  static String stock_edit = "stock_edit";
+  static String logout = "logout";
+  static String full_view_details = "full_view_details";
+  static String dashboard = "dashboard";
 
 
 
@@ -26,6 +31,13 @@ class App {
   static String KEY_DEVICE_TYPE = "KEY_DEVICE_TYPE";
   static String KEY_USER_PROFILE = "KEY_USER_PROFILE";
   static String KEY_VEPARI_ID = "KEY_VEPARI_ID";
+  static String KEY_IS_LOGIN = "KEY_IS_LOGIN";
+
+
+  static String ASSETS_IMAGES_PATH = "assets/images/";
+
+  static String ic_splash = ASSETS_IMAGES_PATH + "splash.png";
+
 
 
 }

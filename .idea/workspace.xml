@@ -20,17 +20,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="95949a3e-fb97-4e37-be1a-684b8978a2df" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/lib/model/api_request/add_transaction_request.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/model/api_request/edit_vendor_request.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/model/api_response/add_transaction_model.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/model/api_response/edit_vendor_model.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/model/api_response/stock_delete_model.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/screen/edit_stock_screen.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/screen/edit_vendor.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/view_model/add_transaction_view_model.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/view_model/edit_vendor_view_model.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/view_model/vendor_details_viewmodel.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/widgets/common_route.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/splash.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/model/api_request/Full_more_Request.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/model/api_request/change_password_request.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/model/api_request/dashbord_request.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/model/api_request/delete_stoke_request.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/model/api_request/edit_stocks_request.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/model/api_request/logout_request.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/model/api_request/vepari_stock_list_request.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/model/api_response/change_password_model.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/model/api_response/dashbord_model.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/model/api_response/edit_stocks_model.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/model/api_response/logout_model.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/model/api_response/view_more_model.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/screen/change_password.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/screen/edit_transaction_screen.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/screen/note_screen.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/screen/splace_screen.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/view_model/change_password_viewmodel.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/view_model/dashbord_view_model.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/view_model/edit_stocks_view_model.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/view_model/profile_viewmodel.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/view_model/view_more_model.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_build/1e3af79fe87895670c476441f2b547eb/.filecache" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_build/1e3af79fe87895670c476441f2b547eb/.filecache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_build/1e3af79fe87895670c476441f2b547eb/app.dill" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_build/1e3af79fe87895670c476441f2b547eb/app.dill" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_build/1e3af79fe87895670c476441f2b547eb/kernel_snapshot.d" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_build/1e3af79fe87895670c476441f2b547eb/kernel_snapshot.d" afterDir="false" />
@@ -44,18 +55,42 @@
       <change beforePath="$PROJECT_DIR$/build/app/intermediates/compressed_assets/debug/out/assets/flutter_assets/kernel_blob.bin.jar" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/compressed_assets/debug/out/assets/flutter_assets/kernel_blob.bin.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/app/intermediates/flutter/debug/flutter_assets/kernel_blob.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/flutter/debug/flutter_assets/kernel_blob.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/app/intermediates/flutter/debug/flutter_build.d" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/flutter/debug/flutter_build.d" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/intermediates/flutter/debug/libs.jar" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/flutter/debug/libs.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/app/intermediates/incremental/packageDebug/tmp/debug/dex-renamer-state.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/incremental/packageDebug/tmp/debug/dex-renamer-state.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/app/intermediates/merged_assets/debug/out/flutter_assets/kernel_blob.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/merged_assets/debug/out/flutter_assets/kernel_blob.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/app/outputs/flutter-apk/app.apk.sha1" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/outputs/flutter-apk/app.apk.sha1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/device_info/intermediates/incremental/mergeDebugResources/compile-file-map.properties" beforeDir="false" afterPath="$PROJECT_DIR$/build/device_info/intermediates/incremental/mergeDebugResources/compile-file-map.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/device_info/intermediates/incremental/packageDebugResources/compile-file-map.properties" beforeDir="false" afterPath="$PROJECT_DIR$/build/device_info/intermediates/incremental/packageDebugResources/compile-file-map.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/f58ed05f7a6fba8f3451773989665e4b.cache.dill.track.dill" beforeDir="false" afterPath="$PROJECT_DIR$/build/f58ed05f7a6fba8f3451773989665e4b.cache.dill.track.dill" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/firebase_auth/intermediates/incremental/packageDebugResources/compile-file-map.properties" beforeDir="false" afterPath="$PROJECT_DIR$/build/firebase_auth/intermediates/incremental/packageDebugResources/compile-file-map.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/firebase_core/intermediates/incremental/packageDebugResources/compile-file-map.properties" beforeDir="false" afterPath="$PROJECT_DIR$/build/firebase_core/intermediates/incremental/packageDebugResources/compile-file-map.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/firebase_messaging/intermediates/incremental/packageDebugResources/compile-file-map.properties" beforeDir="false" afterPath="$PROJECT_DIR$/build/firebase_messaging/intermediates/incremental/packageDebugResources/compile-file-map.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/shared_preferences/intermediates/incremental/packageDebugResources/compile-file-map.properties" beforeDir="false" afterPath="$PROJECT_DIR$/build/shared_preferences/intermediates/incremental/packageDebugResources/compile-file-map.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/app.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/app.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/model/api_response/vepari_stock_list_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/model/api_response/vepari_stock_list_model.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/screen/add_transaction.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screen/add_transaction.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screen/dashbord_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screen/dashbord_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screen/edit_vendor.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screen/edit_vendor.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screen/login_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screen/login_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screen/melting_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screen/melting_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screen/profile_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screen/profile_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screen/register_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screen/register_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screen/sub_screens/add_vendors.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screen/add_vendors.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screen/sub_screens/change_password.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screen/sub_screens/details_vendor.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screen/sub_screens/details_vendors.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screen/sub_screens/edit_profile.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screen/edit_profile.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screen/sub_screens/forgot_password_screen.dart" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/screen/vendor_details_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screen/vendor_details_screen.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/screen/vendor_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screen/vendor_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screen/viewmore_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screen/viewmore_screen.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/services/interceptor_api.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/services/interceptor_api.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/services/rest_api.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/services/rest_api.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/view_model/dashboard_viewmodel.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/view_model/dashboard_viewmodel.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/view_model/add_vendor_view_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/view_model/add_vendor_view_model.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/view_model/edit_profile_view_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/view_model/edit_profile_view_model.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/view_model/login_view_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/view_model/login_view_model.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/view_model/vendor_details_viewmodel.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/view_model/vendor_details_viewmodel.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,20 +120,22 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="dart.analysis.tool.window.visible" value="false" />
     <property name="io.flutter.reload.alreadyRun" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/widgets" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/screen" />
     <property name="settings.editor.selected.configurable" value="dart.settings" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/lib/model/api_response" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/lib/widgets" />
-      <recent name="$PROJECT_DIR$/lib/model/api_response" />
-      <recent name="$PROJECT_DIR$/lib/model/api_request" />
-      <recent name="$PROJECT_DIR$/lib/view_model" />
       <recent name="$PROJECT_DIR$/lib/screen" />
+      <recent name="$PROJECT_DIR$/lib/model/api_request" />
+      <recent name="$PROJECT_DIR$/lib/model/api_response" />
+      <recent name="$PROJECT_DIR$/lib/view_model" />
+      <recent name="$PROJECT_DIR$/assets/images" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/lib/screen" />
+      <recent name="$PROJECT_DIR$/lib/view_model" />
+      <recent name="$PROJECT_DIR$/lib/model/api_response" />
     </key>
   </component>
   <component name="RunManager">
@@ -138,29 +175,29 @@
       <screen x="0" y="25" width="1920" height="979" />
     </state>
     <state x="424" y="173" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.25.1920.979@0.25.1920.979" timestamp="1649144134689" />
-    <state x="698" y="303" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1649339074570">
+    <state x="698" y="303" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1649405481512">
       <screen x="0" y="25" width="1920" height="1055" />
     </state>
-    <state x="698" y="303" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.25.1920.1055@0.25.1920.1055" timestamp="1649339074570" />
-    <state width="1878" height="2" key="GridCell.Tab.0.bottom" timestamp="1649340288403">
+    <state x="698" y="303" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.25.1920.1055@0.25.1920.1055" timestamp="1649405481512" />
+    <state width="1878" height="542" key="GridCell.Tab.0.bottom" timestamp="1649427202455">
       <screen x="0" y="25" width="1920" height="1055" />
     </state>
-    <state width="1878" height="2" key="GridCell.Tab.0.bottom/0.25.1920.1055@0.25.1920.1055" timestamp="1649340288403" />
+    <state width="1878" height="542" key="GridCell.Tab.0.bottom/0.25.1920.1055@0.25.1920.1055" timestamp="1649427202455" />
     <state width="1878" height="459" key="GridCell.Tab.0.bottom/0.25.1920.979@0.25.1920.979" timestamp="1649162460229" />
-    <state width="1878" height="2" key="GridCell.Tab.0.center" timestamp="1649340288402">
+    <state width="1878" height="542" key="GridCell.Tab.0.center" timestamp="1649427202455">
       <screen x="0" y="25" width="1920" height="1055" />
     </state>
-    <state width="1878" height="2" key="GridCell.Tab.0.center/0.25.1920.1055@0.25.1920.1055" timestamp="1649340288402" />
+    <state width="1878" height="542" key="GridCell.Tab.0.center/0.25.1920.1055@0.25.1920.1055" timestamp="1649427202455" />
     <state width="1878" height="459" key="GridCell.Tab.0.center/0.25.1920.979@0.25.1920.979" timestamp="1649162460228" />
-    <state width="1878" height="2" key="GridCell.Tab.0.left" timestamp="1649340288402">
+    <state width="1878" height="542" key="GridCell.Tab.0.left" timestamp="1649427202454">
       <screen x="0" y="25" width="1920" height="1055" />
     </state>
-    <state width="1878" height="2" key="GridCell.Tab.0.left/0.25.1920.1055@0.25.1920.1055" timestamp="1649340288402" />
+    <state width="1878" height="542" key="GridCell.Tab.0.left/0.25.1920.1055@0.25.1920.1055" timestamp="1649427202454" />
     <state width="1878" height="459" key="GridCell.Tab.0.left/0.25.1920.979@0.25.1920.979" timestamp="1649162460228" />
-    <state width="1878" height="2" key="GridCell.Tab.0.right" timestamp="1649340288403">
+    <state width="1878" height="542" key="GridCell.Tab.0.right" timestamp="1649427202455">
       <screen x="0" y="25" width="1920" height="1055" />
     </state>
-    <state width="1878" height="2" key="GridCell.Tab.0.right/0.25.1920.1055@0.25.1920.1055" timestamp="1649340288403" />
+    <state width="1878" height="542" key="GridCell.Tab.0.right/0.25.1920.1055@0.25.1920.1055" timestamp="1649427202455" />
     <state width="1878" height="459" key="GridCell.Tab.0.right/0.25.1920.979@0.25.1920.979" timestamp="1649162460229" />
     <state x="461" y="150" key="SettingsEditor" timestamp="1649160602885">
       <screen x="0" y="25" width="1920" height="979" />
@@ -170,10 +207,10 @@
       <screen x="0" y="25" width="1920" height="1055" />
     </state>
     <state x="749" y="246" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.25.1920.1055@0.25.1920.1055" timestamp="1649336823384" />
-    <state x="652" y="288" width="615" height="529" key="find.popup" timestamp="1649311860289">
+    <state x="652" y="288" width="615" height="529" key="find.popup" timestamp="1649426373448">
       <screen x="0" y="25" width="1920" height="1055" />
     </state>
-    <state x="652" y="288" width="615" height="529" key="find.popup/0.25.1920.1055@0.25.1920.1055" timestamp="1649311860289" />
+    <state x="652" y="288" width="615" height="529" key="find.popup/0.25.1920.1055@0.25.1920.1055" timestamp="1649426373448" />
     <state x="652" y="269" width="615" height="490" key="find.popup/0.25.1920.979@0.25.1920.979" timestamp="1649161701643" />
     <state x="625" y="259" width="670" height="676" key="search.everywhere.popup" timestamp="1649324738234">
       <screen x="0" y="25" width="1920" height="1055" />

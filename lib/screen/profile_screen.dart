@@ -1,21 +1,67 @@
+import 'dart:ffi';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:page_transition/page_transition.dart';
-import 'package:stoke_management/screen/sub_screens/change_password.dart';
+import 'package:stoke_management/model/api_request/logout_request.dart';
+import 'package:stoke_management/screen/change_password.dart';
 import 'package:stoke_management/utills/color_constant.dart';
-import 'package:stoke_management/screen/sub_screens/edit_profile.dart';
+import 'package:stoke_management/screen/edit_profile.dart';
 import 'package:stoke_management/utills/appbar_title_text.dart';
+import 'package:stoke_management/utills/shared_preferences.dart';
 import 'package:stoke_management/utills/utils_routes.dart';
+import 'package:stoke_management/view_model/profile_viewmodel.dart';
+
+import '../app.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({Key? key}) : super(key: key);
 
   @override
-  _ProfileScreenState createState() => _ProfileScreenState();
+  ProfileScreenState createState() => ProfileScreenState();
 }
 
-class _ProfileScreenState extends State<ProfileScreen> {
+class ProfileScreenState extends State<ProfileScreen> {
+
+  late ProfileViewModel viewModel;
+  @override
+  void initState() {
+    super.initState();
+    init();
+    // scrollController.addListener(pagination);
+
+    Future.delayed(Duration.zero, () {
+      /*model ??*/ (viewModel = ProfileViewModel(this));
+    });
+  }
+
+  String? DEVICE_TYPE;
+  String? DEVICE_ID;
+  String? DEVICE_TOKEN;
+  String? USER_ID;
+  String? type;
+
+
+
+  Future<Void?> init() async {
+    var userId = await Shared_Preferences.prefGetString(App.KEY_USER_ID, "");
+    var deviceId = await Shared_Preferences.prefGetString(App.KEY_DEVICE_ID, "");
+    var deviceToken = await Shared_Preferences.prefGetString(App.KEY_DEVICE_TOKEN, "");
+    var deviceType = await Shared_Preferences.prefGetString(App.KEY_DEVICE_TYPE, "");
+    print("----userId---");
+    print("----userId---" + userId.toString());
+
+    setState(() {
+      USER_ID = userId.toString();
+      DEVICE_TOKEN = deviceToken.toString();
+      DEVICE_ID= deviceId.toString();
+      DEVICE_TYPE = deviceType.toString();
+    });
+  }
+
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,7 +86,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             const SizedBox(height: 1.5,),
             w_PurchasePlan(),
             const SizedBox(height: 15,),
-            w_Logout(),
+            w_Logout(context),
           ],
         ),
       ),
@@ -173,9 +219,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
     );
   }
 
-  Widget w_Logout(){
-    return InkWell(
-      onTap: (){},
+  Widget w_Logout(BuildContext context){
+    return GestureDetector(
+      onTap: (){
+        print("---Logout---");
+        showAlertDialog(context);
+      },
       child: Container(
         alignment: Alignment.center,
         color: Colors.white,
@@ -189,4 +238,48 @@ class _ProfileScreenState extends State<ProfileScreen> {
       ),
     );
   }
+
+  showAlertDialog(BuildContext context) {
+
+    // set up the button
+    Widget okButton = GestureDetector(
+      child: Text("Yes",style: TextStyle(color: Colors.amber),),
+      onTap: () {
+
+        viewModel.logoutRequest = LogoutRequest(USER_ID.toString(), DEVICE_TYPE.toString(), DEVICE_ID.toString(), DEVICE_TOKEN.toString());
+        viewModel.callLogOut(viewModel.logoutRequest!);
+      },
+    );
+
+
+    Widget cancleButton = GestureDetector(
+      child: Text("cancel"),
+      onTap: () {
+        Navigator.of(context).pop();
+      },
+    );
+
+
+    // set up the AlertDialog
+    AlertDialog alert = AlertDialog(
+      title: Text("Alert"),
+      content: Text("Are you sure you want to logout?"),
+      actions: [
+        cancleButton,
+
+        okButton,
+      ],
+    );
+
+    // show the dialog
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
+    );
+  }
+
+
+
 }

@@ -57,10 +57,10 @@ class RegisterScreenState extends State<RegisterScreen> {
             .height,
         child: SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.all(20.0),
+            padding: const EdgeInsets.all(10.0),
             child: Container(
               child: Padding(
-                padding: const EdgeInsets.all(20.0),
+                padding: const EdgeInsets.all(10),
                 child: Column(
                   children: [
                     const SizedBox(height: 20,),
@@ -96,72 +96,66 @@ class RegisterScreenState extends State<RegisterScreen> {
     return Container(
       child: Column(
         children: [
-          SizedBox(height: 20,),
+          SizedBox(height: 15,),
           TextFormField(
-            keyboardType: TextInputType.text,
-            controller: firstNameController,
-            decoration: InputDecoration(
+              keyboardType: TextInputType.text,
+              controller: firstNameController,
+              decoration: InputDecoration(
+                contentPadding: EdgeInsets.only(top:0.0,bottom:0.0),
+                alignLabelWithHint: true,
                 labelText: "FirstName",
-                border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10)
-                )
-            ),
-          ),
-          SizedBox(height: 30,),
+                fillColor: Colors.black,
+              )),
+          SizedBox(height: 15,),
           TextFormField(
-            keyboardType: TextInputType.text,
-            controller: lastNameController,
-            decoration: InputDecoration(
+              keyboardType: TextInputType.text,
+              controller: lastNameController,
+              decoration: InputDecoration(
+                contentPadding: EdgeInsets.only(top:0.0,bottom:0.0),
+                alignLabelWithHint: true,
                 labelText: "LastName",
-                border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10)
-                )
-            ),
-          ),
-          SizedBox(height: 30,),
+                fillColor: Colors.black,
+              )),
+          SizedBox(height: 15,),
           TextFormField(
-            keyboardType: TextInputType.number,
-            controller: mobileController,
-            decoration: InputDecoration(
+              keyboardType: TextInputType.number,
+              controller: mobileController,
+              decoration: InputDecoration(
+                contentPadding: EdgeInsets.only(top:0.0,bottom:0.0),
+                alignLabelWithHint: true,
                 labelText: "Mobile Number",
-                border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10)
-                )
-            ),
-          ),
-          SizedBox(height: 30,),
+                fillColor: Colors.black,
+              )),
+          SizedBox(height: 15,),
           TextFormField(
-            keyboardType: TextInputType.emailAddress,
-            controller: emailController,
-            decoration: InputDecoration(
+              keyboardType: TextInputType.emailAddress,
+              controller: emailController,
+              decoration: InputDecoration(
+                contentPadding: EdgeInsets.only(top:0.0,bottom:0.0),
+                alignLabelWithHint: true,
                 labelText: "Email",
-                border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10)
-                )
-            ),
-          ),
-          SizedBox(height: 30,),
+                fillColor: Colors.black,
+              )),
+          SizedBox(height: 15,),
           TextFormField(
-            keyboardType: TextInputType.number,
-            controller: passwordController,
-            decoration: InputDecoration(
+              keyboardType: TextInputType.number,
+              controller: passwordController,
+              decoration: InputDecoration(
+                contentPadding: EdgeInsets.only(top:0.0,bottom:0.0),
+                alignLabelWithHint: true,
                 labelText: "Password",
-                border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10)
-                )
-            ),
-          ),
-          SizedBox(height: 30,),
+                fillColor: Colors.black,
+              )),
+          SizedBox(height: 15,),
           TextFormField(
-            keyboardType: TextInputType.number,
-            controller: conformPasswordController,
-            decoration: InputDecoration(
+              keyboardType: TextInputType.number,
+              controller: conformPasswordController,
+              decoration: InputDecoration(
+                contentPadding: EdgeInsets.only(top:0.0,bottom:0.0),
+                alignLabelWithHint: true,
                 labelText: "Confirm Password",
-                border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10)
-                )
-            ),
-          ),
+                fillColor: Colors.black,
+              )),
         ],
       ),
     );
@@ -195,19 +189,21 @@ class RegisterScreenState extends State<RegisterScreen> {
       },
       child: Container(
         width: MediaQuery.of(context).size.width,
-        height: 60,
         decoration: BoxDecoration(
           color: ColorConstant.primarycolor,
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(6),
         ),
-        child: const Center(
-          child: Text(
-            "Register",
-            style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 18,
-                color: Colors.white
-            ),),
+        child:  Padding(
+          padding: const EdgeInsets.all(10),
+          child: Center(
+            child: Text(
+              "Register",
+              style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18,
+                  color: Colors.white
+              ),),
+          ),
         ),
       ),
     );

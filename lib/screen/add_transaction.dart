@@ -170,18 +170,13 @@ class AddTransactionScreenState extends State<AddTransactionScreen> {
                           keyboardType: TextInputType.number,
                           controller: dateController,
                           readOnly: true,
-
                           onTap: (){
                             _selectDateFrom(context);
 
                           },
-
-
                           style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold),
-
                           decoration: InputDecoration(
-
-                              hintText: 'Select Date',
+                            hintText: 'Select Date',
                             contentPadding: EdgeInsets.only(top:0.0,bottom:0.0),
                             alignLabelWithHint: true,
                             // labelText: "Date",

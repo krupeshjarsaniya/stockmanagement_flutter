@@ -1,6 +1,6 @@
 import 'package:stoke_management/model/api_request/add_vepari_request.dart';
 import 'package:stoke_management/model/api_response/Add_vepari_model.dart';
-import 'package:stoke_management/screen/sub_screens/add_vendors.dart';
+import 'package:stoke_management/screen/add_vendors.dart';
 import 'package:stoke_management/services/interceptor_api.dart';
 
 class AddVendorViewModel {

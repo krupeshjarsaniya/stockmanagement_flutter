@@ -10,8 +10,13 @@ import '../../app.dart';
 
 class EditVendor extends StatefulWidget {
   String? vepariId;
-
-  EditVendor({this.vepariId});
+  String? first_name;
+  String? last_name;
+  String? mobile;
+  String? company_name;
+  String? address;
+  String? email;
+  EditVendor({this.vepariId,this.first_name,this.last_name,this.mobile,this.company_name,this.address,this.email});
   // const EditVendor({Key? key}) : super(key: key);
 
   @override
@@ -185,16 +190,18 @@ class EditVendorState extends State<EditVendor> {
       },
       child: Container(
         width: MediaQuery.of(context).size.width,
-        height: 60,
         decoration: BoxDecoration(
           color: ColorConstant.primarycolor,
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(6),
         ),
-        child: const Center(
-          child: Text(
-            "Save",
-            style: TextStyle(
-                fontWeight: FontWeight.bold, fontSize: 18, color: Colors.white),
+        child:  Padding(
+          padding: const EdgeInsets.all(10),
+          child: Center(
+            child: Text(
+              "Save",
+              style: TextStyle(
+                  fontWeight: FontWeight.bold, fontSize: 18, color: Colors.white),
+            ),
           ),
         ),
       ),
@@ -206,8 +213,30 @@ class EditVendorState extends State<EditVendor> {
     var vepariId = await Shared_Preferences.prefGetString(App.KEY_VEPARI_ID, "");
 
     setState(() {
+
+      firstName = TextEditingController(text:widget.first_name.toString() );
+      firstName.selection = TextSelection.fromPosition(TextPosition(offset: firstName.text.length));
+
+      lastName = TextEditingController(text:widget.last_name.toString() );
+      lastName.selection = TextSelection.fromPosition(TextPosition(offset: lastName.text.length));
+
+      mobileNumber = TextEditingController(text:widget.mobile.toString() );
+      mobileNumber.selection = TextSelection.fromPosition(TextPosition(offset: mobileNumber.text.length));
+
+      companyName = TextEditingController(text:widget.company_name.toString() );
+      companyName.selection = TextSelection.fromPosition(TextPosition(offset: companyName.text.length));
+
+      address = TextEditingController(text:widget.address.toString() );
+      address.selection = TextSelection.fromPosition(TextPosition(offset: address.text.length));
+
+      emailController = TextEditingController(text:widget.email.toString() );
+      emailController.selection = TextSelection.fromPosition(TextPosition(offset: emailController.text.length));
+
       USER_ID = userId!;
       VEPARI_ID = vepariId!;
+
+
+
     });
   }
 }

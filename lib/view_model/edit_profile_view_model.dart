@@ -1,7 +1,7 @@
 
 import 'package:stoke_management/model/api_request/edit_profile_request.dart';
 import 'package:stoke_management/model/api_response/edit_profile_model.dart';
-import 'package:stoke_management/screen/sub_screens/edit_profile.dart';
+import 'package:stoke_management/screen/edit_profile.dart';
 import 'package:stoke_management/services/interceptor_api.dart';
 
 class EditProfileViewModel {
