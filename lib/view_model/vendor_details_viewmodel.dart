@@ -27,7 +27,7 @@ class VendorDetailsViewModel {
     callVepariStockModel(vepariStockListRequest!);
     // callVepariStockModel(state.user_id_str.toString(), state.vepari_id_str.toString());
     dashBordRequest = DashBordRequest(state.user_id_str.toString(),state.token_str.toString(),state.deviceType_str.toString(),state.deviceuid_str.toString());
-    callDashBord(dashBordRequest!);
+    callDashBordWithOutLoader(dashBordRequest!);
   }
 
   // callVepariStockModel(String userId,String vepariId) async {
@@ -75,18 +75,18 @@ class VendorDetailsViewModel {
 
 
 
-  callDashBord(DashBordRequest dashBordRequest) async {
-    print("==========Edit Vepari==========" + dashBordRequest.toString());
-    dashBordModel = (await interceptorApi!.callDashBord(dashBordRequest));
-    if (dashBordModel != null) {
-      state!.setState(() {
-        print("------a----");
-
-        state!.dashBordModel = dashBordModel!;
-      });
-      print("==========Edit Vendor Api Responce==========" + dashBordModel.toString());
-    }
-  }
+  // callDashBord(DashBordRequest dashBordRequest) async {
+  //   print("==========Edit Vepari==========" + dashBordRequest.toString());
+  //   dashBordModel = (await interceptorApi!.callDashBord(dashBordRequest));
+  //   if (dashBordModel != null) {
+  //     state!.setState(() {
+  //       print("------a----");
+  //
+  //       state!.dashBordModel = dashBordModel!;
+  //     });
+  //     print("==========Edit Vendor Api Responce==========" + dashBordModel.toString());
+  //   }
+  // }
 
   callDashBordWithOutLoader(DashBordRequest dashBordRequest) async {
     print("==========Edit Vepari==========" + dashBordRequest.toString());
@@ -94,6 +94,9 @@ class VendorDetailsViewModel {
     if (dashBordModel != null) {
       state!.setState(() {
         state!.dashBordModel = dashBordModel!;
+        state!.totalCredit = dashBordModel!.totalCredit;
+        state!.totalDebit = dashBordModel!.totalDebit;
+        state!.totalBalance = dashBordModel!.balance;
 
       });
       print("==========Edit Vendor Api Responce==========" + dashBordModel.toString());

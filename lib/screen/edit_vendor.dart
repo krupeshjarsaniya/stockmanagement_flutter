@@ -31,6 +31,10 @@ class EditVendorState extends State<EditVendor> {
 
   EditVendorViewModel? model;
 
+
+  String popFirstName = "...";
+
+
   TextEditingController firstName = TextEditingController();
   TextEditingController lastName = TextEditingController();
   TextEditingController mobileNumber = TextEditingController();
@@ -52,6 +56,18 @@ class EditVendorState extends State<EditVendor> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+
+        leading: IconButton(
+          onPressed: () {
+
+            setState(() {
+              popFirstName = firstName.text;
+            });
+            Navigator.pop(context,popFirstName.toString());
+            },
+          icon: Icon(Icons.arrow_back),
+        ),
+
         iconTheme: IconThemeData(
           color: Colors.white, //change your color here
         ),
@@ -210,6 +226,7 @@ class EditVendorState extends State<EditVendor> {
 
     setState(() {
 
+      popFirstName = firstName.text;
       firstName = TextEditingController(text:widget.first_name.toString() );
       firstName.selection = TextSelection.fromPosition(TextPosition(offset: firstName.text.length));
 

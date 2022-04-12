@@ -164,6 +164,17 @@ class EditProfileState extends State<EditProfile> {
   Widget w_SaveButton() {
     return InkWell(
       onTap: () {
+
+
+        if(displayFirstNameController.text.isEmpty){
+          commonToast("Please Enter First Name");
+
+        }else if(displayLastNameController.text.isEmpty){
+          commonToast("Please Enter Last Name");
+
+        }else if(displayMobileNumberController.text.isEmpty){
+          commonToast("Please Enter Mobile Number");
+        }
             model!.editProfileRequest =
                 EditProfileRequest(
                   USER_ID.toString(),

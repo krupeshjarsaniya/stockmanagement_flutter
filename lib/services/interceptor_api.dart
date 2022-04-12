@@ -346,7 +346,9 @@ Future<VepariStockListModel?> callVepariStockModelLoader(VepariStockListRequest 
 
   Future<DashBordModel?> callDashBord(DashBordRequest dashBordRequest) async {
     var response = await restApi.callDashBord(dashBordRequest);
-    if (response == null) {}
+    if (response == null) {
+
+    }
     else if (response.statusCode == 200 || response.statusCode == 201) {
       var data = jsonDecode(response.body.toString());
       if (response.statusCode == 200) {
@@ -359,21 +361,6 @@ Future<VepariStockListModel?> callVepariStockModelLoader(VepariStockListRequest 
     } else {}
   }
 
-
-  Future<DashBordModel?> callDashBordModel(DashBordRequest dashBordRequest) async {
-    var response = await restApi.callDashBordModel(dashBordRequest);
-    if (response == null) {}
-    else if (response.statusCode == 200 || response.statusCode == 201) {
-      var data = jsonDecode(response.body.toString());
-      if (response.statusCode == 200) {
-        var response = DashBordModel.fromJson(data);
-        return response;
-      }
-    } else if (response.statusCode == 500) {
-      var data = jsonDecode(response.body);
-      String msg = data['message'];
-    } else {}
-  }
 
 
   Future<DashBordModel?> callDashBordWithOutLoader(DashBordRequest dashBordRequest) async {

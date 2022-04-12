@@ -8,7 +8,9 @@ import 'package:stoke_management/view_model/text_stock_list_view_model.dart';
 import '../app.dart';
 
 class NoteScreen extends StatefulWidget {
-  const NoteScreen({Key? key}) : super(key: key);
+  String? vendorName;
+  NoteScreen({this.vendorName});
+  // const NoteScreen({Key? key}) : super(key: key);
 
   @override
   NoteScreenState createState() => NoteScreenState();
@@ -40,7 +42,7 @@ class NoteScreenState extends State<NoteScreen> {
         iconTheme: IconThemeData(
           color: Colors.white, //change your color here
         ),
-        title: Text("Test Edit",style: TextStyle(color: Colors.white),),
+        title: Text("${widget.vendorName.toString()} Editor",style: TextStyle(color: Colors.white),),
         centerTitle: true,
         actions: [
           IconButton(
@@ -54,18 +56,15 @@ class NoteScreenState extends State<NoteScreen> {
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 15.0,vertical: 20),
-        child: Container(
-          decoration: BoxDecoration(
-            border: Border.all(color: Colors.grey),
-            borderRadius: BorderRadius.circular(8)
-          ),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8.0),
-            child: TextField(
-              controller: controller,
-              decoration: InputDecoration(
-                border: InputBorder.none
-              ),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 8.0),
+          child: TextField(
+            maxLines: 35,
+            controller: controller,
+            decoration: InputDecoration(
+              border: InputBorder.none,
+              hintText: "Insert Your Text",
+              hintStyle: TextStyle(color: Colors.grey,fontSize: 20,fontWeight: FontWeight.w500)
             ),
           ),
         ),

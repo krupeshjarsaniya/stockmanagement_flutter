@@ -10,8 +10,6 @@ class AddTransactionRequest{
   String stock_date = "";
 
 
-
-
   AddTransactionRequest(
       this.vepari_id,
       this.user_id,
@@ -26,7 +24,6 @@ class AddTransactionRequest{
 
   Map<String,String> toMap(){
     var map = Map<String,String>();
-
     map['"'+"vepari_id"+'"'] = '"'+vepari_id+'"';
     map['"'+"user_id"+'"'] = '"'+user_id+'"';
     map['"'+"debit_credit"+'"'] = '"'+debit_credit+'"';
@@ -36,6 +33,5 @@ class AddTransactionRequest{
     map['"'+"fine_weight"+'"'] = '"'+fine_weight+'"';
     map['"'+"stock_date"+'"'] = '"'+stock_date+'"';
     return map;
-
   }
 }

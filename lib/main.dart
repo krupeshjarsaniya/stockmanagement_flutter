@@ -3,6 +3,7 @@ import 'package:device_info/device_info.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:stoke_management/screen/add_transaction.dart';
 
 import 'package:firebase_messaging/firebase_messaging.dart';
@@ -17,6 +18,7 @@ import 'package:stoke_management/screen/change_password.dart';
 import 'package:stoke_management/screen/vendor_details_screen.dart';
 import 'package:stoke_management/screen/vendor_screen.dart';
 import 'package:stoke_management/screen/viewmore_screen.dart';
+import 'package:stoke_management/utills/LocalString.dart';
 import 'package:stoke_management/utills/color_constant.dart';
 import 'package:stoke_management/utills/shared_preferences.dart';
 import 'package:stoke_management/utills/utils_routes.dart';
@@ -146,22 +148,15 @@ class MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return  MaterialApp(
-      theme: ThemeData(
-        primarySwatch: ColorConstant.primarycolor
-      ),
-      title: "Stoke Management",
-      // theme: ThemeData(
-      //   // primarySwatch:  Colors.amber,
-      //   //   primaryColor : Colors.white
-      //     primarySwatch: Colors.amber, splashColor: Colors.green
-      // ),
-      // home: LoginScreen(),
-      home: SplashScreen(),
-      // home: HomeScreen(),
-      // home: VenderDetailsScreen(),
-      // home: AddTransactionScreen(),
+    return  GetMaterialApp(
+      translations: LocalString(),
+      locale: Locale('en_US'),
       debugShowCheckedModeBanner: false,
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        primarySwatch: Colors.amber,
+      ),
+      home: SplashScreen(),
       routes: {
         UtilRoutes.RegisterScreen:(context) => RegisterScreen(),
         UtilRoutes.LoginScreen:(context) => LoginScreen(),
@@ -173,6 +168,28 @@ class MyAppState extends State<MyApp> {
         UtilRoutes.ViewMoreScreen:(context) => ViewMoreScreen(),
       },
     );
+
+
+    //   MaterialApp(
+    //   theme: ThemeData(
+    //     primarySwatch: ColorConstant.primarycolor
+    //   ),
+    //   title: "Stoke Management",
+    //
+    //   home: SplashScreen(),
+    //
+    //   debugShowCheckedModeBanner: false,
+    //   routes: {
+    //     UtilRoutes.RegisterScreen:(context) => RegisterScreen(),
+    //     UtilRoutes.LoginScreen:(context) => LoginScreen(),
+    //     UtilRoutes.HomeScreen:(context) => HomeScreen(),
+    //     UtilRoutes.AddVendors:(context) => AddVendors(),
+    //     UtilRoutes.VendorScreen:(context) => VendorScreen(),
+    //     UtilRoutes.ProfileScreen:(context) => ProfileScreen(),
+    //     UtilRoutes.ChangePassword:(context) => ChangePassword(),
+    //     UtilRoutes.ViewMoreScreen:(context) => ViewMoreScreen(),
+    //   },
+    // );
   }
 
   Future<void> registerNotification() async {

@@ -465,13 +465,10 @@ Future<Response?> callVepariStockModelLoader(VepariStockListRequest vepariStockL
     Response response;
     try {
       print("===========Map==========" + editStocksRequest.toMap().toString());
-
       response = await http.post(
           Uri.parse(url), headers: {App.HeaderName : App.HeaderValue},
           body: {"stock_update_data" : '['+editStocksRequest.toMap().toString()+']' });
-
       hideLoader();
-
       print('Response request: ${response.request}');
       print('Response status: ${response.statusCode}');
       print('Response body: ${response.body}');
@@ -541,15 +538,17 @@ Future<Response?> callVepariStockModelLoader(VepariStockListRequest vepariStockL
       print('Response request: ${response.request}');
       print('Response status: ${response.statusCode}');
       print('Response body: ${response.body}');
-      // return response;
+      return response;
     } catch (e) {
       print("===EXCEPTION==="  + e.toString());
-       hideLoader();
+       // hideLoader();
       return null;
     }
   }
 
- Future<Response?> callDashBordModel(DashBordRequest dashBordRequest) async {
+
+
+  Future<Response?> callDashBordWithOutLoader(DashBordRequest dashBordRequest) async {
     String url = App.baseUrl + App.dashboard;
     // showLoader(_context);
     Response response;
@@ -559,36 +558,14 @@ Future<Response?> callVepariStockModelLoader(VepariStockListRequest vepariStockL
       response = await http.post(
           Uri.parse(url), headers: {App.HeaderName : App.HeaderValue},
           body: dashBordRequest.toMap());
-       // hideLoader();
-      print('Response request: ${response.request}');
-      print('Response status: ${response.statusCode}');
-      print('Response body: ${response.body}');
-      // return response;
-    } catch (e) {
-      print("===EXCEPTION==="  + e.toString());
-       hideLoader();
-      return null;
-    }
-  }
-
-  Future<Response?> callDashBordWithOutLoader(DashBordRequest dashBordRequest) async {
-    String url = App.baseUrl + App.dashboard;
-    showLoader(_context);
-    Response response;
-    try {
-      print("===========Map==========" + dashBordRequest.toMap().toString());
-
-      response = await http.post(
-          Uri.parse(url), headers: {App.HeaderName : App.HeaderValue},
-          body: dashBordRequest.toMap());
-      hideLoader();
+      // hideLoader();
       print('Response request: ${response.request}');
       print('Response status: ${response.statusCode}');
       print('Response body: ${response.body}');
       return response;
     } catch (e) {
       print("===EXCEPTION==="  + e.toString());
-      hideLoader();
+      // hideLoader();
       return null;
     }
   }

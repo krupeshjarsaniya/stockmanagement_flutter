@@ -7,7 +7,7 @@ Future<bool?> commonToast(String msg, {String? bgColor, String? color}) {
     Fluttertoast.showToast(
         msg: msg,
         toastLength: Toast.LENGTH_SHORT,
-        fontSize: 20,
+        fontSize: 12,
         textColor: Colors.white
     );
 }

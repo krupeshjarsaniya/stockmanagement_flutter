@@ -109,23 +109,22 @@ class VendorScreenState extends State<VendorScreen> {
                       children: [
                         InkWell(
                           onTap: (){
-
-                            String? first_name;
-                            String? last_name;
-                            String? mobile;
-                            String? company_name;
-                            String? address;
-                            String? email;
-
-                            Navigator.push(context, MaterialPageRoute(builder: (context) => VenderDetailsScreen(
-                                vepariId: vepariList![position].vepariId.toString(),
-                                first_name: vepariList![position].firstName.toString(),
-                                last_name: vepariList![position].lastName.toString(),
-                                mobile: vepariList![position].mobile.toString(),
-                                company_name: vepariList![position].companyName.toString(),
-                                address: vepariList![position].address.toString(),
-                                email: vepariList![position].email.toString()
-                            )) );
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => VenderDetailsScreen(
+                                  vepariId: vepariList![position].vepariId.toString(),
+                                  first_name: vepariList![position].firstName.toString(),
+                                  last_name: vepariList![position].lastName.toString(),
+                                  mobile: vepariList![position].mobile.toString(),
+                                  company_name: vepariList![position].companyName.toString(),
+                                  address: vepariList![position].address.toString(),
+                                  email: vepariList![position].email.toString()
+                              )),
+                            ).then((data){
+                              // then will return value when the loginScreen's pop is called.
+                              debugPrint(data);
+                              viewModel.callVepariListModel(USER_ID.toString());
+                            });
                           },
                           child: Padding(
                             padding: EdgeInsets.all(10),
@@ -141,14 +140,23 @@ class VendorScreenState extends State<VendorScreen> {
                         Expanded(
                           child: InkWell(
                             onTap: (){
-                              Navigator.push(context, MaterialPageRoute(builder: (context) => VenderDetailsScreen(
-                                  vepariId: vepariList![position].vepariId.toString(),
-                                  first_name: vepariList![position].firstName.toString(),
-                              last_name: vepariList![position].lastName.toString(),
-                              mobile: vepariList![position].mobile.toString(),
-                              company_name: vepariList![position].companyName.toString(),
-                              address: vepariList![position].address.toString(),
-                              email: vepariList![position].email.toString())));
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) => VenderDetailsScreen(
+                                    vepariId: vepariList![position].vepariId.toString(),
+                                    first_name: vepariList![position].firstName.toString(),
+                                    last_name: vepariList![position].lastName.toString(),
+                                    mobile: vepariList![position].mobile.toString(),
+                                    company_name: vepariList![position].companyName.toString(),
+                                    address: vepariList![position].address.toString(),
+                                    email: vepariList![position].email.toString()
+                                )),
+                              ).then((data){
+                                // then will return value when the loginScreen's pop is called.
+                                debugPrint(data);
+                                viewModel.callVepariListModel(USER_ID.toString());
+                              });
+
                             },
                             child: Container(
                               child: Column(
@@ -174,10 +182,30 @@ class VendorScreenState extends State<VendorScreen> {
                               children: [
                                 GestureDetector(onTap : (){
 
-                                  setState(() {
-                                    vepariList!.removeAt(position);
-
-                                  });
+                                  showDialog<String>(
+                                      context: context,
+                                      builder: (BuildContext context)
+                                      {
+                                        return AlertDialog(
+                                          title: const Text('Alert!'),
+                                          content: const Text('Are you sure want to delete ?'),
+                                          actions: <Widget>[
+                                            TextButton(
+                                              onPressed: () { return Navigator.pop(context, 'Cancel');},
+                                              child: const Text('Cancel',style: TextStyle(color: Colors.black),),
+                                            ),
+                                            TextButton(
+                                              onPressed: () {
+                                                setState(() {
+                                                  vepariList!.removeAt(position);
+                                                });
+                                              },
+                                              child: const Text('Ok'),
+                                            ),
+                                          ],
+                                        );
+                                      }
+                                  );
                                 },child: Icon(Icons.delete,color: Colors.grey,)),
                                 SizedBox(height: 10,),
                                 Icon(Icons.arrow_forward_ios_rounded,color: Colors.grey,size: 18,),

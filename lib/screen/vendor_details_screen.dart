@@ -41,6 +41,13 @@ class VenderDetailsScreenState extends State<VenderDetailsScreen> {
 
   DashBordModel dashBordModel = DashBordModel();
 
+  var totalCredit = 0;
+  var totalDebit = 0;
+  var totalBalance = 0;
+
+
+
+
   late VendorDetailsViewModel viewModel;
 
   TextEditingController _txtControllerDateFrom = new TextEditingController();
@@ -58,6 +65,7 @@ class VenderDetailsScreenState extends State<VenderDetailsScreen> {
   String deviceType_str = "";
   String deviceuid_str = "";
   String token_str = "";
+  String firstName = "";
 
   List<String> delete_list_credit = [];
   List<String> delete_list_debit = [];
@@ -96,6 +104,7 @@ class VenderDetailsScreenState extends State<VenderDetailsScreen> {
     print("----userId---" + userId.toString());
 
     setState(() {
+      firstName = widget.first_name.toString();
       _txtControllerDateFrom = TextEditingController(text: "${selectedDateFrom.day}/${selectedDateFrom.month}/${selectedDateFrom.year}" );
       _txtControllerDateFrom.selection = TextSelection.fromPosition(TextPosition(offset: _txtControllerDateFrom.text.length));
       _txtControllerDateTo = TextEditingController(text: "${selectedDateTo.day}/${selectedDateTo.month}/${selectedDateTo.year}" );
@@ -122,19 +131,23 @@ class VenderDetailsScreenState extends State<VenderDetailsScreen> {
             elevation: 0,
             title: GestureDetector(onTap : (){
 
-              Navigator.push(context, MaterialPageRoute(builder: (context) =>
+              _navigateAndDisplaySelection(context);
 
-                  EditVendor(vepariId: widget.vepariId.toString(),
-                    first_name: widget.first_name.toString(),
-                    last_name: widget.last_name.toString(),
-                    mobile: widget.mobile.toString(),
-                    company_name: widget.company_name.toString(),
-                    address: widget.address.toString(),
-                    email: widget.email.toString(),
 
-                  )));
 
-            },child: Text(widget.first_name.toString(),style: AppBarTitle.myAppbarStyle,)),
+              // Navigator.push(context, MaterialPageRoute(builder: (context) =>
+              //
+              //     EditVendor(vepariId: widget.vepariId.toString(),
+              //       first_name: widget.first_name.toString(),
+              //       last_name: widget.last_name.toString(),
+              //       mobile: widget.mobile.toString(),
+              //       company_name: widget.company_name.toString(),
+              //       address: widget.address.toString(),
+              //       email: widget.email.toString(),
+              //
+              //     )));
+
+            },child: Text(firstName.toString(),style: AppBarTitle.myAppbarStyle,)),
 
             leading: InkWell(
               onTap: () {
@@ -188,7 +201,7 @@ class VenderDetailsScreenState extends State<VenderDetailsScreen> {
               Padding(
                 padding:  EdgeInsets.only(right: 10),
                 child: IconButton(onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => NoteScreen()));
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => NoteScreen(vendorName: firstName,)));
                 }, icon: Icon(Icons.assignment_outlined,)),
               ),
             ],
@@ -224,7 +237,6 @@ class VenderDetailsScreenState extends State<VenderDetailsScreen> {
                               Visibility(visible : delete_list_credit.length != 0 ? true :false,
                                   child:
                                   GestureDetector(onTap:(){
-
                                     showDialog<String>(
                                       context: context,
                                       builder: (BuildContext context)
@@ -856,7 +868,7 @@ class VenderDetailsScreenState extends State<VenderDetailsScreen> {
 
                       SizedBox(height: 5,),
                       Text(
-                        " ${dashBordModel.totalCredit.toString()} ${"G"}",
+                        " ${totalCredit.toString()} ${"G"}",
                         style: TextStyle(
                             color: Colors.white
                         ),
@@ -884,7 +896,7 @@ class VenderDetailsScreenState extends State<VenderDetailsScreen> {
                       SizedBox(height: 5,),
 
                       Text(
-                        " ${dashBordModel.totalDebit.toString()} ${"G"}",
+                        " ${totalDebit.toString()} ${"G"}",
                         style: TextStyle(
                             color: Colors.white
                         ),
@@ -912,7 +924,7 @@ class VenderDetailsScreenState extends State<VenderDetailsScreen> {
                       SizedBox(height: 5,),
 
                       Text(
-                        " ${dashBordModel.balance.toString()} ${"G"}",
+                        " ${totalBalance.toString()} ${"G"}",
                         style: TextStyle(
                             color: Colors.white
                         ),
@@ -927,6 +939,26 @@ class VenderDetailsScreenState extends State<VenderDetailsScreen> {
       ),
     );
   }
+
+  _navigateAndDisplaySelection(BuildContext context) async {
+    final result = await Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) =>     EditVendor(vepariId: widget.vepariId.toString(),
+        first_name: widget.first_name.toString(),
+        last_name: widget.last_name.toString(),
+        mobile: widget.mobile.toString(),
+        company_name: widget.company_name.toString(),
+        address: widget.address.toString(),
+        email: widget.email.toString(),
+
+      )),
+    );
+
+    setState(() {
+      firstName = result.toString();
+    });
+  }
+
 
 
 

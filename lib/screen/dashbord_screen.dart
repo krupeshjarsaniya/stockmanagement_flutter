@@ -30,8 +30,6 @@ class DashBordScreenState extends State<DashBordScreen> {
   double totalDebit = 0;
   double totalBalance = 0;
 
-
-
   final legendLabels = <String, String>{
     "Credit": "Credit",
     "Debit": "Debit",
@@ -39,20 +37,19 @@ class DashBordScreenState extends State<DashBordScreen> {
 
   final colorList = <Color>[
     Colors.lightGreenAccent,
-    Colors.yellow,
-
+    Colors.amber,
   ];
 
   ChartType? _chartType = ChartType.ring;
   bool _showCenterText = true;
-  double? _ringStrokeWidth = 48;
-  double? _chartLegendSpacing = 32;
+  double? _ringStrokeWidth = 70;
+  double? _chartLegendSpacing = 50;
 
   bool _showLegendsInRow = true;
   bool _showLegends = true;
   bool _showLegendLabel = true;
 
-  bool _showChartValueBackground = true;
+  bool _showChartValueBackground = false;
   bool _showChartValues = true;
   bool _showChartValuesInPercentage = false;
   bool _showChartValuesOutside = true;
@@ -63,9 +60,6 @@ class DashBordScreenState extends State<DashBordScreen> {
   LegendPosition? _legendPosition = LegendPosition.bottom;
 
   int key = 0;
-
-
-
   String? USER_ID;
   String? DEVICE_TYPE;
   String? DEVICE_ID;
@@ -88,20 +82,21 @@ class DashBordScreenState extends State<DashBordScreen> {
   Widget build(BuildContext context) {
 
     final dataMap = <String, double>{
-      "Credit": totalDebit,
-      "Debit": totalBalance,
+      "Credit": totalCredit,
+      "Debit": totalDebit,
+      // "Debit": 50,
     };
 
     final chart = PieChart(
       key: ValueKey(key),
       dataMap: dataMap,
-      animationDuration: Duration(milliseconds: 800),
+      animationDuration: Duration(milliseconds: 5000),
       chartLegendSpacing: _chartLegendSpacing!,
-      chartRadius: math.min(MediaQuery.of(context).size.width / 3.2, 300),
+      chartRadius: math.min(MediaQuery.of(context).size.width / 2.5, 300),
       colorList: colorList,
       initialAngleInDegree: 0,
       chartType: _chartType!,
-      centerText: _showCenterText ? "Balance \n $totalBalance" : null,
+      centerText: _showCenterText ? "$totalBalance \n Stock" : null,
       legendLabels: _showLegendLabel ? legendLabels : {},
       legendOptions: LegendOptions(
         showLegendsInRow: _showLegendsInRow,
@@ -121,7 +116,7 @@ class DashBordScreenState extends State<DashBordScreen> {
         showChartValuesOutside: _showChartValuesOutside,
       ),
       ringStrokeWidth: _ringStrokeWidth!,
-      emptyColor: Colors.grey,
+      emptyColor: Colors.amber,
       // gradientList: _showGradientColors ? gradientList : null,
       emptyColorGradient: [
         Color(0xff6c5ce7),
@@ -167,10 +162,10 @@ class DashBordScreenState extends State<DashBordScreen> {
                     },
                     child: Container(
                       // height: 30,
-                      width: MediaQuery.of(context).size.width/2.6,
+                      width: MediaQuery.of(context).size.width/3.3,
                       child: Padding(
                         padding: const EdgeInsets.all(8),
-                        child: const Center(child: Text("View Detail",style: TextStyle(color: Colors.white,fontSize: 14,),)),
+                        child: const Center(child: Text("View Detail",style: TextStyle(color: Colors.white,fontSize: 14,fontWeight: FontWeight.bold),)),
                       ),
                       decoration: BoxDecoration(
                           color: Colors.amber,

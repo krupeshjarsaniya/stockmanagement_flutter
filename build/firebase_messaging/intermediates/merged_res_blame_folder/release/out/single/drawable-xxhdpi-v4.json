@@ -1,0 +1,38 @@
+[
+    {
+        "merged": "/Users/mymac/Documents/GitHub/stockmanagement_flutter/build/firebase_messaging/intermediates/res/merged/release/drawable-xxhdpi-v4/common_google_signin_btn_icon_dark_normal_background.9.png",
+        "source": "/Users/mymac/.gradle/caches/transforms-2/files-2.1/1cb858daf5fca9efd5a29d498c81af88/jetified-play-services-base-18.0.1/res/drawable-xxhdpi-v4/common_google_signin_btn_icon_dark_normal_background.9.png"
+    },
+    {
+        "merged": "/Users/mymac/Documents/GitHub/stockmanagement_flutter/build/firebase_messaging/intermediates/res/merged/release/drawable-xxhdpi-v4/adaptive_icon_background.png",
+        "source": "/Users/mymac/.gradle/caches/transforms-2/files-2.1/f95add662099507d6faec4a90fc9fff1/jetified-firebase-messaging-23.0.2/res/drawable-xxhdpi-v4/adaptive_icon_background.png"
+    },
+    {
+        "merged": "/Users/mymac/Documents/GitHub/stockmanagement_flutter/build/firebase_messaging/intermediates/res/merged/release/drawable-xxhdpi-v4/common_google_signin_btn_text_dark_normal_background.9.png",
+        "source": "/Users/mymac/.gradle/caches/transforms-2/files-2.1/1cb858daf5fca9efd5a29d498c81af88/jetified-play-services-base-18.0.1/res/drawable-xxhdpi-v4/common_google_signin_btn_text_dark_normal_background.9.png"
+    },
+    {
+        "merged": "/Users/mymac/Documents/GitHub/stockmanagement_flutter/build/firebase_messaging/intermediates/res/merged/release/drawable-xxhdpi-v4/common_google_signin_btn_text_light_normal_background.9.png",
+        "source": "/Users/mymac/.gradle/caches/transforms-2/files-2.1/1cb858daf5fca9efd5a29d498c81af88/jetified-play-services-base-18.0.1/res/drawable-xxhdpi-v4/common_google_signin_btn_text_light_normal_background.9.png"
+    },
+    {
+        "merged": "/Users/mymac/Documents/GitHub/stockmanagement_flutter/build/firebase_messaging/intermediates/res/merged/release/drawable-xxhdpi-v4/googleg_standard_color_18.png",
+        "source": "/Users/mymac/.gradle/caches/transforms-2/files-2.1/1cb858daf5fca9efd5a29d498c81af88/jetified-play-services-base-18.0.1/res/drawable-xxhdpi-v4/googleg_standard_color_18.png"
+    },
+    {
+        "merged": "/Users/mymac/Documents/GitHub/stockmanagement_flutter/build/firebase_messaging/intermediates/res/merged/release/drawable-xxhdpi-v4/icon_with_gradient.png",
+        "source": "/Users/mymac/.gradle/caches/transforms-2/files-2.1/f95add662099507d6faec4a90fc9fff1/jetified-firebase-messaging-23.0.2/res/drawable-xxhdpi-v4/icon_with_gradient.png"
+    },
+    {
+        "merged": "/Users/mymac/Documents/GitHub/stockmanagement_flutter/build/firebase_messaging/intermediates/res/merged/release/drawable-xxhdpi-v4/googleg_disabled_color_18.png",
+        "source": "/Users/mymac/.gradle/caches/transforms-2/files-2.1/1cb858daf5fca9efd5a29d498c81af88/jetified-play-services-base-18.0.1/res/drawable-xxhdpi-v4/googleg_disabled_color_18.png"
+    },
+    {
+        "merged": "/Users/mymac/Documents/GitHub/stockmanagement_flutter/build/firebase_messaging/intermediates/res/merged/release/drawable-xxhdpi-v4/adaptive_icon_foreground.png",
+        "source": "/Users/mymac/.gradle/caches/transforms-2/files-2.1/f95add662099507d6faec4a90fc9fff1/jetified-firebase-messaging-23.0.2/res/drawable-xxhdpi-v4/adaptive_icon_foreground.png"
+    },
+    {
+        "merged": "/Users/mymac/Documents/GitHub/stockmanagement_flutter/build/firebase_messaging/intermediates/res/merged/release/drawable-xxhdpi-v4/common_google_signin_btn_icon_light_normal_background.9.png",
+        "source": "/Users/mymac/.gradle/caches/transforms-2/files-2.1/1cb858daf5fca9efd5a29d498c81af88/jetified-play-services-base-18.0.1/res/drawable-xxhdpi-v4/common_google_signin_btn_icon_light_normal_background.9.png"
+    }
+]

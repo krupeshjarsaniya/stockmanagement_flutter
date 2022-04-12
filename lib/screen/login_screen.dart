@@ -94,7 +94,7 @@ class LoginScreenState extends State<LoginScreen> {
         passwordController.text.toString(),
         "Ios",
         data.identifierForVendor,
-        "xyz321",
+      DEVICE_TOKEN.toString(),
     );
     model.callUserLogIn(model.logInRequest!);
     /* model.addApns=AddApns("testmobile", "1.0", data.identifierForVendor,"xyz321", data.name, data.model,  data.systemVersion, "Ios");

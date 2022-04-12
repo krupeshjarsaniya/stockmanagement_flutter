@@ -1,0 +1,26 @@
+[
+    {
+        "merged": "/Users/mymac/Documents/GitHub/stockmanagement_flutter/build/share_plus/intermediates/res/merged/release/layout/notification_template_icon_group.xml",
+        "source": "/Users/mymac/.gradle/caches/transforms-2/files-2.1/868d416162787b4602bd98a7bb7f4eeb/core-1.7.0/res/layout/notification_template_icon_group.xml"
+    },
+    {
+        "merged": "/Users/mymac/Documents/GitHub/stockmanagement_flutter/build/share_plus/intermediates/res/merged/release/layout/notification_action_tombstone.xml",
+        "source": "/Users/mymac/.gradle/caches/transforms-2/files-2.1/868d416162787b4602bd98a7bb7f4eeb/core-1.7.0/res/layout/notification_action_tombstone.xml"
+    },
+    {
+        "merged": "/Users/mymac/Documents/GitHub/stockmanagement_flutter/build/share_plus/intermediates/res/merged/release/layout/custom_dialog.xml",
+        "source": "/Users/mymac/.gradle/caches/transforms-2/files-2.1/868d416162787b4602bd98a7bb7f4eeb/core-1.7.0/res/layout/custom_dialog.xml"
+    },
+    {
+        "merged": "/Users/mymac/Documents/GitHub/stockmanagement_flutter/build/share_plus/intermediates/res/merged/release/layout/notification_template_part_chronometer.xml",
+        "source": "/Users/mymac/.gradle/caches/transforms-2/files-2.1/868d416162787b4602bd98a7bb7f4eeb/core-1.7.0/res/layout/notification_template_part_chronometer.xml"
+    },
+    {
+        "merged": "/Users/mymac/Documents/GitHub/stockmanagement_flutter/build/share_plus/intermediates/res/merged/release/layout/notification_action.xml",
+        "source": "/Users/mymac/.gradle/caches/transforms-2/files-2.1/868d416162787b4602bd98a7bb7f4eeb/core-1.7.0/res/layout/notification_action.xml"
+    },
+    {
+        "merged": "/Users/mymac/Documents/GitHub/stockmanagement_flutter/build/share_plus/intermediates/res/merged/release/layout/notification_template_part_time.xml",
+        "source": "/Users/mymac/.gradle/caches/transforms-2/files-2.1/868d416162787b4602bd98a7bb7f4eeb/core-1.7.0/res/layout/notification_template_part_time.xml"
+    }
+]

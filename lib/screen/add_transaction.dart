@@ -111,6 +111,13 @@ class AddTransactionScreenState extends State<AddTransactionScreen> {
                       child: GestureDetector(
                         onTap: (){
                           setState(() {
+                            touchController = TextEditingController(text: "100" );
+                            touchController.selection = TextSelection.fromPosition(TextPosition(offset: touchController.text.length));
+
+                            fineweightController = TextEditingController(text: "0" );
+                            fineweightController.selection = TextSelection.fromPosition(TextPosition(offset: fineweightController.text.length));
+
+
                             creditTab = true;
                             debitTab = false;
                           });
@@ -134,6 +141,13 @@ class AddTransactionScreenState extends State<AddTransactionScreen> {
                       child: GestureDetector(
                         onTap: (){
                           setState(() {
+                            touchController = TextEditingController(text: "" );
+                            touchController.selection = TextSelection.fromPosition(TextPosition(offset: touchController.text.length));
+
+                            fineweightController = TextEditingController(text: "0" );
+                            fineweightController.selection = TextSelection.fromPosition(TextPosition(offset: fineweightController.text.length));
+
+
                             creditTab = false;
                             debitTab = true;
                           });
@@ -209,6 +223,25 @@ class AddTransactionScreenState extends State<AddTransactionScreen> {
                           //     borderSide: const BorderSide(color: Colors.red))
 
                         ),
+                        onChanged: (text){
+                            if (touchController.text.isNotEmpty && text.isNotEmpty) {
+                            // var tempweight = Float.parseFloat(edweight.getText().toString());
+                            double tempweight = double.parse(text);
+                            // var temptouch = Float.parseFloat(edtouch.getText().toString());
+                            double temptouch = double.parse(touchController.text);
+                            double fineWeight = (tempweight * temptouch) / 100.0;
+                            setState(() {
+                              fineweightController = TextEditingController(text:fineWeight.toString() + "" );
+                              fineweightController.selection = TextSelection.fromPosition(TextPosition(offset: fineweightController.text.length));
+                            });
+                          } else {
+
+                            setState(() {
+                              fineweightController = TextEditingController(text:"0" );
+                              fineweightController.selection = TextSelection.fromPosition(TextPosition(offset: fineweightController.text.length));
+                            });
+                          }
+                        },
                       ),
                       SizedBox(height: 15),
                       TextFormField(
@@ -224,11 +257,33 @@ class AddTransactionScreenState extends State<AddTransactionScreen> {
                           //     borderSide: const BorderSide(color: Colors.red))
 
                         ),
+                        onChanged: (text){
+                          print("dsfg" + text.toString());
+
+                          if (touchController.text.isNotEmpty && text.isNotEmpty) {
+                            // var tempweight = Float.parseFloat(edweight.getText().toString());
+                            double tempweight = double.parse(text);
+                            // var temptouch = Float.parseFloat(edtouch.getText().toString());
+                            double temptouch = double.parse(touchController.text);
+                            double fineWeight = (tempweight * temptouch) / 100.0;
+                            setState(() {
+                              fineweightController = TextEditingController(text:fineWeight.toString() + "" );
+                              fineweightController.selection = TextSelection.fromPosition(TextPosition(offset: fineweightController.text.length));
+                            });
+                          } else {
+                            setState(() {
+                              fineweightController = TextEditingController(text:"0" );
+                              fineweightController.selection = TextSelection.fromPosition(TextPosition(offset: fineweightController.text.length));
+                            });
+                          }
+
+                        },
                       ),
                        SizedBox(height: 15),
                       TextFormField(
                         keyboardType: TextInputType.number,
                         controller: fineweightController,
+                        readOnly: true,
                         decoration: InputDecoration(
                             contentPadding: EdgeInsets.only(top:0.0,bottom:0.0),
                             alignLabelWithHint: true,
@@ -247,18 +302,13 @@ class AddTransactionScreenState extends State<AddTransactionScreen> {
                       GestureDetector(
                         onTap: () {
                           if(dateController.text.isEmpty){
-                            print("--phone_number_is_empty");
-                            commonToast("Please Enter Mobile or Email Number");
+                            commonToast("Please Enter Date");
                           }else if(descriptionController.text.isEmpty){
-                            print("--Password_number_is_empty");
-                            commonToast("Please Enter Password");
+                            commonToast("Please Enter Description");
                           }
                           else if(weightController.text.isEmpty){
                             print("--Password_number_is_empty");
-                            commonToast("Please Enter Password");
-                          } else if(touchController.text.isEmpty){
-                            print("--Password_number_is_empty");
-                            commonToast("Please Enter Password");
+                            commonToast("Please Enter Weight");
                           }
 
                           else {
@@ -370,6 +420,13 @@ class AddTransactionScreenState extends State<AddTransactionScreen> {
     print("----userId---" + userId.toString());
 
     setState(() {
+
+      touchController = TextEditingController(text: "100" );
+      touchController.selection = TextSelection.fromPosition(TextPosition(offset: touchController.text.length));
+
+      fineweightController = TextEditingController(text: "0" );
+      fineweightController.selection = TextSelection.fromPosition(TextPosition(offset: fineweightController.text.length));
+
       USER_ID = userId.toString();
       DEVICE_TOKEN = deviceToken.toString();
       DEVICE_ID= deviceId.toString();

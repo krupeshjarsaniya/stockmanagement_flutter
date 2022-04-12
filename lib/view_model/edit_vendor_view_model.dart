@@ -24,7 +24,8 @@ class EditVendorViewModel {
     if (editVendorModel != null) {
       if(editVendorModel!.success!){
         commonToast(editVendorModel!.message.toString());
-        Navigator.of(state!.context).pop();
+        Navigator.pop(state!.context,state!.firstName.text.toString());
+
       }
       print("==========Edit Vendor Api Responce==========" + editVendorModel.toString());
     }

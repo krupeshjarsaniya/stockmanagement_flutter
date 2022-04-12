@@ -114,7 +114,7 @@ class _MoreScreenState extends State<MoreScreen> {
   Widget w_payment(){
     return InkWell(
       onTap: (){
-        launch("tel://9925755626");
+        launch("tel://7016713953");
         // Navigator.push(context, CupertinoPageRoute(builder: (context) => EditProfile()));
       },
       child: Container(
@@ -128,7 +128,7 @@ class _MoreScreenState extends State<MoreScreen> {
             Container(
               margin: EdgeInsets.only(left: 15),
               child: const Text(
-                  "Call Now (9925755626)"
+                  "Call Now (7016713953)"
               ),
             ),
 

@@ -1,0 +1,34 @@
+{
+    "logs": [
+        {
+            "outputFile": "/Users/mymac/Documents/GitHub/stockmanagement_flutter/build/share_plus/intermediates/incremental/mergeReleaseResources/merged.dir/values-da/values-da.xml",
+            "map": [
+                {
+                    "source": "/Users/mymac/.gradle/caches/transforms-2/files-2.1/868d416162787b4602bd98a7bb7f4eeb/core-1.7.0/res/values-da/values-da.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "100",
+                        "endOffsets": "151"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "/Users/mymac/Documents/GitHub/stockmanagement_flutter/build/share_plus/intermediates/res/merged/release/values-da/values-da.xml",
+            "map": [
+                {
+                    "source": "/Users/mymac/.gradle/caches/transforms-2/files-2.1/868d416162787b4602bd98a7bb7f4eeb/core-1.7.0/res/values-da/values-da.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "100",
+                        "endOffsets": "151"
+                    }
+                }
+            ]
+        }
+    ]
+}

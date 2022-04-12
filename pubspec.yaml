@@ -29,35 +29,40 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  page_transition: "^1.1.6"
-  sqflite: "^1.2.0"
-  path_provider: "^1.5.1"
-  intl:
+#  page_transition: "^1.1.6"
+  page_transition: ^2.0.5
+#  sqflite: "^1.2.0"
+  sqflite: ^2.0.2
+#  path_provider: "^1.5.1"
+  path_provider: ^2.0.9
+  intl: 0.17.0
   firebase_core: ^1.12.0
   firebase_messaging: ^11.2.6
   firebase_auth: ^3.3.6
-  shared_preferences: "0.5.7+3"
+#  shared_preferences: "0.5.7+3"
+  shared_preferences: ^2.0.13
   device_info: ^2.0.3
 #  fluttertoast: any
-  fluttertoast: ^3.1.0
+#  fluttertoast: ^3.1.0
+  fluttertoast: ^8.0.9
+#  shared_preferences_platform_interface: ^2.0.0
 
   #  fluttertoast: "8.0.9"
   http: 0.13.3
-  image_picker: any
+  image_picker: 0.8.5
   dio: 4.0.0
   store_redirect: ^2.0.1
-  share_plus: any
+  share_plus: 4.0.4
 #  fl_chart: ^0.12.0
   pie_chart: ^5.3.0
-
-
-
+  get: 4.6.1
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
 
 dependency_overrides:
-  firebase_messaging_platform_interface: 3.1.6
+  firebase_messaging_platform_interface: 3.2.2
+  platform: ^3.1.0
 
 
 dev_dependencies:
