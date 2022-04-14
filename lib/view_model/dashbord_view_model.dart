@@ -23,11 +23,13 @@ class DashBordViewModel {
     dashBordModel = (await interceptorApi!.callDashBord(dashBordRequest));
     if (dashBordModel != null) {
       state!.setState(() {
-        state!.totalCredit = double.parse(dashBordModel!.totalCredit);
-        state!.totalDebit = double.parse(dashBordModel!.totalDebit);
-        state!.totalBalance = double.parse(dashBordModel!.balance);
+
+        print("afdsfd");
+        state!.totalCredit = dashBordModel!.totalCredit!=null ? double.parse(dashBordModel!.totalCredit) : 00;
+        state!.totalDebit = dashBordModel!.totalDebit!=null ? double.parse(dashBordModel!.totalDebit) : 00;
+        state!.totalBalance = dashBordModel!.balance!=null ? double.parse(dashBordModel!.balance) : 00;
         state!.dashBordModel = dashBordModel!;
-        print("---balance---" + dashBordModel!.balance);
+        // print("---balance---" + dashBordModel!.balance);
       });
       print("=========callDashBordModel Responce==========" + dashBordModel.toString());
     }

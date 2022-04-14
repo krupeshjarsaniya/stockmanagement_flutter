@@ -61,7 +61,7 @@ class VendorDetailsViewModel {
     vepariStockListModel = await interceptorApi!.callVepariStockModelLoader(vepariStockListRequest);
     if(vepariStockListModel != null){
       state!.setState(() {
-        state!.creditList = vepariStockListModel!.credit;
+        state!.creditList = vepariStockListModel!.credit ;
         state!.debitList = vepariStockListModel!.debit;
       });
       dashBordRequest = DashBordRequest(state!.user_id_str.toString(),state!.token_str.toString(),state!.deviceType_str.toString(),state!.deviceuid_str.toString());
@@ -94,10 +94,9 @@ class VendorDetailsViewModel {
     if (dashBordModel != null) {
       state!.setState(() {
         state!.dashBordModel = dashBordModel!;
-        state!.totalCredit = dashBordModel!.totalCredit;
-        state!.totalDebit = dashBordModel!.totalDebit;
-        state!.totalBalance = dashBordModel!.balance;
-
+        state!.totalCredit = dashBordModel!.totalCredit!=null ? dashBordModel!.totalCredit : "00";
+        state!.totalDebit = dashBordModel!.totalDebit!=null ? dashBordModel!.totalDebit : "00";
+        state!.totalBalance = dashBordModel!.balance!=null ? dashBordModel!.balance : "00";
       });
       print("==========Edit Vendor Api Responce==========" + dashBordModel.toString());
     }

@@ -60,34 +60,24 @@ class VendorScreenState extends State<VendorScreen> {
                 padding: const EdgeInsets.only(right: 20),
                 child: InkWell(
                   onTap: () {
-                    Navigator.pushNamed(context, UtilRoutes.AddVendors);
+
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => AddVendors(
+                      )),
+                    ).then((data){
+                      // then will return value when the loginScreen's pop is called.
+                      // debugPrint(data);
+                      print("---test-----");
+                      viewModel.callVepariListModel(USER_ID.toString());
+                    });
                   },
-                  child: GestureDetector(
-                    onTap: (){
-
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => AddVendors(
-                        )),
-                      ).then((data){
-                        // then will return value when the loginScreen's pop is called.
-                        debugPrint(data);
-
-                        setState(() {
-                          // creditList!.clear();
-                          // debitList!.clear();
-                        });
-                        viewModel.callVepariListModel(USER_ID.toString());
-                      });
-
-                    },
-                    child: Container(
-                      width:50,
-                      child: const Icon(
-                        Icons.add,
-                        size: 30.0,
-                        color: Colors.white,
-                      ),
+                  child: Container(
+                    width:50,
+                    child: const Icon(
+                      Icons.add,
+                      size: 30.0,
+                      color: Colors.white,
                     ),
                   ),
                 ),

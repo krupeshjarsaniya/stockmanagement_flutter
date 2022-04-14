@@ -188,7 +188,7 @@ class RegisterScreenState extends State<RegisterScreen> {
 
         }else if(passwordController.text.isEmpty){
           commonToast("Please Enter Password");
-        }else if(mobileController.text.length == 10){
+        }else if(mobileController.text.length != 10){
           commonToast("Please Enter Valid Mobile Number");
         }else if(conformPasswordController.text.isEmpty){
           commonToast("Please Enter Confirm Password");

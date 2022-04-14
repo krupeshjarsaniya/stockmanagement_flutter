@@ -16672,6 +16672,6 @@ com.google.android.gms.internal.measurement.zzgc:
     static synthetic void zzak(com.google.android.gms.internal.measurement.zzgc,java.lang.Iterable)
 kotlin.KotlinVersion:
     public static final kotlin.KotlinVersion$Companion Companion
+androidx.lifecycle.DefaultLifecycleObserver$-CC
 io.flutter.plugin.common.BinaryMessenger$-CC
 io.flutter.plugin.platform.PlatformView$-CC
-androidx.lifecycle.DefaultLifecycleObserver$-CC

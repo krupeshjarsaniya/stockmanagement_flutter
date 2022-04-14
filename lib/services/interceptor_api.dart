@@ -408,10 +408,6 @@ Future<VepariStockListModel?> callVepariStockModelLoader(VepariStockListRequest 
       String msg = data['message'];
     } else {}
   }
-
-
-
-
 }
 
 
